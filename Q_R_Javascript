@@ -1,0 +1,199 @@
+Question 01: qu'est-ce qu'un objet informatique ?
+Réponse 01: un objet informatique est une entité qui possède des propriétés. Chaque propriété définit une caractéristique de l'objet. Une propriété peut être une information associée à l'objet,  ou une action.
+
+en gros: Un objet est une entité qui possède des propriétés. Chaque propriété correspond à une paire clé/valeur. La clé est le nom de la propriété.
+
+Question 02: C'est quoi la programmation orientée objet?
+Réponse 02:
+La programmation orientée objet (en abrégé POO) est une manière d'écrire des programmes en utilisant des objets. Quand on utilise la POO, on cherche à représenter le domaine étudié sous la forme d'objets informatiques. Chaque objet informatique modélisera un élément de ce domaine.
+
+
+Question 03: C'est quoi une classes:
+Réponse 03: 
+Une classe est une abstraction qui représente une idée ou un concept manipulé par le programme. Elle facilite la création d'objets ayant le même modèle et partageant ainsi données et comportement.
+
+Question 04: C'est quoi un programme?
+Réponse 04:
+Un programme est une liste d'ordres donnés à un ordinateur. Le rôle du programmeur est d'écrire des programmes qui produiront de manière fiable les résultats attendus.
+
+Question 05: C'est quoi une variable?
+Réponse 06:
+Dans un programme, on mémorise des valeurs en les stockant dans des variables. Une variable est un conteneur d'information.
+
+Le type d'une valeur détermine son rôle et les opérations qui lui sont applicables. Les principaux types de bases du langage JavaScript sont : nombre, chaîne de caractères, booléen et objet
+
+Question 06: C'est quoi une fonction?
+Réponse 06:
+Une fonction est un bloc de code réutilisable.
+La création d'une fonction permet d'isoler un ensemble d'instructions qui réalisent une tâche donnée. Une fonction peut être appelée depuis n'importe quel emplacement du programme, rendant le code source plus modulaire. Une fonction peut recevoir des informations sous la forme de paramètres et renvoyer ou non une valeur de retour
+
+Question 07: C'est quoi la différence entre un paramètre et un argument?
+Réponse 07:
+
+Le paramètre on le déclare lors de la création d'une fonction, c'est une variable, par contre l'argument c'est la valeur mise à la place du paramètre précédent, une fois on appel la fonction.
+
+Question 08: C'est quoi un programme JavaScript?
+Réponse 08:
+Un programme JavaScript est une suite d'instructions rassemblées dans un fichier portant l'extension.js. On peut le tester depuis un navigateur Web en ouvrant une page HTML qui charge ce fichier.
+
+Question 09: Qu'est-ce qu'un service Web?
+Réponse 09:
+Un service web est un programme informatique de la famille des technologies web, il permet la communication et l'échange de données, son objectif principale est de faire l'intermédiaire entre deux application
+
+API = HTTP + JSON/XML(très couteux)
+grace à HTTP (CRUD qui fait la partie transport) + JSON (partie données) ----> implémenter des web services 
+
+**********Ma propre réponse**************
+
+D'après ce que j'ai compris: Le web service ressemble le gestionnaire MYSQL et les point commun sont:
+
+*La bases de données est sous format JSON(au lieu des tables) 
+
+* le langage de manipulation des bases de données JSON dite: le protocole HTTP avec les méthode CRUD (au lieu de sql) qui utilise:
+
+GET <-----> Select (read/afficher)
+POST <----> Update (mettre à jour)
+PUT <-----> add (create/créer)
+DELETE <--> delete (supprimer)
+
+Ps: REST est une architecture qui nous permet d'exploiter les méthodes de HTTP
+
+------------------------------------------
+Question 10: C'est quoi une page web?
+Réponse 10:
+Une page web est un document structuré contenant à la fois du texte et des balises HTML. Grâce à JavaScript, on peut accéder à la structure d'une page affichée dans un navigateur, et même la modifier
+
+Question 11: C'est quoi un DOM?
+Réponse 11:
+
+Le DOM, ou Document Object Model, définit de manière standardisée la structure d'une page web et le moyen d'interagir avec elle via JavaScript. Le DOM représente une page web comme une hiérarchie d'objets reflétant sa structure. Chaque objet du DOM correspond à un nœud dans l'arborescence de la page web.
+
+
+Question 12: Quelles sont les différentes méthodes qui nous permettent d'accéder les éléments d'un DOM?
+
+Réponse 12:
+* getElementsByTagName, getElementsByClassName, getElementByIdpermettent:
+rechercher des éléments par nom de balise, par classe et par identifiant
+
+* querySelectorAll, querySelector:
+rechercher des éléments en utilisant un sélecteur CSS. La première méthode renvoie tous les éléments correspondants, la seconde renvoie uniquement le premier.
+
+* innerHTML: renvoie le contenu HTML d'un élément
+* textContentrenvoie son contenu textuel, sans le balisage HTML.
+
+* getAttribute , hasAttribute: accéder aux attributs d'un élément.
+
+* classList, contains :accéder aux classes d'un élément.
+
+Question 13:Quelles sont les différentes méthodes qui nous permettent de modifier/ajouter/ supprimer, les éléments/textes d'un DOM?
+Réponse 13: 
+
+* innerHTML,textContentetclassList, setAttribute : modifier les informations d'un élément du DOM.
+
+* La création d'un nouveau noeud s'effectue avec les méthodes createTextNode pour un noeud textuel etcreateElement pour un élément.
+
+* appendChild:insérer un nouveau noeud comme dernier enfant d'un élément du DOM.
+
+* insertBefore, insertAdjacentHTML: ajouter  du contenu.
+
+* replaceChild : remplacer un noeud existant 
+* removeChild: supprimer un noeud existant
+
+
+------------------------------------------------------------
+Question 14:
+
+Qu'est ce qu'un prototype?
+Réponse 14:
+JavaScript est un langage orienté objet à prototype, c'est à dire que les bases du langage et ses principales interfaces sont fournies par des objets qui ne sont pas des instances de classes, mais qui sont chacun équipés de constructeurs permettant de créer leurs propriétés, et notamment une propriété de prototypage qui permet d'en créer des objets héritiers personnalisés
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

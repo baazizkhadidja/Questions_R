@@ -1,0 +1,164 @@
+Le 17/12/2020
+
+1- c est quoi le but d utiliser un cahier de charge?
+- Le cahier des charges fonctionnel est la base de ce processus de documentation, et est donc une partie importante de tout projet agile.
+
+2- les objectif du SCRUM:
+
+    Coordonner les différents rôles de l'équipe Scrum.
+
+    Conduire un projet avec une démarche incrémentale et itérative.
+
+    Prévoir les itérations pendant la sprint planning.
+
+    Planifier la daily scrum à partir du sprint backlog.
+
+    Évaluer l'atteinte des objectifs lors de la sprint review.
+
+    Promouvoir les bonnes pratiques lors de la sprint retrospective.
+
+    Guider le raffinage du product backlog pour l’équipe Scrum.
+
+
+3- les points importants de la gestion d un projet avec la méthode agile: SCRUM:
+
+1* négocier avec le client à l intermédiaire du product owner:
+- product owner C'est la personne qui va représenter votre client au sein de l'équipe Scrum: recruté dans l équipe, il gère le backlog(liste des besoins pour le produits, elle est changeable):
+actualisation des stories + changer les priorités...
+
+2* Encadrez l'équipe de développement:
+grace à  un ensemble de pratiques agiles complémentaires l équipe communiquerait mieux:
+- Le planning poker: estimer la complexité de chaque user story grace à un jeu de carte
+- le tableau de Kanban: un tableau divisé en 3 colonnes : "à faire", "en cours" et "terminé"
+- L'attribution des tâches: Répartissez les user stories sur la base du volontariat et de la discussion lors de vos réunions quotidiennes.
+
+3* Facilitez le travail de l'équipe Scrum grace Scrum master: 
+le SM: 
+- aplanissez les difficultés
+- améliorez la communication 
+- suivez et communiquez tous les indicateurs
+- expliquez et faites respecter les règles, les usages et les valeurs
+- coachez et animez des ateliers
+- encouragez l’esprit d’équipe et maintenez la motivation
+- facilitez l'intégration du modèle Scrum
+
+4* les parties prenantes: le sponsor , et l utilisateur final
+
+4- Préparer un sprint:
+-  sprint est une boîte de temps d'une à quatre semaines (maximum). C'est la période au cours de laquelle une fonctionnalité complète du produit sera développée et incrémentée.
+
+- la durée depend de la complexité des taches qui serait estimée pendant le planning Poker
+
+
+5- Évaluez un incrément + un itérative:
+un incrément: C'est une version intermédiaire(manquante + claire) du produit final. Vous êtes donc capable de le présenter aux parties prenantes du projet lors d'une démonstration.
+
+
+un itérative: C'est une version intermédiaire(globale + pas claire) du produit final. Vous êtes donc capable de le présenter aux parties prenantes du projet lors d'une démonstration.
+
+
+incrément + itérative: une version un peu globale + un peu claire
+
+6- la sprint planning: réunion à 8 heures pour un sprint d'un mois et à 2 heures pour un sprint d'une semaine
+
+*se divise en deux parties:
+- le périmètre :  Le product owner définit l'objectif de l'itération à partir de vos analyses
+
+
+- le plan de l'itération : décomposez le travail en journée (ou moins) afin de lister toutes les tâches des users stories candidates.
+
+
+7- Complétez le sprint backlog: c est l ensemble des taches pendant le sprint
+
+
+8- La daily Scrum(melée quotidien): 15 mn on discute sur:
+
+    Sur quoi ai-je travaillé hier ?
+
+    Sur quoi vais-je travailler aujourd'hui ?
+
+    Quelles sont les difficultés que je rencontre ? Et comment peut-on m'aider ?
+
+
+9- l 'étape de La préparation des user stories:
+
+- Pour remlirLe product backlog
+- le product owner explique les besoins à l equipe
+
+10- La finalisation des user stories:  
+
+ vérifiée avec des tests unitaires.
+
+ disponible pour acceptation.
+
+ déployée dans un environnement d'essai.
+
+ validée par l'équipe Scrum.
+
+ accompagnée d'une note de version.
+
+ opérationnelle pour le produit.
+
+ présentée au client.
+
+10- Présentez les livrables pendant la sprint review: C'est un rituel Scrum destiné à évaluer avec votre équipe l'atteinte des objectifs.
+
+- durée d'une heure par semaine de sprint.
+
+- il ne faut jamais présenté des incréments partiellement réalisés:
+soit la fonctionnalité est finie, soit elle ne l'est pas !
+
+11- sujets à aborder pendant la sprint review :
+
+    Déroulement du sprint
+
+    Problèmes rencontrés
+
+    Résolutions trouvées
+
+    Questions sur l'incrément
+
+12- la sprint retrospective: pour Améliorez votre gestion
+La rétrospective du sprint dure trois heures pour un sprint d'un moi
+- on discute sur:
+
+    Ce qui a bien fonctionné
+
+    Ce qui doit être changé
+
+    Les axes d’amélioration
+
+    Les inconnus
+
+13- le raffinage du product backlog: grace à :
+
+* Détectez les user stories qui n'ont plus aucun sens pour le projet.
+
+* Formulez et estimez les nouvelles user stories si des besoins apparaissent.
+
+* Réévaluez l'ordre de priorité des user stories dans le product backlog.
+
+* Corrigez les estimations en fonction de nouvelles informations.
+
+* Découpez les user stories qui pourraient candidater aux prochains sprints
+
+14- Résumé: 
+
+Préparations des users story(avant le sprint) mettre les user story dans le product backlog(avant le sprint)--> estimer la durée + la complexité des user story + les mettre dans le sprint backlog(pendant le planning sprint) --> progression des taches: en cours/faite/tester/finie(pendant le sprint) + le daily sprint --> présentations des incréments(revu de sprint) + évaluation de l'avencement + proposer des améliorations(sprint retrospective) -->définir des nouvel user story (planning pour le prochain sprint ) --....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

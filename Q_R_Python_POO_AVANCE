@@ -1,0 +1,30 @@
+Question 01:
+Qu'est ce qu'une encapsulation?
+
+Réponse 01:
+L'encapsulation est un principe qui consiste à cacher ou protéger certaines données de notre objet.
+
+On va définir des méthodes un peu particulières, appelées des accesseurs et mutateurs. Les accesseurs donnent accès à l'attribut. Les mutateurs permettent de le modifier. Concrètement, au lieu d'écriremon_objet.mon_attribut, vous allez écriremon_objet.get_mon_attribut(). De la même manière, pour modifier l'attribut écrivezmon_objet.set_mon_attribut(valeur)et non pasmon_objet.mon_attribut = valeur
+
+
+Question 02: Qu'est ce qu'une propriété?
+
+Réponse 02:
+Les propriétés sont un moyen transparent de manipuler des attributs d'objet. Elles permettent de dire à Python : « Quand un utilisateur souhaite modifier cet attribut, fais cela ».
+
+Les propriétés sont des objets un peu particuliers de Python. Elles prennent la place d'un attribut et agissent différemment en fonction du contexte dans lequel elles sont appelées
+
+Question 03: C'est quoi une méthode spéciale?
+
+Réponse 03:
+ méthodes spéciales sont des méthodes d'instance que Python reconnaît et sait utiliser, dans certains contextes.
+ elles contrôlent la façon dont un objet se crée, ainsi que l'accès à ses attributs.
+
+exemple: 
+	* la méthode __init__ qui sert à déclarer les attributs des futurs objects lors de la création de la classe
+	*la méthode __repr__ sert à représenter un objet , et la méthode __str__ fait le meme fonctionnement
+	* la méthode __getattr__ : sert à vérifier si l'attribut n'existe pas pour afficher une alerte
+
+	* la méthode __setattr__: qui sert à modifier la valeur d'un attribut, car elle hérite le meme fonctionnement de la méthode __settattr__ de l'objet: object
+
+

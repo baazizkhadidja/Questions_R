@@ -1,0 +1,45 @@
+Le 17/12/2020
+
+1- c est quoi le but d utiliser un cahier de charge?
+- Le cahier des charges fonctionnel est la base de ce processus de documentation, et est donc une partie importante de tout projet agile.
+
+2- les objectif du SCRUM:
+
+    Coordonner les différents rôles de l'équipe Scrum.
+
+    Conduire un projet avec une démarche incrémentale et itérative.
+
+    Prévoir les itérations pendant la sprint planning.
+
+    Planifier la daily scrum à partir du sprint backlog.
+
+    Évaluer l'atteinte des objectifs lors de la sprint review.
+
+    Promouvoir les bonnes pratiques lors de la sprint retrospective.
+
+    Guider le raffinage du product backlog pour l’équipe Scrum.
+
+
+3- les points importants de la gestion d un projet avec la méthode agile: SCRUM:
+
+1* négocier avec le client à l intermédiaire du product owner:
+- product owner C'est la personne qui va représenter votre client au sein de l'équipe Scrum: recruté dans l équipe, il gère le backlog(liste des besoins pour le produits, elle est changeable):
+actualisation des stories + changer les priorités...
+
+2* Encadrez l'équipe de développement:
+grace à  un ensemble de pratiques agiles complémentaires l équipe communiquerait mieux:
+- Le planning poker: estimer la complexité de chaque user story grace à un jeu de carte
+- le tableau de Kanban: un tableau divisé en 3 colonnes : "à faire", "en cours" et "terminé"
+- L'attribution des tâches: Répartissez les user stories sur la base du volontariat et de la discussion lors de vos réunions quotidiennes.
+
+3* Facilitez le travail de l'équipe Scrum grace Scrum master: 
+le SM: 
+- aplanissez les difficultés
+- améliorez la communication 
+- suivez et communiquez tous les indicateurs
+- expliquez et faites respecter les règles, les usages et les valeurs
+- coachez et animez des ateliers
+- encouragez l’esprit d’équipe et maintenez la motivation
+- facilitez l'intégration du modèle Scrum
+
+

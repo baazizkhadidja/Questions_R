@@ -1,0 +1,164 @@
+Q1: C'est quoi un framework?
+R1: C'est ensemble de modules pensés pour fonctionner à la fois collectivement et à la fois individuellement , cela nous garanti de pouvoir avancer rappidement en appuyant sur des bonnes pratiques
+--------------------------------------------------------------------------------------------
+Q2: Quels sont les principaux fichiers composant d'un projet de django?
+R2: Les principaux fichiers composants:
+
+
+	* __init__.py: permet de déclarer que ce répertoire est un module, ça nous permettera d'importer des réglage ailleurs plutard dans notre projet
+
+	* settings.py: regroupe les réglages généraux de notre projet
+	* urls.py:  contient toutes les routes que nous utiliserons dans notre projet, tous les chemins que nous allons rentrer dans le navigateur  (les urls) se trouvent dans ce fichier qui nous permet d'accéder à une page  
+de notre application
+
+	* wsgi.py: regroupe les réglages du serveur
+
+------------------------------------------------------------------------------------------
+Q3: C'est quoi une application django ?
+R3: Une application django est un ensemble de fonctionnalités qui partage une cohérence commune( une librairie). concrètement les applications sont les différents onglets que trouvons dans un site.
+-----------------------------------------------------------------------------
+Q4: Quels sont les principaux composants d'une application django?
+Q4: les principaux fichiers composants d'une application django sont:
+
+	* Le dossiers migration contient les fichiers qui modifieront la bases de données
+	* admin.py: contiendera la configuration de l'espace de l'administration 
+	* aps.py: permet de configurer l'application
+	* models.py: contiendera les modèles de l'application
+	* tests.py: contient les tests 
+	* views.py: contient les vues de notre application
+
+---------------------------------------------------------------------------------------
+Q5: C'est quoi un model MVC ?
+R5: un model MVC est un pattern de trois poles: Modèle, Vue, Template.
+-------------------------------------------------------------------------------
+Q6: C'est quoi un modèle?
+R6: Les modèles sont
+		- Responsables de chercher dans une base de données les items correspondant à une requete et de renvoyer une reponse intelligible par le reste du programme
+		- S'appuient sur un ORM (object Relational Mapping)
+--------------------------------------------------------------------------------
+Q7: C'est quoi un ORM?
+R7: 
+Pour comprendre c'est quoi un ORM, il faut savoir qu'on ne peut pas intéroger une bases de données directement en python, on doit utiliser SQL 
+puis transformer le résultat en Python pour pouvoir les manipuler
+
+Ces étapes sont un peu fastidieuses c'est pour ça les ORMs existent
+
+
+Un ORM (object Relational Mapping) est comme un traducteur automatique: 
+	1.nous écrivons les requetes en pyton  
+	2.l'ORM transforme la requete en sql
+	3. Intéroge la base de données
+	4. reçoit la réponse en sql
+	5. renvoie une réponse en python
+------------------------------------------------------------------------------ 
+Q8: C'est quoi une vue?	
+R8: La vue: 
+		- elle est responsable de recevoir les requete HTTP et renvoyer une réponse intelligible par le navigateur
+		- elle réalise toute les actions necessaires au traitement de la requette: 
+ 			* Si elle a besoin des informations stoquées dans la base de données: elle fera appel au modèle pour interroger la base 
+
+			* Si elle a besoin d'un template, elle va faire appel au template pour générer la réponse
+		- toutes les vues sont regrouper dans le fichier views.py
+		- Chaque vue est reliée à un schéma URL qui est relié à son tour à une requette HTTP, et toutes les URLs sont regroupées dans le fichier urls.py 
+--------------------------------------------------------------------------------
+Q9: Est ce que vous pouvez me resumer l'actionnement entre les différents composant du modèle MVT ?
+
+R9: 
+- Une fois on effectue une requete HTTP dans un navigateur (écrir des mots clés puis cliquer sur la touche entré ) la requete va arriver directement au fichier urls.py 
+
+- Django va aller regarder quel est le shéma d'url qui correspond à l'url dans la requete, en effet une url est reliée à une vue
+
+- ensuite la vue va traiter la demande, c'est le moment ou l'ORM rentre en jeu , il va effectuer la requete dans la base de données pour selectionner les lignes et les colonnes qui correspondent à notre requete
+
+- L'ORM envoie finalement à la vue le resultat correspondant
+- La vue va faire appel à un gabarit pour construire la requete
+- Puis la vue envoie une requete conforme au navigateur pour que ce dernier affiche la réponse au utilisateur
+
+--------------------------------------------------------------------
+Q10: C'est quoi un model?
+R10: c'est une table avec plusieurs colonne et plusieurs lignes, chaque colonne corresponde à une caractéristique(nom, date, nombre), et chaque ligne corresponde à un individu différent
+
+Q11:Comment peut on déclarer une table(modele) par django 
+R11: dans le fichier models.py, sous forme de classe qui hérite d'une classe prédéfinie Model qui se trouve dans le module Models, on définie notre table, et ses colonnes correspondent aux attributs de la classe
+
+Q12: ça sert à quoi de passer par une étape qui s'appelle migration à chaque fois on crée un nouveau model ou bien on le modéfie?
+R12: Lorsequ'on applique la commande ./manage.py makemigration:
+un nouveau fichier qui s'appelle 0001_initial.py  s'apparaiterait dans le repretoire migration .
+Ce fichier contient des instructions modifiant la structure d'une base de données
+ (une classe dite migration qui contient nos modeles mais avec un autre format)
+
+Donc: La migration sert garder une version du code, on cas ou on le perd on pourrais facillement retourner à la version précédante
+
+et aussi sert à vérifier le format des modèles avant de les mettre dans la base de données (migrate)
+
+Ps: La migration c'est le git de la base de données
+
+------------------------------------------------------
+Q13: C'est quoi la différence entre un thème statique et un gabarit?
+R13: Cest l'ensemble des feuilles de style qui servent à représenter le contenu du site et sa mise en forme, ces feuilles sont: les fichiers css, les images et js, alors que un gabarit c'est le fichier html qui nous permet à l'aide d'un langage précis d'accéder à la bases de données
+
+Q14: Comment ajout on un thème statique dans une application django?
+R14:
+
+* Créer un sous dossier dans le repertoire de l'application dite: static, dans lequel se trouve les dossier: js, bootstrap, css
+* Créer un sous dossier templates qui contient les gabarits (de base et les autres)
+
+Q15: Comment peut on changer le style dans un gabarit de base?
+
+R15: 
+
+c'est un fichier html qui contient les parties (balises) communes entres les autres fichiers html des autres application: head, header, footer, la partie centrale
+
+- ce gabarit doit etre appeller dans tout les autres gabarits, on l'appele: base.html et on l'enregistre sous le repertoire: store/templates/store/base.html
+(dans le meme repertoire que le fichier index.html)
+
+- mettre le contenue de index.html dans base.html
+- ecrir seulement cette instruction dans le fichier index.html:
+{% extends "store/base.html" %}
+
+Q16: Comment inclu t on un gabarit dans un autre?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

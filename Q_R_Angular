@@ -1,0 +1,226 @@
+Q1: C'est quoi l'interet d'utiliser Angular?
+R1: L'intérêt d'utiliser Angular est de pouvoir gérer le DOM (Document Object Model : les éléments HTML affichés par le navigateur) de manière dynamique, et pour cela, il faut utiliser la liaison de données, ou "databinding".
+
+
+Q2: C'est quoi un databinding?
+R2: Le databinding, c'est la communication entre votre code TypeScript et le template HTML qui est montré à l'utilisateur
+
+Q3: C'est quoi les types du databinding?
+R3: Le databinding est divisée en deux directions :
+
+    1-les informations venant de votre code qui doivent être affichées dans le navigateur, comme par exemple des informations que votre code a calculé ou récupéré sur un serveur.  Les deux principales méthodes pour cela sont le "string interpolation" et le "property binding" ;
+
+    2-les informations venant du template qui doivent être gérées par le code : l'utilisateur a rempli un formulaire ou cliqué sur un bouton, et il faut réagir et gérer ces événements.  On parlera de "event binding" pour cela.
+
+    3-Il existe également des situations comme les formulaires, par exemple, où l'on voudra une communication à double sens : on parle donc de "two-way binding".
+
+Q3: C'est quoi le string interpolation?
+R3: L'interpolation est la manière la plus basique d'émettre des données issues de votre code TypeScript.
+
+Q4: Comment généré un component? et c'est quoi ses fichiers principaux?
+R4: Avec la commande: ng g c component_name, les 02 fichiers principaux sont: ~.component.ts et ~.component.html
+
+Q5: C'est quoi les directives?
+R5: sont des instructions intégrées dans le DOM, quand Angular lit votre template et rencontre une directive qu'il reconnait, il suit les instructions correspondantes.
+
+Q6: Quelles sont les types des directives?
+R6: nous avons:
+
+a-les directives structurelles:
+- das html:  *ngIf = 'condition', *ngFor= 'let obj of myArray'
+- dans ts: array = ["a1","a2","a3"]
+b-les directives par attribut:
+
+ngStyle:
+- dans html: [ngStyle] = "{color: getColor()}", 
+- dans ts: 	 
+ngClasse::
+- dans html
+- dans ts:
+[ngClass] = 
+	 
+
+Q7: Comment peut on simuler une API ?
+R7: On décare dans le fichier ts le tableau suivant:
+
+appareils = [
+{
+name: 'Machine à laver',
+status: 'éteint'
+},
+{
+name: 'Frigo',
+status: 'allumé'
+},
+{
+name: 'Ordinateur',
+status: 'éteint'
+},
+
+Q8: c'est quoi un Pipe?
+R8: un pipe c est un symbole qui change la forme des valeurs et les afficher différemment 
+
+Q9: Comment utilise t on un Pipe?
+R9: on ajoute le symbole | après la directive {{variable}}:
+<h3>{{variable | uppercase}}</h3>
+
+
+Q10: c'est quoi une programmation asynchrone?
+R11: C'est la programmation dont le code qui s'exécute suite à un déclenchement d'autre entité externe comme un événement(expl un click d un boutton)
+
+-cette asynchronité résulte des problématiques: (exécusion d une ligne alors que la ligne précédante n est encore pas exécutée car elle attend un déclenchement d un évènement)
+
+
+Q12: Qu est ce qu un service?
+R12: c'est un fichier centrale qui contient une partie du code et des données les plus utilisées par les autres fichiers: pour éviter la répition   
+
+Q13: comment injecter un service dans les autres fichier?
+R13: il y a 3 niveau d injection:
+
+- ds App.Module.ts: import + on l ajoute ds la liste providers
+
+- dans App.Component.ts: import + instancier la clase entre parenthèse du constructor: constructor(private service:Service){}
+
+- dans un autre component: par la meme façon du niveau précédant
+
+
+Q14: C'est quoi les SPA (single page application)?
+R14: ce sont des application rapides et lisses, qui necessite un accomplissement par le 'routing'
+
+
+Q15: Qu est-ce qu une route dans une application Angular?
+R15: il s 'agit des instructions d'affichage à suivre pour chaque URL: chaque instruction montre quel component il faut afficher à quel endroit pour un URL donnée
+
+Q16: Comment Créer une route?
+R16: 
+
+dans app.module.ts: 
+
+- import { Routes } from '@angular/router';
+- const appRoutes: Routes = [
+  { path: 'appareils', component: AppareilViewComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: '', component: AppareilViewComponent }
+];
+
+- imports: [...,RouterModule.forRoot(appRoutes)]
+
+Donc : sur le navigateur: si on écrit 127.0.0.1:4200/appareils --> il affiche le contenue du component 'AppareilViewComponent'
+
+Q17: Qu est ce qu un observable à Angular?
+R17: C'est un objet solution qui emet des informations pour résoudre la problématique de l'asynchronicité de l éxécusion du code
+
+Ps: les observables sont comme les promises et les callbacks, elles sont bien prédéfinis dans le package RxJS(ReactiveX Javascript)
+
+Q18: c'est quoi un observer?
+R18:un Observer est un bloc de code qui sera exécuté à chaque fois que l'Observable émet une information.
+
+Q19: Comment se fonctionne un observable avec un observer?
+R19:
+À cet Observable, on associe l'observer.  L'Observable émet trois types d'information : des données, une erreur, ou un message complet.  Du coup, tout Observer peut avoir trois fonctions : une pour réagir à chaque type d'information.
+
+Q20: ou est ce qu on crée l'observable?
+R20: dans le fichier app.component:
+
+---------------------------------------------------------------------
+Le 15/08/2020
+
+Q21: c'est quoi le role de la méthode interval() ?
+R21: elle crée un observable qui emet un chiffre croissant à intervalles réguliers + prend le nombre de millisecondes souhaité pour l intervalle comme argument.
+
+Q22: C'est quoi le role de la fonction subscribe() ?
+R22: elle représente l observer dont on a parlé dans les questions/réponses précédantes.
+Elle prend comme arguments trois fonctions anonymes :
+
+-la première se déclenche à chaque fois que l'Observable émet de nouvelles données, et reçoit ces données comme argument: 
+(value) =>{console.log(value)};
+-la deuxième se déclenche si l'Observable émet une erreur, et reçoit cette erreur comme argument: (err)=>{console.log(err)}
+-la troisième se déclenche si l'Observable s'achève, et ne reçoit pas d'argument: ()=>{console.log('Observable complete')}
+
+
+Q23: Pourquoi on déruit l'observer (la souscription)?
+R23: Pour empecher le problème des observables infinis qui engendrent des comportements inattendus (bugs): on détruit la souscription avec la méthode unsubscribe()
+
+
+Q24: C'est quoi un Observable subject?
+R24: c'est un Observable que l on crée dans le service qui sert à : réagir de nouvelles informations + les émettre + permet de mettre en place un niveau d'abstraction afin d'éviter des bugs + la mise à jour des données originales en cas de leurs modifications par un comportement
+
+
+Q25: C'est quoi un opérateur?
+R25: c'est une fonction qui se place entre l'observable et l'oserver dont le but est de : filter/modifier les données avant qu elles n'arrivent à la subscription
+
+Q26: Quels sont les différents opérateurs que tu connais?
+R26: On a:
+
+   - map()  : modifie les valeurs reçues — peut effectuer des calculs sur des chiffres, transformer du texte, créer des objets…
+
+   - filter()  : comme son nom l'indique, filtre les valeurs reçues selon la fonction qu'on lui passe en argument.
+
+   - throttleTime()  : impose un délai minimum entre deux valeurs — par exemple, si un Observable émet cinq valeurs par seconde, mais ce sont uniquement les valeurs reçues toutes les secondes qui vous intéressent, vous pouvez passer  throttleTime(1000)  comme opérateur.
+
+    - scan()  et  reduce()  : permettent d'exécuter une fonction qui réunit l'ensemble des valeurs reçues selon une fonction que vous lui passez — par exemple, vous pouvez faire la somme de toutes les valeurs reçues. La différence basique entre les deux opérateurs :  reduce()  vous retourne uniquement la valeur finale, alors que  scan()  retourne chaque étape du calcul.
+
+
+-----------------------------------------------------------------------
+Le 18/09/2020
+
+Q26: Que veut dire par:  des données codées "en dur"?
+R26: c'est à dire c'est données sont fornies ni par l'utilisateur, ni par un serveur
+
+Q27: Que veut dire par : des données "codées en souple" ?
+R27: ce sont des données fornies suite à l'intéraction avec l'utilisateur et avec les serveurs afin de créer une application totalement dynamique
+
+
+Q28: Quelles sont les deux grandes méthodes pour créer des formulaires en Angular?
+R28: On a:
+
+* la méthode template: on crée le formulaire dans le template (html) et Angular l'analyse pour comprendre les différents inputs + mettre à disposition le contenu
+
+* la méthode réactive: on crée le formulaire en TypeScript+ dans le template puis on fait la liaison manuellement
+Ps: la 2 eme méthode est la plus complexe mais dynamique  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IIIIIIIIIIIIPPPPPPPPOOOORTANT pour les observables:
+
+coder en dur - coder en souple
+les async - wait
+voir la différence entre une application MVC coté client et MVC coté serveur
+Voir la différence entre une application multipages et à page unique (Single page application) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

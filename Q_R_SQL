@@ -1,0 +1,101 @@
+Q1: C'est quoi un langage SQL:
+R1:SQL: Structer query langage: langage de requete structuré: c'est un langage adapté au requetage des données sous forme de bases de données relationnelles
+
+S2: C'est quoi un SGBDR? 
+R2: SGBDR: un système de bases de données relationnelle: c est un système qui contient des données structurées sous forme précises et pour accéder à ces données nous avons besoin d un langage spécifique qui s'appelle SQL
+
+S3: Donnez des exemples des SGBDR
+R3:Exemples des sgbdr: Oracle, Microsoft sql SERver, My SQL
+
+Q4: C'est quoi le role d'un SGBDR?
+R4: Le role d'un SGBDR est:
+
+- Stockage organisé des données
+- cohérence des données
+- Exploitation des données avec un langage spécifique (SQL)
+- Evolution des structures des donées (ajouter, modifier, mettre à jour, supprimer) des lignes et des colonnes
+- Assure le controle d'accées: paramétrer les privillèges des utilisateurs dans le but de protéger les données
+- Ce système est un serveur qui permet à plusieurs utilisateurs d'avoir accés au meme temps aux memes lignes 
+
+Q5: Est-ce-que SQL est un langage procédurale/impératif ?
+R5: Non, SQL est un langage déclaratif, c'est à dire: on a pas besoin d'écrire toutes les étapes pour obtenir les données, on décrit tout simplement le résultat qu'on veut obtenir, ce qu 'on appele le requetage.
+
+
+Q6: Quels sont les 04 sous ensembles du langage SQL?
+R6: Les 04 sous ensembles du sql:
+a- DML(Data Manipulating Language): c est la partie du langage qui manipule les données des tables avec les commandes: SELECT, INSERT, UPDATE, DELETE 
+
+b- DDL(Data Definition Language): C'est la partie du langage qui manipule la structure de la table(les lignes/objets) avec les commandes:  CREATE, ALTER, DROP
+
+c- DCL(Data Control Language):  c'es la partie du langage qui permet d'attribuer les privilèges et les droits aux différents utilisateurs de bases de données
+
+d- TCL: Transaction Control Language: Permet de gérer l'environnement transactionnel de notre moteur de bases de données
+
+Q7: Que veut-on dire par les therme relationnel, clé primaire, clé étrangère ?
+
+R7: Chaque base de données est composée par des tables qui sont liées les unes aux autres par des relations, ces relations sont faites grace à la présence d'une colonne qui contient des identifiants unique à chaque objet ce qu on appele: une clé primaire, cette meme colonne est aussi présente dans une autre table pour donner référence aux objets de la première tables, dans ce cas on l'appele une clé étrangère
+
+Q8: C'est quoi l'algèbre relationnel?
+R8: c'est la théorie mathématique inventée dans les années 70 pour intéroger et modéliser les bases de données grace à des opérations de calcul en quelque sorte sur les données.
+
+Q9: En Algèbre relationnel il y a deux terme important : La projection et la restriction, ça veut dire quoi et elles correspondent à quoi en langage sql?
+
+R9: 
+-la projection cest la selection de certains attributs d'une table avec le nombre total des objets. Elle corresonde en sql à la commande suivante: selecte colonne1 from table
+
+- la restriction est la selection de certaines lignes (de certains objets) de la table .elle correponde en sql à la commande suivante: select * from table where colonne = 'xxx'
+
+Q10: Que veut on dire par la collation?
+R10: C'est un concepte qui sert résoudre le problème du codage des caractères spécifiques, on la spécifie durant l'insertion des données comme:
+insert into table(col1) values(text varchar(30) collate french_bin);
+
+et comme ça les caractère accentués : è, é, à seront affiché sans problème
+
+Q11: C'est quoi un shéma en base de données? 
+R11: c'est un nom dans lequel on a placé des objets, il précède le nom de la table dbo.table, on le trouve dans les sgdbr interface.
+
+
+Q12: Quelles sont les commandes principales pour une requete simple?
+R12: 
+
+select colonne1.t1, colonne1.t2
+from table1 t1
+join table2 t2
+on t1.id = t2.id
+where table like ''/ in ('', '')/ in(1,2) ...
+order by colonne1 desc/asc     Ps: asc a-z/1-2-3..
+
+Q13: Quelles sont les différentes types des jointures?
+R13:
+
+- inner join: intersection entre t1 + t2
+- left join: toute lignes t1 (avec lignes de t2 null)
+- right join: toute lignes t2 (avec lignes de t1 null)
+- left join + where attribut.t2 = null: que les lignes t1 (avec lignes de t2 null)
+- right join + where attribut.t1 = null: que les lignes t2 (avec lignes de t1 null)
+ 
+-------------------------------------------------------------------
+Le 16/09/2020
+
+Q14: Elle sert à quoi la commande group by?
+R14: group by elle marche en couple avec l'une des commande suivante: (sum/avg/count/max/min)
+l élément qui vient après groupe by : c est la colonne dont les lignes se répètent beaucoup comme: cité donc:
+count(name) group by (city) ==>> chaque cité regroupe les gens autour
+
+Q15: c'est quoi le sous requetage (sub query)?
+R15: lorsequ on écrit: requete[sous requete[sous requete]]
+exemple:
+
+
+--------------------------------------------------------------------------------------------------------
+ 
+
+
+
+
+
+
+
+
+
+

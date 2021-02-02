@@ -1,0 +1,179 @@
+Q: C'est quoi une fonction?
+R: c est un concepte en infomatique qui nous permet de factoriser du code pour le réutiliser
+
+Q1: Quelles sont les différents types des fonctions?
+R1: nous avons: 
+1* les fonctions anonymes: elles n'ont pas de nom expl: 
+function(){alert('hello')}
+
+2* les fonctions callbacks(correspondent à la notion du pointeur en c++): elles ont un nom, on les passe en paramètre pour une autre fonction, 
+exemple: 
+-notre f callback:  var show = function(a){console.log('show:'+a)}
+		    
+	
+- la f qui prend une fonction en 3 em parametre: 
+function sum(a,b,affiche){var c = a+b; affiche(c); return c;}
+
+- resultat de la fusion des deux fonctions :
+sum(1,2,show);
+-->show:3 3
+
+3* les fonctions immédiates(self-invoking):ce sont des fonctions anonymes qui serrent à limiter la porter des variables(leur rend locaux) car les variables globales prennent beaucoup de place dans la mémoire de la machine, donc on limite leurs portées par les déclarer dans une fonction, en plus elle s exécute immédiatement grace aux parenthèses qui la suivent et qui prennent l'argument, exemple:
+
+(function(str){return 'hello' + str})('doody')
+
+- resultat: la fonction s executée automatiquement : hello doody
+
+exemple2: (function(a){return a/2})(4)
+- resultat: 2
+
+4* les fonctions internes: le meme fonctionnement des callbacks sauf que les callback sont externes et les f interne se sont déclarées à l intérieur des fonctions qui vont l'appeler, exemple:
+
+function doMult(a){return 'res: ' + Mult2(a); function Mult2(b){return 2*b}; } 
+
+-resultat:
+> doMult(4)
+'res: 8'
+
+
+
+Q2: c est quoi la notion du scope(la portée)
+R2:  lorsequ on déclare une variable à l interieur d une fonction sans utiliser le mot clé var: la variable est donc globale => connue par l objet global window, on dit que cette variable a un scope global, 
+
+*par contre si on utilise le mot clé var, elle ne seriat connue que par l objet local (la fonction dans laquelle elle est déclarée) et donc: la variable a un local scope
+
+
+Q3: Qu est ce que ça veut dire le hoisting?
+R3: lorsequ on change la porté d une variable meme après avoir l affichée, elle serai chaché(remonte de la portée), expl:
+
+'use strict';    / pour exiger la présence du mot clé var
+var a = 3;
+b = 2;
+console.log(a+b)
+var b ; 
+
+- resultat : il affiche 2, car nous l avons réctifié après l affichage et ça marche quand meme malgé l ordre de la déclaration ce qu on appelev la thechnique du hoisting
+
+Q4: C'est quoi la notion du closure?
+R4: des fois on déclare une fonction à l intérieur d une autre et d'autre fois on la déclare externe (dans l objet globale window) on appele l environnement dans lequele est déclarée notre fonction: la closure de la fonction
+
+Q5: c est quoi l encapsulation?
+R5: c est le comportement les propriété à l extérieur de l'objet, soit *private: précédé par var  
+* public: précédé par this.
+exemple: 
+function client(a,b){
+var nom = a
+var prenom = b    
+this.age = 30;
+
+// nom et prenom sont des variable private on ne peut pas les afficher à l exterieur de la fonction, par contre age est une variable publique on pourra le faire facilement
+
+}
+
+Q6: c est quoi l'héritage?
+R6: c est un principe qui permet d une fonction de prendre les propriétés d une autre fonction
+
+Q7: c est quoi le contexte de l utilisation du mot clé this?
+R7: Le this est une référence à un objet, elle refère le contexte dans lequel elle est déclarée.
+-si elle est déclarée dans une fonction: elle refère une fonction
+- si elle est déclarée dans un objet : elle refère un objet
+- si elle est déclaré dans une fonction ou bien un objet dans un contexte asynchrone (Ajax ou un évènement: click, keyup..) elle refère à l objet window, c est pour ça on doit la sauvegarder via une variable intermédiaire pour garder sa closure: function(){me = this; console.log(me)}
+
+Q8:  C'est quoi la programmation asynchrone?
+R8: lorseque l'excécution d un code serait faite à la dépendance du déclanchement d un évènement, expl: clic -> code excécuté.
+
+en langage de designe pattern on dit que son apparente n a pas une version de controle: ce n ai plus le développeur qui maitrise l excécution du code mais une autre entité(expl: l utilisateur, evenements...)
+
+
+Q9: c est quoi un callback hell (pyramide hell)?
+R9: c es l enfert du collback, lorsequ on est devant une fonction1 qui appelle une autre fonction2 qui va appeller une fonction3 qui va appeler une fonction4, donc l exécution de la première fonction attend une cascade d exécution d autre fonctions callback enchainée
+
+*c'est une solution pour résoudre la problématique de la programmation asynchrone mais cette méthode est un peut pénible, c est pour ça on préfère utiliser les promesses qui ont le meme principe et le meme objectif. 
+
+
+exemples: nous avons 2 fonctions asynchrones:
+
+var a = undefined;
+var b = undefined;
+
+setTimeout(function(){a = 1;}, 2000);
+
+setTimeout(function(){b = 3;}, 3000);
+var c = a+b;
+console.log(c)
+
+-->undefined
+
+DDDDDDDDDOOOOOOOONNNNNNNCCCC: la solution est d imbriquer l une à l autre pour avoir le résultat: 
+
+setTimeout(function(){a = 1; 
+setTimeout(function(){b = 3; c = a+b; console.log(c)
+},2000)
+},1000);
+
+---> résultat: après 3 seconde il affiche le chiffre 4 
+
+Ps: nous allons voir le meme fonctionnement avec les promesses
+
+Q10: c'est quoi une promesse(promise) ?
+R10: c est un principe utilisé pour résoudre la problématique de la programmation asynchrone qui se base sur l'imbrication d'une fonction à l intérieur de l autre
+
+
+Q11: Comment applique t on un scripte d une promesse pour une seule fonctio?
+R11: 
+étape01: on crée un objet Promise
+étape02: on attend que la promesse soit tenue (resolve) avec la méthode then:
+
+PS: On applique le meme exemple en assimilant l'asynchrone à travers la fonction setTimeOut 
+
+var p1 = new Promise(function(resolve, reject)){setTimeout(function(){
+console.log('set a')
+var a = 1;
+resolve(a);
+},2000)});
+
+p1.then(function(a){
+console.log('after');
+});
+
+Q12: Comment peut on synchroniser plusieurs promesses ?
+R12: on fait la promesse de chaque fonction à part puis on avec la méthode Promise.all([p1, p2]).then(function(result)) on les synchroniser les deux:
+
+var p1 = new Promise(function(resolve, reject){setTimeout(function(){console.log('set a'); a = 2; resolve(a)},1000)})
+
+Promise.all([p1,p2]).then(function(result){console.dir(result), var c = result[0]+result[1]; var c = result[0] + result[1]; console.log(c)})
+
+---> resultat: 
+
+Promise { <pending> }
+> [ 2, 3 ]
+5
+
+
+Q14: quels sont les états qu une promesse pourrait les présenter?
+R14: elle pourrait etre dans l un de ces états:
+* en attente: état initial
+* tenue: l'opération réussit
+* rompue:l opération échoué
+*acquittée: tenue ou rompue (pas en attente)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

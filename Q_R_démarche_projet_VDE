@@ -1,0 +1,308 @@
+Le 28/12/2020
+
+Démarche Projet Cours_VEA:
+
+
+I/ les services qui participent à un projet informatique:
+
+1- la maitrise d'ouvrage(MOA): 15-250 personnes, 3 types= CPMOA(chef)+ experts metier(utilisateurs) + assistant maitrise d ouvrage
+2- la direction des systèmes d'information (DSI)= 2 sous services:
+- Service Etudes MOE (maitrise d oeuvre)= chef MOE + assistant MOE + Ing dev  
+- Service Système: Ing système réseau + Administrateurs des bases de données 
+3- Le service de production et d'exploitation: Ing syst reseau + Adm de bdd + Exploitants
+4- Le service Micros et Réseaux: la maintenance des ordinateurs
+
+
+II/ les étapes d un projet informatique:
+
+1- Expression des besoins et rédaction du cahier des charges: 
+decrir les besoins et l objectif + estimer la charge + calculer le delai + attribuet les fonctions aux MOA,MOE
+2-Constitution de l'équipe MOA: CPMOA recrute les assistant + choisi un expert métier
+PS: d'abord il faut validation du cahier de charge par la direction du service
+3- Rédaction + réception de la SFG(spécification fonctionnelle générale):
+- identifier la périmétrie du projet(limites)
+- analyse de l existant + comprendre les contraintes
+- les interviews: les membres de l équipe intérogent l expert métier sur les fonctionnalités
+Ps: 2 types d application informatiques: Inf industriel(pas de bdd) + inf de gestion(bdd)
+Ps: pour developper une application de gestion on a besoin de 02 types de règles de gestion: 
+*Règles pour concevoir le MCT: model conceptuel de traitement
+*Règles pour concevoir le MCD: model conceptuel de données= représente les activités
+- Rédaction de la SFG: A partir des interviews faite par les membres on constitue les SFG(100-200 pages)/2-4 mois
+PS1: une SFG description générale de la fonctionnalité de l application
+PS2: la FSG permet à MOE d'établir le MCT et le MCD
+PS3: chaque FSG contient les règles de gestion
+- validation des SFG par CPMOA + livraison des SFG aux MOE
+- récéption des SFG : CPMOE dipatche SFG aux AMOE= + lecture par les membres + poser des questions
+- envoie des questions aux MOA
+- faire une réunion fonctionnelle entre MOA et MOE pour expliquer les ambiguités 
+
+4- Rédaction des SFD: description détaillée de chaque fonctionnalité de l application décrite ds la SFG dans le but d établir les MCT, MCD pour chaque fonctionnalité à partir de règles de gestions mises dans les SFG
+Ps: SFD= 30 pg/2-5 jrs
+La rédaction des SFD se diffère du type des programme, donc on a 3 cas:
+
+A- Rédaction SFD des programmes de type IHM(interface homme-machine):
+* conception du MCT:  3 étapes:
+- description shématique de l ihm (selon la charte graphiqur)
+- description textuelle de l ihm 
+- tableau récapitulatif: messages d'ihm + les actions
+* conception du MCD: description de l ajout, modification, suppression
+
+B- Rédaction des SFD pour les programmes de type batch(exécution automatique d'un scriptde de lot de commande): 3 étapes:
+- description shématique et textuelle de la structure des données sources
+- description shématique et textuelle de la structure des données cibles
+- description des traitement d alimentation pour chaque table
+
+C- Rédaction des SFD pour les programmes de type Etat: le compte rendu de l exécution
+
+ 
+5- validation des SFD par la MOA:
+6- Partie 01 de Rédaction d plan des tests par MOA + MOE: en 2 parties
+ensemble des sénarii de cas de test de l application: se fait avant les tests
+Ps: un sénario = une règle de gestion + échantillon de test + résultat théorique attendu
+
+
+6- L'analyse organique(AO):(en parallèle avec la rédaction du plan de test) une fois les SFD validés: MOE font une réunion formelle + 		Ing de developpement: SGT + SDT  (spécification technique générale|détaillée)
+* but: ajouter à chaque MCT et MCD de chaque SFD des détailles techniques(classes coressp, entrés sorties, héritage, ...)
+7- La rédaction des normes de développement + développement: 3 types de normes:
+* N au niveau traitement: lié au langage de developpement
+* N au niveau SQl: optimisation des requetes
+* N de présentation: pourcentage des Indentation/commentaire/nmbrs des lignes+
+
+8- Phase des tests:
+Ps: il faut d abord faire l 'échantillonnage des données: l alimentation des données se fait selon les ihm ou les bachs selon le volume des données, 05 test à faire:
+
+1* Tests unitaires: zone par zone(colonne/champs) fait par Ing de dev ds l env de developpement 
+2* Tests d'intégration: tester la cohérence de l ensemble des modules,  AMOE ds Env d'intégration
+Ps: si pas de cohérence: rédiger une fiche d annomalie
+3* Tests de recette: les tests d intégration refait par AMOA ds Env de recette pour confirmer s il s agit vrment d une anomalie ou une évolution ou un avenant
+4* Tests de non regression: vérifier s il y a des regression des version par rappot aux version ultérieur: MOA + MOE, Env respectif, 
+5* Tests de performance ou de montée en charge: tester la volumétrie bdd + le nombre simultané d'accés à cette base
+
+Ps1: les tests de la monté en charge se font sur des données qui dépassent les téraoctets
+Ps2: se font avant le PV de recette + la livraison du lot 
+PPPPSSSSs1: les différents tests se font en parallèle
+ Ps2: en cas de problème on fait un turring / turring applicatif = optimiser les requetes SQL
+
+9- Partie 02 de rédaction du plan du test: ajouter une autre colonne: résultat obtenu au tableau précédant(y a que la colonne résultat théorique)
+
+10- Rédaction des PV de recette: si le test fait + application livrable = > AMOA rédige PV de recette + CPMOA le signe
+
+11- Le versionage:fait par l'intégrateur avec des outils (Visual source safe/clear Case), pour citer les version des 2 parties de l applicaqton(partie donnée + partie traitement)
+- but: faire un tableau de 5 colonne: (version du traitement, Version de la BD, Contenu fonctionnel, Contenu technique de la BD, Contenu technique de traitement) chaque ligne est une version différente
+
+
+12- La préparation d un environnement de formation: MOE prépare un Env sur lequel ils font une formation(sur manuel) aux utilisateurs finaux
+PS: dispensé par AMOA
+
+13- La mise en production: mettre l application sur le serveur + la tester sur le site pilote?????????????,?????????,batch, TP????? 
+
+14- Le déploiement: rendre le service accéssible à tous les utilisateurs, Service micro et réseaux
+
+----------------------------------------ANNEXES-----------------------------------------------------------------------------------------
+
+ANNEXE I: La planification: 
+l objectif: 
+	-Déterminer si l objectif est réalisé ou dépassé
+	- Suivre + communiquer l avancement du projet
+	- Affecter les ressources aux taches
+La représentation graphique de la planification:on utilise le Diagramme de GANTT(planning à barres): représentation graphique des taches sur l axe temporel + des date de debut et de fin 
+PS1: on appèle un jalon: un évènement clé(progression) ou une date importante ou une réalisation concrète(livrable)
+PS2: au debut du projet on appelle notre planning: planning prévisionnel, pour que ça soit un P réalisé on applique: 
+	- le tableau de bord: le fichier qui contient: évènements prévus + progiciel(java, oracle..)+ les bugs
+	- le rapport d'activité: contient = le tableau de bord + planning prévisionnel + rapport d activité lié à chaque ressource humaine
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+ANNEXE II: Les réunions:
+1/ Périmètre de la réunion: l 'ordre des jours + le sujet à traité pour chaque jour+ la duré + les participants concernés
+2/ L'organisation générale:  choisir la plage d horaire qui arrange tous les participants + ou la salle serait disponible
+3/ Le compte rendu: rédigé par l organisateur de la réunion + envoyé à tous les participants+responsable + absents
+4/ Les types de réunions: 
+*les interviews: expert métier + AMOA = expliquer les fonctionnalités de l application 
+*réunion fonctionnelle: CPMOA + AMOA + CPMOE + AMOE= Explication des règles de gestions de SFG
+Ps: 1reunion/fonctionnalité, hebdomadaire/projet en création , monsuel/projet en maintenance
+*réunion de suivi: CPMOA + MOA + CPMOE + MOE= suivre l évolution du projet 
+PS: R de suivi non formelle: AMOE + dev
+PS: hebdomadaire/phase de developpement, mensuel/maintenance 
+*reunions de pilotage: AMOA + AMOE = diriger le projet + discuter de l aspect buggétaire
+Ps: mensuelle/developpement, semestrielle/maintenance
+----------------------------------------------------------------------------------------------------------------------------------------
+ANNEXES III: Les modeles des bases de données:
+a/ Le modèle entité-association=EA (Le modèle conceptuel de données): outil de conception graphique des bdd
+* Entité: une catégorie d objets ayant un nom générique et partagent des propriétés communes
+* Association: c est le lien qui relie au moins 2 entités
+* Cardinalité: notion qui définie la relation d une entité par rapport à une autre. elle est définie par une borne minimale et une borne maximale pouvant prendre les valeurs 0.1 ou n
+* MCD= c est la présentation générale des entité + les attributs + les association + la cardinalité
+* MPD= la base de données + présentation de quelque association sous forme de tables 
+
+b/ Le passage du MCD au MPD: 
+la table qui représente une association serait créer seulement dans le cas plusieurs-plusieurs, sinon elle serait représentée que par un lien qui migre d une table vers une autre table
+
+c/ Les règles de création des MCD: but: limiter les erreurs de mise à jour d insertion /les redandance:
+* chaque entité doit avoir une clé élémentaire non composée
+* les attributs doivent etre dependants avec l identifiant
+* l'association n a pas d identifiant
+* minimiser les relation n-aire
+d/ les règle d optimisation des requetes d une bdd:
+* eviter les in et not in 
+* select in + table moins volumineuse
+
+--------------------------------------------------------------------------------------------------------------------------------------
+ANNEXE IV: Définitions:
+1/ Les types de programmes de mise à jour de BDD:3 types:
+* P transactionnels TP= IHM: Ecran: necessite l intervention de l homme pour s executer, M à j bdd: limitée, types:
+	- les écrans listes: <10 lignes d enregistrement
+	- les écrans fiches: affiche les détails d un enregistrement
+	- les écrans de mise à jour: permet l insertion + la suppression + modification des enregistrements
+	- les écrans de consultation: permet la consultation des enregistrements
+	
+* P batchs: ce sont des traitements de mise à jour automatisés, se lancent une fois les IHM se terminent, 02 type
+	- batch d 'alim(d alimentation): celui qui alimente la bdd périodiquement
+	- batch d'init(d initialisation): le premier batch qui initialise une bdd vide 
+	- batch de purge: enlever des données
+	- batch jetable: on l utilise une seule fois(refonte, init..)
+	- batch d interface: intéragir entre 2 applications pour:
+		* Extraire l information
+		* Intégrer les données
+Ps1: on cas d une erreur d enregistrement par le batch --> on fait un log/rapport d activité d exécution
+Ps2: le chronogramme: outil d ordonnancement des bachs pour la nuit , lancé par l equipe de l exploitation et de la production
+* P d état: 
+
+2/ Les anomalies: c est une règle de gestion décrite dans les SFG et SFD et n est pas respectée dans le développement / incident (lors de la production)
+3/ Les évolutions: mineur(release): ajout  une/+eur règles de gestions|majeure: ajout une/+eurs fonctionnalité  
+4/ L'avenant: changement d une règle de gestion 
+5/ L'environnement de travail: couches materiel(serveur) + application(BD+programme)+ logiciel(OS, SGBD, langage de prog), 5 types:
+	- E de developpement: pour Test Unitaire /Ing, bdd: dev=10 GO
+	- E d intégration:pour des tests,  la qualité des données est mieux que E Dev/MOE, bdd:= 20-4 GO
+	- E de recette:données mieux que intégration /MOA= 20-40 GO
+	- E de préproduction: pour stabiliser les couches avant la production, bdd:= 500 - 1 tera
+	- E de production: E de prép devient de prod une fois les tests sont finis, bdd:= 300 GO- 1 tera
+
+6/ Le lotissement(lot) : la partie du projet indépendante des autres 
+7/ Le support utilisateur:  c  AMOA qui assiste un utilisateur(vérifier l origine du problème) + s occupe de l aspect applicatif et non applicatif de l application si le nb utilisateur< 20
+PS1: si le nb utilisateur > 20 = centaines/miliers --> nous avons 2 supports utilisateurs: SU niveau1(Asp non applicatif)+ SU niv 2(applicatif) 
+PS2: les types des problèmes:
+	- Problm matériel: au niv du: poste: prévenir serv reseau/serveur: prevenir service DBA
+	- Problm progiciel:prévenir l éditeur
+	- Problm applicatif: niv données/traitement  
+8/ Interlocuteurs et taches des assistants MOA et MOE: 
+
+*taches AMOA:
+	- SFG
+	- charte graphique
+	- reporting pour CPAMOA
+	- répondre aux interviews AMOE
+	- support fonctionnel pour AMOE
+	- validation SFD
+	- plan de test + echantillonage 
+	- tests de recette + non regression + monté charge
+	- gestion des anomalies + des évolutions
+	- suivi du projet
+	- reunion fonctionnelles + compte rendu + reunion de suivi
+	- PV de recette
+	- manuel utilisateur
+	- formation des utilisateurs finaux + support utilisateurs
+
+
+*interlocuteurs AMOA: 
+	- expert métier : transmet les connaissances du projet + valide SFG
+	- CPMOA: lui informe l état d avancement
+	- AMOA: transmet SFG + valide SFD
+	- utilisateurs finaux: formation
+	- Administrateurs de bdd: gestion de l env de recette + préprod + prod
+	- Ing dev: l ingen livre les versions à AMOA
+
+
+
+* taches AMOE: 
+	- organiser réunion fonctionnelle avec AMOA
+	- rédiger les comptes rendus des réunions fonctionnels
+	- rédaction des SFD à partir de la SFG
+	- assurer le sup fonctionnel des developpeurs
+	- validation de l analyse organique 
+	- plan de test + echantillonage des données
+	- tests d intégrations + non regression + monté de charge
+	- gestion des anomalies + évolutions
+	- assister AMOA ds test recette
+	- réunion de suivi
+	- préparer l envr de formation pour les utilisateurs
+	- suivi de la mise en production
+	- assurer le support utilisateur
+
+* Interlocuteur de support utilisateur:
+
+	- avec CPMOE: lui informe sur l etat d avancement 
+	- AMOA: valide SFD rédigé par AMOE, assister pour test de recette
+	- Ing Dev: sont leur support techniques
+	- Intégrateurs: pour la gestion des livraison 
+	- Service de production: lors d un incident
+	- administrateur de bdd: discution sur les sauvegarde
+* Interlocuteur AMOE: 
+
+* tache Ing dev: 
+	-rédaction + analyse org à partir des SFD
+	- Définition des normes de développement
+	- Programmation
+	- Débeuguer les programmes
+	- tests unitaires
+	- maintenance de l application
+* Interlocuteurs Ing dev: 
+	- avec CPMOE:  c son chef, l informe sur : délai, erreur technique, état d avancement 
+	- avec AMOE: lors réunion informelle pour valider l analyse organique
+	- avec l intégrateur: lui informe quel script pour quelle application 
+	- avec administrateur bdd: discute sur la structure des tables  
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+ANNEXE V: Gestion des anomalies et des évolutions:MOA + MOE: 
+	- identifier les anomalies(par les tests de recette/intégration) + les corriger + rédiger les évolutions et fichier d ano + les programmes + suivi tt ça dans 3 feuilles = ouverte/en cours de validation/fermée(corrigé pa le développeur)
+--------------------------------------------------------------------------------------------------------------------------------------------
+ANNEX VI: La stratégie de sauvegarde des données= depend de la mise à jour des données
+1/ La haute disponibilité des données(pas de perte de données): MIse àj très élevée, plusieurs serveurs sont disponibles(contiennent les mm données), expl: données de la monnaie
+2/ La sauvegarde incrémentale(perte de données) :  MIse àj moins élevée, exp données de comptabilité
+--------------------------------------------------------------------------------------------------------------------------------------------
+ANNEXE VII: La typologie des projets: 02 types de projets informatique:
+1/ Les projets de fusion: fusion de 2/plusieurs projets info entre 2/+eurs sociétés, on a 2 cas:
+- le meme métier: on retient le SI de l une + on fait la migration des données par 4 étape:
+		- Etude de la structure des données du système source + cyble
+		- Ecrire les règles de mihgration: source --> cible
+		- Développer les interfaces jetables
+		- les tests de simulation: jusqu à le rejet = 0
+	
+				
+- 2 métiers complémentaires: on garde les 2 SI
+
+2/ Les projets de refonte:
+- refonte fonctionnele: c est le changement des règles de gestion pour ajouter de nouvelle fonctionnalité à notre application
+- refonte technique=la migation technique: changement des outils de developpement/langage/système d exploitation/BD/ === refonte technique, a 2 types:
+		- migration technique mineur(release): expl: les évolutions mineur des version + garder le meme éditeur: 7.1.0 --> 7.2.0
+		- migration technique majeure: les évolutions majeur des version: 7.1.4 --> 8.0.0 
+Ps1: les étapes d une refonte: 
+	- Etude de l existant
+	- Critique de l existant
+	- Proposition de solutions
+	- Choix d une solution
+
+Ps2: 
+*si on fait les 2 refontes(fonct-techn)= on reprend toute la démarche depuis la SFG
+*si on fait que la refonte technique(iso-fonctionnelle) --> réadapte directement le code (que le test de non regression)
+
+PS3: les projets d étude d'impact: Etudie l impact de changement sur un système d information(chaine de caractères): on ne fait que le test de non regression
+
+
+Renvois = Explication des mots clés:
+- MOA centralisées: une seule AMOA pour tout les département de la société
+- MOA décentralisée: chaque département a son propre MOA
+- 0.5= la moitié du temps de travail d une personne
+- on parle de MOE pour un projet d'envergure =! projet de maintenance/petit projet: on parle de développement
+- charge de travail d'un projet = la quantité de travail nécessaire pour effectue une ou plusieurs taches
+- Délai= le temps au bout duquel une ou plusieurs taches sont effectuées
+- Un état= un fichier qu'on ne peut que consulter: expl: une facture
+- L'indentation = la hiérarchie des blocs et des instructions dans un programme
+- les lignes de code selon la norme de présentation= les commentaire ne doivent pas dépasser 8% de la totalité du code= l explication du code doit etre dans l analyse organique et non plus dans les commentaires
+- La gestion des anomalies + des évolutions/ les réunions de suivi / réunions de pilotage/ =! étapes du projet, = taches qui se font au long du projet 
+- tuning = gestion synchronisée de l architecture= optimisation
+- L'intégrateur = personne qui connait le fonctionnel + le technique   
+- STD : le lient entre l aspect technique des fonctionnalité et les futurs programmes à développer rédigé par les developpeur,validé par MOE
+- SFD : le lient entre l aspect fonctionnel des fonctionnalité et les futurs programmes à développer rédigé par les developpeur,validé par MOE
+
+

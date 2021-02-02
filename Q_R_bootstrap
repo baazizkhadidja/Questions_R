@@ -1,0 +1,60 @@
+11-08-2020
+
+Q1: C'est quoi Bootstrap?
+R1: est une bibliothèque de composants frontend qui permet de prototyper vos idées et de créer un site web entier à l'aide de HTML, CSS et JavaScript.
+
+Q2: C'est quoi l'avantage de Bootstrap?
+R2: 
+* Temps de développement réduit
+* 
+
+Q3: Comment intégrer Bootstrap à notre projet?
+R3: il y a deux méthodes: 
+- soit on le télécharge sur notre machine
+- soit on utilise des liens vers un site dite:y network() CDN
+
+Q4: Que signifie CDN?
+R4: Content delivery network (reseau de distribution de contenu)
+C'est un serveur qui distribut un contenu web
+
+
+Q5: Que signifie le mot 'minifier'?
+R5: Ecriver JavaScript pour le web
+
+Q6: Comment ajouter les liens de Bootstrap depuis un CDN?
+R6: 
+1- Pour le css
+il faut ajouter à notre fichier html, sous la balise <head> des balises <link rel = "" href ="" > 
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+2- Pour le Js: 
+
+il faut ajouter à notre fichier html, à la fin de la  balise <body> des balises <script src = "">
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+Q7: Est ce que bootstrap a il des désavantages?
+R7: oui, comme 
+- la similarité: si on utilise toujours le meme thème, l'apparence des sites serait identique
+- la courbe d'apprentissage: il faut faire des efforts pour l'apprendre
+
+Q8: C'est quoi un conteneur?
+R8: la classe 'container' enveloppé dans la balise div, sert à justifier(centrifier le contenue), le meme fonctionnement de l'option justifier de l'éditeur des textes 'Word'
+
+
+
+
+
+
+
+
+
+

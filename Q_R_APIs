@@ -1,0 +1,271 @@
+
+UDDI: c'est l'annulaire des APIs
+Q1: signifie quoi une API?
+R1: Application Programming interface 
+
+Q2: c'est quoi le principe de fonctionnement d'une API?
+R2: c'est une interface qui fonctionne comme une télécommande qui nous permet d'intéragir avec la télévision sans avoir besoin de plonger à l'interieur des fils et des corcuits. 
+donc: dans le domène du web: une API est une interface qui permet la communication des programmes entre les applications
+
+Q3:Est ce qu'on peut construire notre propre API ??
+R3: Oui, pour un objectif de sécurité, on n'affiche des informations de notre site que celles que nous voudrions les rendre publics dans une API et garder les autres en privé
+
+Q4: ça veut dire quoi API REST?
+R4: REST veut dire 'Represontational State Transfer'
+
+Q5: Comment ça se fait la télécommunication entre Client-SERVER-API ???
+R5: via un protocole dite Http, qui utilise des méthodes: get, post, delete..
+
+Q6: c'est quoi la différence entre une API et le web?
+R6: une API imite la façon dont le web marche, càd le meme protocole de communication http et:
+- sans état
+- avec cache (mémoire)- orienté client-server
+- avec une interface uniforme
+- avec un systeme de couche
+- un code à la demande
+
+donc une API constituée aussi par un client et un server et un protocole http, une requete et une réponse sous format JSON.
+
+
+Q7: Pouvez vous nous donner des exemples d' API REST ?
+R7: 
+1. Le premier exemple c'est l'API de l'instagrame, on lançant la commande suivante: GET /v1/locations/search?access_token=ACCESS_TOKEN&lat=40.7127&lng=74.0059
+
+on aura la réponse sous forme d'un fichier JSON:
+
+HTTP/1.1 200 OK
+
+{
+ "meta": {
+   "code": 200
+ },
+ "data": [
+   {
+     "latitude": 40.714198749,
+     "id": "93496093",
+     "longitude": 74.006001183,
+     "name": "John's Pizzeria 278 Bleecker St NY, NY"
+   },
+   { .......ect
+
+2. Le deuxième exemple: 
+request: GET https://www.googleapis.com/gmail/v1/users/me/messages?q="in:sent after:2014/01/01 before:2014/01/30"
+
+response:  tous les messages qui ont été envoyés entre le 1 janvier 2014 et le 30 janvier 2014 (non, il n’y a pas de mois 30
+
+3. API de Github: 
+
+request: GET /users/:username
+response: 
+
+{
+  "login": "octocat",
+  "id": 1,
+  "avatar_url": "https://github.com/images/error/octocat_happy.gif",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/octocat",
+  "html_url": "https://github.com/octocat",
+  .
+  .
+  .
+}
+
+4. weather underground:
+request: 
+GET http://api.wunderground.com/api/Your_Key/conditions/q/CA/San_Francisco.json
+
+response:
+{
+  "response": {
+  "version": "0.1",
+  "termsofService": "http://www.wunderground.com/weather/api/d/terms.html",
+  "features": {
+  "conditions": 1
+  }
+
+
+
+Q8: c'est quoi une ressource de l'API?
+R8: ce sont les données présentées dans une API accéssibles par un client 
+
+
+Q9: C'est quoi une requete?
+R9: Une requête est un message qui va du client au serveur. Elle est structurée de la manière suivante :
+
+VERBE        URL       HTTP/X.X
+En tetes     
+Corps
+
+Q10: Que segnifie une première ligne (HTTP) d'une requete?
+R10: un exemple de la première ligne: 
+
+VERBE HTTP /file_path.html HTTP/X.X
+
+- VERBE : c est la méthode qui pourrait etre : get, post ...
+- fichier: ce fichier sera récupérer par le serveur
+- HTTP: indique la version d'HTTP qu'on utilise
+
+Q11: C'est quoi les en-tetes?
+R11: c'est l'ensemble des informations sur le client comme: 
+. date: Date: Tue, 19 Jan 2016 18:15:41 GMT
+. referer: la précédente localisation du client:
+https://www.google.fr/
+. user agent: l'application utilisé par le client et sa version: User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)
+
+. user language: la langue utilisée par le client: 
+Accept-Language: en-us,en;q=0.8
+
+. Cookies: si le client possède des cookies pour cette requete avant, elles s'afficheront ici expl:
+
+Cookie: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (chaîne alphanumérique)
+
+Ps1: Les champs des en-tetes HTTP suivent toujours le motif key:value
+
+Ps2: ce n'est pas la peine de remplir les autres champs car ça allordi le systeme, exp des autres champs du systeme:
+
+Accept
+Accept-Charset
+Accept-Encoding
+Accept-Language
+Accept-Datetime
+Authorization
+Cache-Control
+Connection
+Cookie
+Content-Length
+Content-MD5
+Content-Type
+Date
+Expect
+Forwarded
+From
+Host
+If-Match
+If-Modified-Since
+If-None-Match
+If-Range
+If-Unmodified-Since
+Max-Forwards
+Origin
+Pragma
+Proxy-Authorization
+Range
+Referer [sic]
+TE
+User-Agent
+Upgrade
+Via
+Warning
+
+
+
+Q12: c'est quoi un corps d'une requete?
+R12: c'est l'ensemble des détails, Par exemple, si une requête envoie des données à une API avec POST (que vous allez voir dans le chapitre Méthodes) les attributs seront envoyés dans ce corp
+
+Q13: C'est quoi une méthode get HTTP?
+R13: GET est la méthode qui sert à récupérer les données d'une resource, expl:
+GET http://site.com/users parametre=exemple&amp;autre_parametre=exemple2
+
+Q13: C'est quoi une méthode POST HTTP?
+R13: On utilise POST pour envoyer des données dans une requête et souvent pour l’ajouter à la ressource expl:
+
+POST /page.php HTTP/1.1
+
+Host: site.com
+
+Content-Type: application/x-www-form-urlencoded
+
+Content-Length: 36
+
+titre=titreici&corps=icimoncommentaire
+
+Q14: c'est quoi la méthode PUT?
+R14: elle ressemble à POST mais il y a une différence:
+
+POST:  envoie des données au serveur et le serveur lance une action après la requête même si cette action ne se passe pas forcément au niveau de l’URI précisé par le client
+
+PUT: PUT indique que seul l’URI précisé par le client doit être affecté
+
+Q15: C'est quoi la méthode delete?
+R15: On utilisant DELETE vous dites que vous voulez supprimer la ressource donnée dans l’URI.
+
+Q16: C'est quoi une reponse?
+R16: c'est l'ensemble des informationsle resultantes de l'application d'une requete par une API
+sa structure est comme suit:
+
+HTTP/X.X     Code HTTP
+En tetes
+Corps
+
+
+ 
+Q17: Que segnifie les lignes de la reponse?
+R17: 
+. HTTP/X.X : indique la version du HTTP utilisée
+. Code HTTP:  Ce code de 3 chiffres vous dira tout ce qu’il faut savoir. Il y a à peu près 30 codes possibles qui couvrent plein de situations de “Tout va bien !” à “Mince, y’a un truc qui va pas !” 
+
+. Les en-tetes:  ce sont les memes infos de l'entete de la requete
+. Le corps: le corps de la réponse est souvent en forme de JSON avec des paires key:value 
+
+expl:
+
+  "nom" : "Fluffy",
+  "animal" : "chat",
+  "couleur" : "noir",
+  "goûts" : {
+     "jouets" : [
+        {
+           "nom" : "balle",
+        }
+
+Q18: c'est quoi exactement un code HTTP?
+R18: ce sont les trois chiffres qui indique l'état l'état de la réponse si elle est satisfaisante ou pas, expl:
+
+2xx indique le succès.
+3xx redirige le client ailleurs.
+4xx indique une faute de la part du client.
+5xx indique une erreur de la part du serveur.
+
+Q19: c'est quoi une ressource de l'API?
+R19: ce sont les données présentées dans une API accéssibles par un client 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,697 @@
+Le 07/12/2020
+
+-----------1.Introduction--------------------------------------------------------
+
+Q1: c est quoi un projet informatique(prestation d une tache informatique)?
+R1: est l ensemble des taches sous traitées par une entreprise cliente à une ou plusieurs entreprise informatiques.
+- la prestation a 3 axes:
+* le temps: long duré
+* la qualité: le client n est pas informaticuen
+* le cout: très élevé
+
+Q2: c est quoi l unité Période-Homme?
+R2: c'est une unité de mesure coreespond au travail d une personne pendant une période précise
+
+Q3: c est quoi la personne Expert métier?
+R3: c est la personne qui maitrise la démarche métier
+
+Q4: c est quoi un cahier de charge?
+R4: c est un document vise à définir et à valider paer le client 
+- il contient les spécifications d un produit ou d un service à réaliser
+
+Q5: c est quoi la charge de travail?
+R5: c est la quantité de travail nécessaire pour effectuer un travail
+
+Q6: c est quoi un intégrateur?
+R7: c est une personne qui connait le fonctionnel et le technique (double compétence)
+
+Q7: c est quoi une fonctionnalité?
+R7: c est la tache principale qui contient des sous taches
+
+Q8: c est quoi une règle de gestion?
+R8: c est une déclaration structurée qui permet de contraindre, controller l aspect de la fonctionnalité
+
+Q9: c est quoi une anomalie?
+R9: c est le non respect d une ou de plusieurs regles de gestion décrites , 800 anomalie trouvés par MOE, 400-600/MOA, les outils pour tester les anomalies: Defect, Clearquest, Masterlink, Excel ..
+
+Q10: c est quoi une Evolution?
+R10: c est l ajout d une regle ou bien d une fonctionnalité
+
+Q11: Quels sont les deux types de l'Evolution?
+R11: on a: 
+- l évolution mineure: c l ajout d une ou de plusieurs regles de gestion
+- l evolution majeur: c l ajout d une ou de plusieurs fonctionnalité
+
+Q12: c quoi un Avenant?
+R12: c le changement de la règle de gestion
+
+Q13: c quoi un Environnement de travail?
+R13: c l ensemble des couches matérielles, de logiciels
+
+Q14: quelles sont les couches de l environnement?
+R14: on a:
+- E. de developpement
+- E. d integration
+- E. de recette
+- E. de pré-production
+- E. de production
+
+Q15: c est quoi un lotissement?
+R15: c est chaque partie du projet qui est indépendante des autres
+
+Q16: c est quoi un support-utilisateur?
+R16: c est l assistance aux utilisateurs (Aplicatif et non applicatif, help desk
+????????????????????)
+
+Q17: c est quoi une charte graphique?
+R17: c est un document de travail qui contient l ensemble des règles fondamntales d utilisation des signes graphiques d une organisation
+
+Q18: quels sont les différents services qui interviennent dans la réalisation d un projet informatique?
+R18: nous avons:
+- La MOA(maitrise d ouvrage): Expert metier+CPMOA+AMOA
+- Le service d Etudes: Ing d'Etude et de dev + CPMOE + AMOE
+- Le service Systeme: Ing Syst res + Administrateur de bdd 
+- Le service de production et d'exploitation: Ing Syst res + Administrateur de bdd 
+- Le service Micros et Réseaux: installation + maintenance +deployement
+
+Q19: ça veut dire quoi une équipe centralisée/décentralisée?
+R19: une équipe centralisée est une seule équipe commune aux autres départements de l'entreprise, par contre une équipe décentralisée si on trouve chaque département /AMOA 
+
+
+-------------2.Démarche projet informatique----------------------------------
+
+Q20: Quelles sont les différentes étapes pour réaliser un projet informatique?
+R20: 
+
+*constatation des besoins:le client exprime ses besoins dans un cahier des charge
+* le chef de projet constitue l equipe MOA (recrutement des membres)
+* l expert metier rédige les fonctionnalité
+* valider les fonctionnalité
+* amoa + amoe redige le plan des tests(unitaire + fonctionnels) + les tests de recetes 
+* le versionnage de l application
+* le deployement
+
+
+1- Expression des besoins: charge de travail + delai+ attributions des fonctions
+2- Constitution équipe MOA(recrutement + interview): CPMOA + AMOA + Expert métier
+3- Rédaction et reception de la SFG: un compte rendu de  spécification fonctionnelle générale: qui permet (AMOuvrage) d établir un model conceptuel des données + MCDonné:
+- Identification du périmètre du projet
+- L'analyse de l existant
+- les interviews
+- Rédaction de la SFG
+- Réception de la SFG
+
+4- Rédaction SFD: spécification fonctionnelle détaillée: description des fonctionalité de l étape précédante pour savoir rédiger un MCD + MCD
+Ps: 28:50 on a 3 types de SFD selon le type de l application: Programme IHM , Programme Batchs, Programme d état(expl pour les factures)
+??????????????????????????????????????????????????????????????
+
+5- Rédaction du plan de test: par AMOA et AMOE en basant sur le SFD:
+en deux partie: 
+- Partie01: le sénario théorique des tests
+- Partie02: les résultats théoriques du scénario 
+
+6- L'analyse organique: c est une réunion informelle entre l AMOA et les ingénieurs de développement pour leur expliquer les fonctionnalités
+
+- puis les ingénieurs de dev font le lien entre les programmes qui seront developpés les SFD et les aspects techniques et l aspect fonctionnel
+
+7- La rédaction des normes de développement: 3 normes:
+- N. de niveau traitement: lié au langage de développement
+- N. de niveau de données: lié au SQL
+- N. de présentation: les commentaires: le nombres..
+
+8- Le developpement: 02:26
+????????????????????? n est pas mentionnée dans la vidéo
+
+9 - Phase de tests: on a plusieurs tests:
+
+* Unitaire
+* intégration
+* Recette
+* Non Régression
+* Performance ou montée de charge
+
+Q21: Quelles sont le 2 types d applications qui se trouvent dans le marché?
+R21: on a:
+- informatique industriel: application  qui n a pas besoin d une base de données: app en temps réel
+- informatique de gestion: app de gestion: les app qui ont besoin d une base de dinnées:  
+
+
+Q22: Quelles sont les 02 règles pour developper une application de gestion?
+
+R22: on a:
+- les règles de gestion pour concevoir un modele conceptuel de traitement
+- les règles de gestion pour concevoir un modele conceptuel de données
+
+
+
+Q23: c est quoi un test unitaire?
+R23: c est un test fait par le developpeur, dans un environnement de developpement, dont l objectif est: vérifier le bon fonctionnement d une unité ou module 
+
+Q24: c est quoi un test d'intégration?
+R24: c est un test fait par AMOA, dans un environnement d integration, dont l objectif est: tester la cohérence de l ensemble des fonctionnalités de l application
+
+Q25: c est quoi un test de recette?
+R25: c est un test fait par le AMOA, dans un environnement de recette, dont l objectif est: refaire les tests d integration dans un env de recette: indépendemment des autres logiciels
+
+
+Q26: c est quoi un test de non regression?
+R26: c est un test fait par le AMOA, AMOE, dans un environnement de pré-production, dont l objectif est: valider qu il n y a pas de regression par apport à la version précédente
+
+Q27: c est quoi un test de Performance ou monté de charge?
+R27: c est un test fait par le AMOA, AMOE, dans un environnement de pré-production, dont l objectif est: de mesurer la performance de l application
+
+-------------3.Suivi Formel de la phase de test--------------------
+
+Q28: Quelles sont les étapes pour un suivi formel de la phase de test?
+R28: on a :
+1- L'echantillonnage de données
+2- La gestion des anomalies
+3- Le versionnage 
+
+Q29: c est quoi un Echantillonnage de données?
+R29:  c est la préparation d un échantillon de données représentatif de toutes les données réelles, avant de faire le test(sauf les tests unitaires)
+
+- L'alimentation des tables se fait à travers l un des programmes SFD (IHM, Baches ...) ca d: selon la description détaillée des regles de gestion
+
+Q30: c est quoi la gestion des anomalies? 
+R30: dans une fiche: on identifie des anomalies + correction des evolutions + faire un suivi de tout cela
+- l equipe MOA + MOE qui l effectue
+
+Q31: c est quoi le versionnage?
+R31: c est le faite de rédiger un tableau de correspondance, ce tableau indique les anomalies et les évolutions remarquées et les versions des parties de traitement et de données correspondantes
+
+- le versionnage se fait avec des outils (visual source safe, clear case)
+- le versionnage sera envoyé à l integrateur 
+Ps: chaque application contient une partie de données et une partie de traitement avec leurs numéros de versions  qui évolue , c est 2 parties évoluent indépendemment 
+
+
+---------------4.Taches et interlocuteurs-----------
+
+Q32: Quelles sont les différentes taches du Chef de Projet maitrise d ouvrage et les interlocuteurs responsables ?
+R32: Les différentes taches sont: 
+- La gestion du planning :avec l expert metier
+- La gestion de budget :avec AMOA
+- La gestion de ressources : avec MOE
+- La validation des SFG
+
+Q33: Quelles sont les taches de l'assistant:  AMOA et ses interlocuteurs
+R33: l assistant de la maitrise de l ouvrage doit s'occuper de la:
+- rédaction de la SFG et de la charte graphique: avec l expert metier
+- repertoring pour le CPMOA: avec CPMOA
+- répondre aux interviews de l amoa: avec AMOA
+- support fonctionnel pour amoa: avec les utilisateurs finaux
+- validation des sfd: avec l administrateur de base de données
+- rédaction du plan de test et l echantillonnage
+- test: recette, non regression, et MC
+- Gestion des anomalies et des évolutions
+- Suivi des projets 
+- Participation aux réunions fonctionnelles et CR
+- Rédaction: PV de recette et manuel utilisateur
+- Support et formation des utilisateurs finaux
+
+
+Q34: Quelles sont les taches pour un assistant de maitrise d oeuvre AMOE et ses interlocuteurs?
+R34: on a:
+- préparer et organiser des réunions fonctionnelles avec l assistant MOA: avec CPMOE (chef de projet maitrise d oeuvre)
+- rédiger les comptes rendus des réunions fonctionnelles: avec les devloppeurs
+- rédaction des SFD à partir de la SFG: avec l integrateur
+- Support fonctionnel pour les developpeurs: avec le service de la production
+- validation de l analyse organique: avec l administrateur de base de données
+- rédaction du plan de test et l echantillonnage 
+- effectuer les test d integration , de NR et MC
+- gestion des anomalies et des evolutions 
+- assister aux réunions de suivi
+- préparer l environnement de formation des utilisateurs finaux
+- assurer le suivi de la mise en production
+
+
+Q35: Quelles sont les taches d un ingégneur de developpement et ses interlocuteurs?
+R35: il doit faire la:
+- rédaction de l analyse organique à partir des SFD: avec CPMOE
+- définition des normes de developpement : avec AMOE
+- programmation: avec l integrateur
+- debuguer les programmes: avec l administrateur de base de données
+- maintenance de l application
+
+--------------------5A.Typologie de projet informatique-----------
+
+Q36: Quels sont les types de projets?
+R36: on a 4 types de projets:
+
+- Projet de fusion
+- Projet de refonte
+- Projet de migration
+- Projet d étude d impact
+
+Q37: c est quoi un projet de fusion?
+R37: lorsequ il y a une fusion entre 2 entreprises ou plus.
+- nous avons 2 types de fusions:
+1*si les 2 entreprises font le meme métier:
+on retient un seul système de l une entre elles, l amoa rédige les regles du système source puis il fait la correspondance avec la destination
+- le dev fait les baches 
+
+2* si les 2 entreprises ne font pas le meme metier:
+on garde les 2 systèmes d information
+
+
+Q38: c est quoi un projet de refonte?
+R38: lorsequ il y a 2 systèmes un encien et un nouveau à faire
+- on a 2 type de la refonte:
+1* la refonte fonctionnele: se base sur le changement des fonctionnalités de l ancien projet
+ 
+2* la refonte technique: se base sur le changement du langage, de bdd, syst d exploitation ... de l encien système 
+
+Ps: si la refonte est foctionnelle + technique = on refait tout le projet des le debut
+
+Q39: c est quoi un projet de migration?
+R39: lorsequ on a 2 projet la source et la cible et on veut faire une migration de :
+1* données: commençant par la redaction des regles + structures de bdd et finir par faire des tests
+2* techniques: = refont technique dans le cas du passage d une version ultérieurs à une nouvelle version des outils
+
+
+Q40: c est quoi un projet d etude d impact?
+R40: lorsequ on fait un changement  d un système d information puis on étudie l impact de ce changement en faisant les tests de non regression
+
+Q41: Quels sont les engagements pour un projet?
+R41: on a 3 engagements: 
+- en forfait
+- en régie
+- en régie forfaitisé
+
+
+
+Q42: c est quoi un projet en forfait?
+R42: si il y a un engagement avec le client sur le resultat et le delai (pénalité sur les retards)
+
+
+Q43: c est quoi un projet en régie?
+R43: se font sous le pilotage du client , il y a pas d engagement sur les resultats
+
+Q44: c est quoi un projet en régie-forfaitisé?
+R44: il se fait sous le pilotage du client + pénalité sur les retards
+------------------5.B.Fonctionnalité--------------------------------------------------
+
+Q45: Quelles sont les composants d'une réunions?
+R45: on a 3 composants principaux de la réunions:
+- périmètre de la réunion: la date, le sujet, 
+- organisation générale: reservation de la salle, l envoi des emails, 
+- le compte rendu: redigé par l organisateur, puis envoyé aux absents
+
+
+Q55: quels sont les types des réunions?
+R55: on a:
+- les interviews: ce sont des rencontre entre l expert metier et l assistant maitrise d ouvrage pour comprendre les fonctionnalités
+- les réunions fonctionneles: pour clarifier les fonctionnalités + les règles de SFG: hebd(dev), mens(maintenance)
+- réunions de suivi: hebdomataire(dev), mensuel(maintenance) AMOA, AMOE et dev pour savoir l etat d avancement du projet
+- réunions de pilotage: AMOA, AMOE pour discuter l aspect budjetaire
+- réunion équipe:
+---------------------------------5.C.La planification----------------------------------
+
+Q56: c est quoi une planification?
+R56: c est le processus qui nous permet de:
+- Déterminer si les objectifs du projet sont réalisés
+- suivre et communiquer l avancement du projet
+- Affecter les ressources aux taches
+
+Q56: c est quoi un diagramme de GANTT?
+R56: c est un graphe qui représente les phase + taches + activités du projet sur un axe de temps
+
+Q57: c est quoi un planning prévisionnel?
+R57: c est un planning qui contient des taches prévisionnelles du prijets qui seront mise à jour en fonction de l avancement du projet
++ un tableau de bord + un rapport
+
+
+--------------------------------6.Travaux et génération d un model conceptuel-------
+
+Q58: c est quoi un model conceptuel?
+R58: c est un ensemble de conventions graphiques qui represente la partie statique d un systeme d information(bdd)
+
+Q59: c est quoi une entité?
+R59: c est une catégirie d objets ayant un nom générique et partageant des propiéts communes
+
+Q60: c est quoi une association?
+R60: c est un lien qui relie au moin 2 entités
+
+Q61: c est quoi une cardinalité?
+R61: c est une notion qui nous permet de définir le type de la relation d une entité par apport à une autre
+- elle est définie par une borne minimale et une borne prendre les valeur 0, 1 ou n 
+
+Q62: c est quoi un passage du MCD au MLD? (model conceptuel de données --> model logique/physique de données)
+R62: c est la transformation  d un état shématique à un état physique en utilisant un SGBD (mysql, Oracle, sql server ..)
+
+Q63: quelles sont les théories du passage MCD au MLD?
+R63: on a 3 théorie:
+- relation Père-Père(x,n) (x,n): la relation se transforme en entité et les clés primaires des deux autres entités migrent vers cette table
+- relation Père-Fils(x,n) (x,y): la clé primaire du père migre vers le fils
+- relation Fils-Fils(x,y) (x,y): échange des clé primaire entre les deux entités
+
+-----------------------Question supplimentaire dans l'Examen--------------
+Q64: c est quoi un DBA?
+R64: c est l'administrateur de base de données
+
+Q65: c est quoi l'intégrateur?
+R65: ce dernier s'occupe de la livraison des différents versions de l'application à l'assistant MOA
+
+Q66: quelles sont les compétences que l AMOA doit les avoir?
+R66: avoir une connaissance en démarche métier et démarche projet + aisance rédactionnelle pour rédiger SFG + etre un testeur
+
+Q67: quelles sont les compétences que le AMOE doit les avoir?
+R67: aisance rédactionnelle pour SFD + connaissance fonctionnelle + etre un bon testeur + savoir gérer les anomalies et ne pas confondre entre un avenant/évolution et une anomalie
+
+
+Q68: quelles sont les compétence d un chef de projet AMOA?
+R68: l adaptation avec tout interlocuteur + faire une bonne planification
+
+Q69: les compétences pour un ingénieur de développement?
+R69: la qualité rédactionnelle + connaitre l env de developpement + programmer + debeuguer + test unitairs + bon relationnel
+
+Q70: c quoi la différence entre CDC Et SFG?
+R70: CDC description générale des besoin sans rentrer dans les détails + étudier les charge + la duré | SFG : la description générale des fonctionnalité
+
+Q71: c est quoi STD?
+R71: c est un document décrivant les techniques de chaque fonctionnalités pour faire le lien entre le fonctionnel et le technique
+
+Q72:les interlocuteurs du AMOE?
+R72: CPAMOE + AMOA + devloppeurs + intégrateur + service de production + DBA 
+
+Q72: les interlocuteurs des ingénieurs dev: CPMOE + AMOA + dev + intégrateur + service de production + DBA + 
+
+
+Q73: quels sont les supports techniques?
+R73: 
+AMOA: ST de AMOE
+AMOE: ST des devloppeurs
+
+
+Q74: c quoi un intégrateur?
+R74: ????????????????????????????????????????????????
+
+Q75: service etude == equipe de developpement ????
+R75: en cas de projet de maintenance /petit projets
+
+Q76: maintenance corrective ??
+R76: correction des anomalies
+
+Q77: maintenance evolutif?
+R77: correction d 'évolution
+
+Q78: c est quoi le role de :
+- administrateur de base de données = gère la structure bdd
+- administrateur de données = charge la modification des données
+- ingénieur système et réseau = il administre les serveurs
+
+Q79: c quoi un service système?
+R79: c les ressources humaines
+
+Q80: qu est ce qu il y a dans un cahier de charge?
+R80: les charges de travail + le delai + attribution des fonctions (qui fait quoi)
+
+
+Q81: comment calculer le delai d un projet informatique:
+R81: diviser le travail en taches + Estimer la charge de chaque tache en jour-homme + chercher les taches pourraient etre faites en parallèle
+
+Q82: comment rédiger une SFG?
+R82:  on écrit la description des fonctionnalités de la futur application(200 à 300 pages pendant 4 mois/homme) sans rentrer dans les détails, en basant sur:
+- les limites du projet + analyse de l existant + interviewvé l expert metier par AMOA + rediger des SFG + valider par CPAMOA
+
+Q83: c est quoi un MCT ?
+R83: model conceptuel de traitement: il représente les activités sans dire qui fait quoi, ils précèdent le MCD et le MPD
+
+Q84: combien de MCD ou MPD dans les grandes comptes?
+R84: MCD=100-200 entités, MPD=200-300 tables
+
+Q85: c est quoi une table de référence et une table de mouvement?
+R85: T.R=peu volumineuse(client, fournisseur, salarié...)| TM= très volumineuse(facture, commandes...)
+
+Q89: c est quoi une interview avec l expert metier?
+R89: pour créer le model conceptionnel de traitement + respecter l ordre du jour + ne pas répéter l expert métier??????
+
+Q90: c est quoi STD?????????????????
+R90: un document 35-45 pages pour chaque fonctionnalité
+
+
+Q91: c est quoi la relation entre SFG et MCD et MCT ???
+R91: les détails ajoutés à une SFG pour qu elle soit une SFD(30 pages en 3-5 jrs) ce sont les conceptions des MCD et MCT
+
+Q92: quels sont les types d une SFD?
+Q92: pour les programme de type : IHM | batch | état(un fichier qu on ne peut que consulter expl: une facture, on le crée par l outil Crystal report, Business object.. )
+
+Q93: les étapes à suivre pour rédiger SFD?
+R93: CPMOE reçoit SFG  + dispache les fonctionnalités sur les AMOEs(distribuer)> AMOEs lire + comprendre + poser des questions aux AMOAs > Ecrir des SFD clair
+
+Q94: Quelles sont les étapes pour créer SFD batch???????????????????????
+R94: 3 étapes:
+- description shématique et textuelle de la structure de données de la source
+- //// de la cible
+- description des traitements d alimentation pour chaque table
+
+Q95: qui doit valider les SFD?
+R95: par MOA 
+
+Q96: c est quoi un plan de test:
+R96: c est l ensemble des senarii des tests, un senario de test = la regle de gestion de SFD + l echantillon de test + le resultat théorique attendu
+
+Q97: quelles sont les conditions pour réussir un plan de test?
+R97: comprendre tous les senarii + bon echantillonnage de données + complété par les resultats obtenus(en 2 em étape)
+
+Q98: c quoi un cas de test?
+R98: cas de test = echantillon de donnée + action(mode opératoire) + resultat
+
+Q99: c quoi STD: spécification technique détaillée
+R99: c est la description faite par le développeur pour faire les liens des liens entre l aspect technique programmes qui seront developpés et l aspect fonctionnel rédigé par AMOE
+
+
+Q100:  c quoi les normes de developpement?
+R100: avant de commencer la programmation il faut que l ingénieur rédige des règles à respecter pour optimiser la performance de l application, il y a 3 niveaux des normes: liés au langage, liés aux données, liés aux pourcentage des commentaires 
+
+Q101: c est quoi un environnent?
+R101: c est l ensemble des couches suivantes: materiel(serveur) + application(BD + Programme) + logiciel(OS SGBD ...)
+
+Q102: Quels sont les différents types d'environnement de test?
+R102: on a 06 types:
+
+- E de developpement: pour ingénieur / test unitaire
+- E d'intégration: MOE / test d integration
+- E de recette: MOA/ test de recette + T de monté en charge/performance + T de non regression 
+- E de pré production: service de production : 
+- E de production: Données réelles!! interdit de faire de tests dans l E de production
+- E de formation:AMOE prépare E de formation(outil + machine à utiliser) + AMOA forment les utilisateurs finaux
+
+PS: les données sont mieux ds le dernier E meilleur que ds E précédant 
+
+Q103: diffinissez les tests suivants:
+- test unitaire:fait par Ing DEv pour les baches: tester les zones collones, pour les TP: tester les zones champs
+
+- T integration: MOE, tester la coherence des modules d une fonctionnalité
+
+- T de recette: par MOA : refaite les tests d integration  dans l environnement de recette pour s assurer avec MOE s il s agit d une anomalie ou évolution ou avenant.
+
+- T non-regression: par MOA et MOE pour s assurer q u il y a pas de regression par apport à la version précédante
+
+- T de performance/monté en charge: pour augmenter le nombre de connexion à la base de données, se font avant le PV de recette et la livraison du lot
+
+Q104: quelle est la taille de bdd pour chaque environnement?
+- BD dev: 10 GO
+- BD integration: 20- 40 GO
+- BD recette : 20 GO - 40
+- BD pré production: 500 -   Tera
+- BD production: 300 GO - 1 T
+- Dataware production: 2,3,4 Tera O
+- Datamart production : entre 200 et 300 GO
+
+Q105: c est quoi la diffearence entre le test d integration et de la recette:
+R105: la seule différence est la qualité des données qui sont plus significatives pour les tests de recette  
+
+Q106: c est quoi la différence entre un projet en régie et projet en forfait?
+R106: la différence est:
+- P en forfait: sous ngagement de delai et de resultat + ne pas compter les heures + 
+- P en regie: sans engagement de delai et de resultat + sous pilotage du client 
+
+Q107: c est quoi une astreinte?
+R107: c est le fait de rester joignable tout le temps meme le weekend et la nuit
+
+Q108: 
+quelles sont les version mineurs pour un projet?
+R108: V. pour la correction des anomalies + V. pour l ajout des evolutions mineur + version selon le client 
+
+Q109: donner 5 exemples d'optimisation SQL
+R109: 
+
+
+
+ps: qUESTION 126: dONNEZ 5 EXEMPLES DE RÈGLES D'Optimisation
+
+
+Résumé: 
+
+un client (une banque) veut une app --> l' expert métier de la banque discute avec le client pour valider le cahier de charge et mentionner les besoins --> le cpamoa fait une réunion avec AMOA pour faire SFG (description des besoin du cahier de charge) -->livraison des SFG à AMOE -->  la AMOE transforme SFG en SFD (détailler les fonctionnalité de l application) --> une réunion entre l equipe AMOE et l éuipe du developpement pour leur expliquer les l aspect technique de l application --> les developpeurs code les fonctionnalités + les tester --> l AMOAE teste l application --> l equipe de la production integre la base de données --> l equipe du deployement mettre l application sur le serveur
+
+
+Q133: le chiffrage:
+- collection des différents projts réalisés + leurs charges
+
+Q135: expl de risque: non respect de delai / dépassement de budget / manque de ressources
+
+136- Qc: outil de gestion de test
+
+137: QTP: outil d automatisation des tests
+
+138- MSProjet: outil de plannification 
+
+139- clearCase: outil de gestion de configuration des logiciels
+
+142- role d un chef de projet= plannification + décomposition en taches + à chaque tache une charge estimée+ 
+160: architecture applicative: description textuelle + shématique de l application
+architecture technique: description technique de l application
+
+162- gestion de configuration: processus de coherence entre les attributs 
+
+163 relation entre ????????????????????,
+-Chef de projet: 
+- propriétaire du Processus
+- responsable de gestion de configuration
+- responsable du Cl(Cl owner)
+
+199- la charte graphique: document de travail qui contient l ensemble des règls fondamentales pour construire l idendité graphique de l application, rédigé par MOA
+215- fiche d anomalie contient:
+nom de projet + numero d anomalie + Env + test + degré d urgence + nom du rédacteur de la fiche + description de l anomalie
+
+232- degre d urgence d anomalie = mineur/majeur/bloquante
+
+279- application stand-alone
+- qui s execute sur un PC
+
+283- architecture trois tiers:
+- séparation entre les couches: présentation + application + données
+
+284- livrable de test: plan de test + resultat + fiche d anomalie
+
+285- UML de SFG = uses cases
+
+286- STD prens 3 jrs  ??????????????????,
+
+298 - UML /mérise:
+* UML: formalisme entre donnée et traitement
+* mérise méthode orientée objet pour les données
+
+
+302- le deamon: c est un processus qui s exécute en arrière plan pour surveiller la création ou l arrivé d un fichier dans le répertoire spécifique
+
+303- CFT: Cross File Transfert: logiciel de transfert de fichiers générérés par une application d un répertoire vers un autre
+307- Projet décisionnel/ Projet de gestion:
+- P décisionnel =1 seule architecture applicative: il faut présenter les différente couche: c de présentation de données + base(ODS) + datware + datmart métier + SGBD + ETL 
+- P de gestion: il y a 4 architectures:
+* gros système: 3 couches= client + serveur + données
+* stand-alone: s execute sur un pc
+* client/serveur: le pc dite client + un autre pc dite serveur
+PS/ 2 types: client léger(tous les traitement se font par le système) + client lourd(qlq traitement font par le serveur) 
+* architecture web: l application se lance par un navigateur WEB
+
+
+358- la rétro-analyse: l utilisation de POWER AMC pour extraire le MCD d un MLD pour mettre à jour les SFD et les STD
+
+361- Comment élaborer un Planing?
+11 étapes: 
+* identifier le périmètre
+*chiffrage: décomposer en taches élémentaires
+* estimer le bugget
+* identifier les ressources à disposition
+* Etudier les risques
+* chercher des solutions
+* réajuster le chiffrage par rapport au risque
+* séquencer les taches en fonction des taches parallèles et non parallèles
+* on obtient une première version de planning
+* optimiser le planning en fonction du bugget + délai
+* actualiser le planning selon les taches effectuées
+
+
+364- la différence entre automatisation et industrialisation :
+- automatisation: ressource pour l appliquer
+- industrialisation: se fait automatiquement 
+
+356- Ingénieur de production Vs intégrateur
+- Intégrateur: s occupe de la livraison des versions de l application
+- Ing de la production:
+* ordonnancement des batchs 
+* gestion des incidents
+* coordination: livraison
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,407 @@
+Le 22/10/2020
+
+Q1: Pourquoi on utilise une bibliothèque standard SL?
+R1: Sans la SL, le C++ ne contient en réalité pratiquement rien. Essayez d'écrire un programme sans string,vector,coutou même new(qui utilise en interne des parties de la SL) ! C'est absolument impossible 
+
+Q2: Le contenu de la SL ?
+R2: 3 Parties principales et quelques une élémentaires:
+1- L'héritage du C: 15 fichiers d'entete hérité du C
+2- Les flux: expl iostream(afficher cout, cin), fstream(les fichier) ..
+3- La STL: les conteneurs: expl les vecteur(vector), les éléments de tri, les itérateurs, des foncteurs, des prédicats, les pointeurs intelligeants...
+4- le reste: string, outils de gestion de la mémoire, paramètres régionnaux, nombres complexes.
+
+Q3:y a t ils des ressources de documentation SL?
+R3: oui les suivants:
+- cplusplus.com 
+- Apache C++
+- sgi 
+
+Q4: C'est quoi l'héritage du C?
+R4: c est un ensemble de fichiers entete (15) leur extention en C est .h, en c++ le est remplacé par un c au debut du fichier: math.h --> cmath
+
+Q5: c'est quoi l entete cmath?
+R5: il faut l importer #include<cmath> pour qu on puisse utiliser des fonctions mathématiques comme: pow(a,b), sqr(b), cos(a) ...
+
+- documentation: http://www.cplusplus.com/reference/clibrary/cmath/
+
+Q6: c est quoi len-tete cctype?
+R6: contient des fonctions pour connaitre le type d'un caractère : maj, min, espace, chiffre , en retournant un boolean...
+expl: #include<cctype>  , isdifit(a)
+isalpha(a):si a est lettre.
+isdigit(a): si a est chiffre.
+islower(a):si a est minuscule.
+isupper(a):si a est majuscule.
+isspace(a):si a est espace ou retour à la ligne.
+tolower(a): converti a en Min
+toupper(a): converti a en Maj
+
+Q7: c est quoi l entete ctime?
+R7: #include<ctime> : ce fichier d'en-tête contient plusieurs fonctions liées à la gestion du temps
+
+Q8: c est quoi cstdlib?
+R8: contient les fonction: srand() et rand() pour la génération des nombres aléatoires.
+expl: nb = rand() % 10; //nb prendra une valeur au hasard entre 0 et 9 compris.
+
+Q9: c'est quoi STL ?
+R9: standard Template Librart: Bibliothèque standard basée sur des templates, l'élément de base de toute la STL est le conteneur
+--------------------------------------------------------------------
+Q10: c est quoi un conteneur?
+R10: c est un objet permettant de stoquer d'autre objets et qui proposent des méthodes pour les manipuler, comme le vecteur.
+
+Q11: Quelles sont les catégories d un conteneur?
+R11: 
+- Séquences :
+
+	*vector 
+	*deque
+	*list
+	*stack
+	*queue
+	*priority_queue
+
+- Conteneurs associatifs :
+
+	*set
+	*multiset
+	*map
+	*multimap
+
+Ps: le fichier de chaque conteneur= #include<vector>, <deque> ...
+
+Ps2: les méthodes des conteneurs ont le meme nom expl: size() renvoie la taille de vector, list, map ...
+
+Q12: Quelles sont les méthodes communes les plus connues?
+R12: nous avons:
+
+- list<double> a;  a.empty()    //true si la liste est vide
+- set<string> a;  a.clear    // on supprime tous les éléments
+- vector<double> a(8,3.14);  // contient 8 fois le nombre 3.14
+- a.swap(b);   // on change le contenue des deux conteneur
+
+Q13: Quels sont les adaptateurs des séquences vecteurs?
+R13: voilà:
+
+*push_back(): Ajout d'un élément à la fin du tableau.
+*pop_back(): Suppression de la dernière case du tableau.
+*front(): Accès à la première case du tableau.
+*back(): Accès à la dernière case du tableau.
+*assign():Modification du contenu d'un tableau
+
+Q14: Quels sont les adaptateurs des séquences deque?
+R14: deque: double ended queue= queue à double bouts: un tableau auquel on peut ajouter des éléments aux deux extrémités
+
+#include<deque>; deque<int> a(3,5)//donc a= [5,5,5]
+
+a.push_back(1) // a = [5,5,5,1]
+a.push_front(2) // a = [2,5,5,5,1]
+a.pop_front() // a = [5,5,5,1]
+a.pop_back()  // a = [5,5,5]
+
+Q15: Quels sont les adaptateurs des séquences stack ?
+R15: un stack = le principe d'une pille d'assiète, on ne pourra accéder qu'à la dernière assiète. donc ce sont des tableux dont on pourraits accéder qu au premier élément ajouter: 
+
+ #include<stack>
+stack<int> pille(3,4); // pille = [4,4,4]
+
+pille.push(3) //ajouter le dernier élément
+pille.pop() //supprimer le dernier élément
+pille.top() //afficher le dernier élément
+
+Q16: Quels sont les adaptateurs des séquences queue ?
+R16: queue= principe de la queue du suppermarché: lorseque on ajoute l element serait en dernière position, lorsequ on supprime ça serait le premier élément qui serait supprimer, et on accède au premier aussi:
+
+q.push(5)
+q.pop() 
+q.front()   // pour accéder 
+
+Q17: Quels sont les adaptateurs des séquences priority_queue?
+R17: ont le principe du queue du supermarcher mais celui qui a un grand paquet passe la premier
+Ps: on le meme librairie que les queues: #include<queue>
+priority_queue<int> file;
+file.push(5)
+file.pop()
+file.pop() // Affiche le plus grand
+
+Q18: Quels sont les adaptateurs des séquences list?
+R18: pour les utiliser de manière efficace il faut savoir manipuler les itérateurs ????????????????????????
+
+- les lists chainées:  les éléments ne sont pas rangés c est pour ça pour accéder à un élément on ne peut qu'utiliser les itérateurs.
+for(list<int>::iterator it = liste.begin(); it!=liste.end(); ++it)
+    {
+        cout << *it << endl;
+    }
+
+
+------------------------------------------------------------------
+Q19: C'est quoi une table associative map?
+R19:  l'équivalent d un dictionnaire en Python: clé:valeur
+
+- pour accéder aux éléments d un map: 
+
+
+R20: ce sont des map, fonctionne comme des enssembles, qu on peut accéder à leurs élément qu'avec les méthodes de recherches, et non plus avec les crochets. (les clé et les valeurs sont confondus)
+
+- déclaration d un objet map:
+map<string, double> poids;// un dictionnaire dont les first(les clés) sont des string et les secondes (valeurs) sont des doubles
+
+- initialisation des first/seconde  (clé/valeur):
+poids["souris"] = 0.05;
+poids["tigre"] = 200;
+poids["chat"] = 3;
+poids["elephant"] = 10000;
+
+- declarer une paire: un seul élément de map:
+
+pair<int, double> p(2, 3.14)  //la clé = 2, la valeur = 3.14
+
+- itérer la clé et la valeur d'un map:
+
+for(map<string, double>::iterator it=poids.begin(); it!=poids.end(); ++it)
+{
+cout << it->first << " pese " << it->second << " kg." << endl;
+}
+
+
+- chercher un élément dans notre map:
+
+map<string, double>::iterator trouve = poids.find("chien");
+
+if(trouve == poids.end())
+{
+cout << "Le poids du chien n'est pas dans la table" << endl;
+}
+else
+{
+cout << "Le chien pese " << trouve->second << " kg." << endl;
+}
+return 0;
+
+  
+
+
+Q21: c'est quoi une table associative multiset et multimap?
+R21: ce sont des copies des set et des map ou la clé pourrait exister plusieurs fois, pour déclarer un map il faut mentionner le type de la clé et le type de la valeur:
+map<string, int> dico;
+
+Q22: Comment choisir le bon conteneur?
+R22: Selon le cas:
+- Avez-vous besoin d'accéder aux éléments directement ?
+- préférez-les trier et n'accéder qu'à l'élément avec la plus grande priorité ? 
+---------------------------------------------------------------------
+Q23: c est quoi un itérateur?
+R23: 
+Les pointeurs se pointent vers une case d une mémoire, un itérateur est un pointeur qui se pointe vers un élément d un conteneur:
+- un itérateur est un objet ressemble au pointeur qui permet de parcourir les conteneurs. l'interet de cet objet est qu on utilise de la meme manière pour itérer les map, vecteur, list ...
+
+Q24: c est quoi un foncteur?
+R24: c est un objet que l'on utilise comme fonction. puis on peut appliquer ces fonctions à tous les éléments d'un conteneur.
+
+Q25: Comment déclarer un itérateur?
+R25: chaque conteneur a sont itérateur spéciale:
+vector<int> table(5,4);    //déclarer + initialiser le vecteur à itérer
+vector<int>::iterator it   //déclarer l itérateur it avec::iterator
+map<string, int>::iterator it1;
+deque<char>::iterator it2;
+list<double>::iterator it3;
+
+Q26: comment itérer un conteneur en utilisant un itérateur?
+R26: déclarer un itérateur + faire une boucle + afficher le pointeur:
+
+#include<deque>
+#include<iostream>
+using namespace std;
+
+int main()
+{
+deque<int> d(5,6);
+deque<int>::iterator it;
+
+for(it = d.begin(); it!= d.end(); ++it)
+{
+    cout << *it << endl;
+}
+return 0;
+}
+
+
+Q27: pourquoi lorsequ on itère un conteneur, le point final de l'itération = it != d.end() est pas it < d.end() (comme dans le cas des autres langage)?
+R27: car les itérateurs ne sont pas optimisés pour les opérateurs de comparaison.
+
+Q28: C'est quoi l'objectif d utiliser des itérateur?
+R28:Pour les vector et les deque, cela peut vous sembler inutile : on peut faire aussi bien avec les crochets[]. Mais pour les mapet surtout les list, ce n'est pas vrai : les itérateurs sont le seul moyen que nous avons de les parcourir
+
+Q29: Quelles sont les méthodes uniquement pour les itérateurs?
+R29: 
+- Pour l'ajout: erase() :
+* tab.erase(tab.begin());    //On supprime le premier mot
+*  tab.erase(tab.end()); //On supprime le dernier mot
+
+- Pour la suppression: insert():
+* tab.insert(tab.begin(), "Salut"); //On insère le mot "Salut" au début
+* ab.insert(tab.end(), "Salut"); //On insère le mot "Salut" à la fin
+
+Q30: Est ce qu on peut ajouter ou supprimer des éléments au milieu du vecteur?
+R30: Non les vecteurs ne sont pas optimiser pour l'insertion et la suppression au milieu.
+
+Q31: Quels sont les deux types d'itérateurs utilisés pour les conteneurs?
+R31:  on a:
+
+* les bidirectional iterators:
+- nous permet d'avancer et de reculer sur le conteneur
+- on utilise ++ pour avancer, -- pour reculer
+- Expl: pour accéder au sixième élément : partir de begin() puis 5 fois(++)
+
+* les random acces iterators : 
+- accède directement au milieu du conteneur
+- utilisé par queu, vector
+- Expl: vector<int>::iterator it = tab.begin() + 7; //Un itérateur sur le 8ème élément
+-----------------------------------------------------------------------
+Le 28/10/2020
+
+Q32: c'est quoi un foncteur?
+R32: 
+- au lieu d utiliser un pointeur vers une méthode, on utilise un foncteur: ce sont des fonctions qui peuvent passer en argument d une méthode.
+-  foncteur est une classe possédant si nécessaire des attributs et des méthodes. Mais, en plus de cela, elle doit proposer un opérateur()qui effectue l'opération que l'on souhaite
+
+Q33: comment créer un foncteur?
+R33: voir commande c++_stl
+
+
+Q34: c'est quoi foncteurs de type prédicats?
+R34: sont des foncteurs un peu particuliers. Ce sont des foncteurs prenant un seul argument et renvoyant un booléen. Ils servent à tester une propriété particulière de l'objet passé en argument. On les utilise pour répondre à des questions comme :
+
+    Ce nombre est-il plus grand que 10 ?
+
+    Cette chaîne de caractères contient-elle des voyelles ?
+
+    CePersonnageest-il encore vivant ?
+
+Q35: comment créer un foncteur prédicat?
+R35: voir commande c++_SL
+
+
+Q36: Quels sont les foncteurs pré-définis?
+R37: Elles se trouvent dans le fichier d'en-tete: functional:
+
+* plus:
+
+#include<functional>
+
+int main(){
+plus<int> fac;
+int a(2); b(3);
+cout<< a << "+" << b << "=" << fac(a, b) << endl;
+
+Ps: fac est un objet de la classe foncteur: plus, on l'instancie puis on l'applique
+
+---------------------------------------------------------------------
+30/10/2020
+
+Q37: C'est quoi les algorithmes STL?
+R37:  dans le fichier 'algorithm' il y a des fonctions qui nous permettent d'effectuer des modifications sur les conteneurs:  trier un tableau, supprimer les doublons, inverser une sélection, chercher, remplacer ou supprimer des éléments, etc
+
+
+- remplir un tableau de nombre aléatoire de 0 à 9: generate(tab.begin(), tab.end)
+- pour compter les éléments: int n = counte(tab.begin(), tab.end())
+- pour compter les éléments >=2: int n = counte(tab.begin(), tab.end(),2)
+- on peut appliquer un foncteur sur des éléments d un conteneur:
+  Remplir f(0);       
+
+    generate(tab.begin(), tab.begin()+10, f); //On applique f aux 10 premières cases
+    generate(tab.end()-5, tab.end(), f);      //Et aux 5 dernières
+
+- l algorithm peut aussi manipuler un prédicat: 
+
+  int const compteur = count_if(tableau.begin(), tableau.end(), TestVoyelles());  //TestVoyelee c est le foncteur prédicat que nous avon créer == compteur: le nombre de true.
+
+- chercher: find(), find_if():
+deque<char>::iterator trouve = find(lettres.begin(), lettres.end(), 'a');
+
+    if(trouve == lettres.end())
+        cout << "La lettre 'a' n'a pas ete trouvee" << endl;
+    else
+        cout << "La lettre 'a' a ete trouvee" << endl;
+
+- Chercher l'élément le plus petit ou le plus grand: min_element()et max_element()
+
+- Trier: 
+ sort(tab.begin(), tab.end());                //On trie le tableau
+
+    for(vector<int>::iterator it=tab.begin(); it!=tab.end(); ++it)
+        cout << *it << endl;   
+
+
+- accéder au élément: foreach: for_each(tab.begin(), tab.end(), Afficher())
+
+- additionner les éléments:
+* créer le foncteur somme: 
+
+class Sommer
+{
+public:
+    Sommer()
+        :m_somme(0)
+    {}
+
+    void operator()(int n)
+    { 
+        m_somme += n; 
+    }
+
+    int resultat() const
+    {
+        return m_somme;
+    }
+
+private:
+    int m_somme;
+
+};
+
+* integrer le foncteur dans un algorithme foreach:
+Sommer somme;//instancier un objet foncteur de la class foncteur sommer
+    somme = for_each(tab.begin(), tab.end(), somme);   
+
+- parcourir en parallèle deux tableaux et écrire les résultats dans un troisième. C'est ce que fait la fonction transform(): Elle prend cinq arguments : le début et la fin du premier tableau, le début du deuxième, le début de celui où seront stockés les résultats et bien sûr le foncteur: 
+
+ vector<double> a(50, 0.);    //Trois tableaux de 50 nombres à virgule
+    vector<double> b(50, 0.);
+    vector<double> c(50, 0.);
+   
+    //Remplissage des vectors 'a' et 'b'….
+
+    transform(a.begin(), a.end(), b.begin(), c.begin(), plus<double>());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+

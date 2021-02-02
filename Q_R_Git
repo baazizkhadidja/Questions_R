@@ -1,0 +1,255 @@
+Q1: cest quoi git?
+R1:
+Git, un outil qui va vous permettre de versionner votre code, c'est-à-dire gérer les versions de votre code au fur et à mesure que vous le modifiez.
+Q2:ça sert à quoi?
+R2:
+Avec un logiciel de versioning comme Git, vous pouvez garder la trace de toutes les modifications faites sur votre code pour pouvoir vous y retrouver à tout moment
+
+Q3: quelles sont les commandes pour manipuler git?
+R3:
+
+1* installer : sudo apt-get install git
+2* Créer le dossier que nous utiliserons comme repository(repertoire):
+mkdir MonPremierRepo
+3* Activer le dossier comme repository : 
+-  cd MonPremierRepo
+- git init
+4* Ajouter un fichier à la repository:
+git add nom_fichier.extention
+
+PS: Pour ajouter tous les fichiers:
+git add .
+
+5* A chaque fois on modifie un fichier ou bien on ajoute un fichier, on fait commit + message:
+
+
+PS: on peut faire l'étape 4 et 5 dans une meme commande:
+
+git commit -a -m "Ajouté itinéraire dans checklist-vacances.md"
+
+git commit -m "ajout d un nouveau fichier dite ..."
+
+6*voir le statut de git:
+git status
+
+7* Affichier lhistorique de modification : git log
+Ps: pour quiter le log: 
+
+8* retourner(positionner) vers une version précédante:
+git checkout a70e224ca7886416fdeba9468fc75f34d74d7614
+
+PS: la série des numéros on la trouve dans l'historique(git log)
+
+PS: pour retourner à la version actuelle: 
+git checkout master
+
+9* Pour modifier le message du dernier commit:
+git commit --amend -m "Votre nouveau message"
+
+10* Annuler les changements (retourner à la première version et supprimmer le reste):
+git reset --hard
+
+Q4: c'est quoi un commit?
+R4:
+un commit est une suite de modifications accompager d'un message
+
+Q5: Qu 'est ce qu'un remote, et comment connecter notre machine à un remote?
+R5:
+C'est un autre ordinateur ou bien un service externe comme 'GITHUB' sur lequel on pourrait commiter notre code, on cas ou notre machine tombe en panne le code sera sauvegarder ailleurs.
+
+- on doit tout d abord créer une répository dite 'Disquaire' sur notre compte github, puis sur notre local:
+
+- On ajoute un remote à ma machine avec la commande suivante:
+git remote add origin 'https://github.com/doody1987/Disquaire' 
+
+Ps: pour savoir quels sont les remotes connectés à ma machine:
+
+git remote -v
+
+PS: supprimmer la remote:
+
+git remote rm origin
+
+Q6: Github, qu'est ce que c'est?
+R6:
+GitHub est un service en ligne qui permet d'héberger ses repositories de code. Il nous permet aussi de:
+    1/Communiquer avec d'autres développeurs et signaler des problèmes de code en déclarant des "issues" ;
+
+    2/Partager des morceaux de code en ligne à l'aide de "gists" ;
+
+    3/Proposer des modifications de code à d'autres repos en faisant des "pull requests" ;
+
+    4/récupérer du code depuis un autre repository.
+
+Ps: supprimer une repository sur github:
+- cliquer sur le nom de la repository
+- setting:
+- sous danger zone: delete repository: écrire le nom de la repo > i understand
+
+
+Q7: Comment peut on récupérer (cloner) un code depuis une repository sur Guithub? 
+
+R7: * connecter sur la page Github ou se trouve la repository 
+* cliquer sur le boutton vert 'code'
+* copier le lien qui s'apparait 
+* Entrer dans notre dossier repository locale et Ecrir sur la console de notre machine:
+ git clone https://github.com/facebook/react.git
+
+Q8: Comment créer ma première repository sur GIthub?
+R8:
+* connecter sur mon profile github
+* choisir la rubrique repository , cliquer sur new
+* remplir le formulaire: 
+- le nom du dossier(repository)
+- la description (écriture du fichier read me)
+- public
+- initialiser le rep en cliquant sur la case: initialize ... with read me (une fois on la clonne ça ne necessitera pas de faire la commende git init après avoir clonner )
+- cliquer sur create repository
+
+Q9: Comment envoyer mon code sur Github?/Comment faire pour synchroniser les modifications que vous faites dans votre repo sur votre machine avec votre repo sur GitHub? (la mise à jour dans le server avec le local)
+R9:
+
+1/*Ouvrez votre terminal et placez-vous dans votre repo local.
+
+2/*Faites un/des commit(s) des modifications que vous avez ajoutées sur ce repo.
+
+3/*Pushez! Envoyez ces modifications sur votre repo GitHub en utilisant la commande git push:
+
+git push origin master
+
+
+Q10: Comment récupérer les modifications (que vous avez faites en ligne) sur votre machine  ? (la mise à jour du local avec le server)
+
+R10:git pull origin master
+
+Q11: Comment créer des branches sur github?
+
+R11:
+La branche c'est une divergence du code principal par exemple un test, 
+pour la créer:
+ git branch mon-test 
+
+
+Q12: Comment connaitre les branches existantes: 
+R12:
+git branch 
+-- >  *master mon-test
+
+Ps: la branche actuelle est précédée par une étoile
+
+Q13: Comment changer la branche?
+R13:
+git checkout mon-test
+--> *mon-test
+
+
+Q14: Comment fusionner deux branches?(mettre à jour le fichier qui se trouve dans le master avec le fichier qui se trouve dans la branche )
+R14: 
+1- se positionner dans la branche master: git checkout master*
+2- git merge mon-test
+
+Ps: Pour annuler le fusionnement: 
+git merge --abort
+
+Q15: c'est quoi un conflit?
+R15: Lorsequ'on fait une modification importante des fichiers au niveau des fichiers sur des branches différentes, la confusions resultente un conflits --> un fichier final qui contient les différentes versions et c'est à nous de choisir laquelle parmis elles on garde.
+
+Q16: Comment résoudre un conflit?
+R16: On ouvre le fichier fusionné avec un éditeur de text, et on supprime la version qu'on ne veut pas garders
+
+
+Q17: Est ce qu'on fait un add/commit apès avoir réglé le conflit?
+R17: oui un add + un commit sans message (car le systeme occuppera de le faire)
+
+Q18: Est ce qu'ils existent des outils pour comparer deux versions?
+R18: oui, exemple: vimdiff, meld, opendiff, kdiff3, tkdiff, xxdiff, tortoisemerge, gvimdiff, diffuse, ecmerge, p4merge, araxis, emerge
+
+Q19: comment comparer deux versions avec un outil expl: vimdiff?
+R19:
+1- Il faut tout d'abord configurer l'outil mergetool:
+git config merge.tool vimdiff
+git config merge.conflictstyle diff3
+git config mergetool.prompt false
+
+2- git mergetool
+
+Q20: Comment faire pour connaitre qui a fait la modification?
+R20: 
+1- git blame nom_de fichier
+---> il affiche le dernier commit pour chaque ligne + SHA
+
+2- git show le SHA
+
+Q20: si on ne veut pas ajouter des fichier à git , quoi faire?
+R20:
+1- on crée un fichier gitignore
+2- on écrit dedan le nom des fichiers qu'on veut ignorer
+3- on fait add + commit de gitignore
+
+
+Q21:
+si on n'a pas fini un code et on veut mettre la dernière version sur github sans perdre la version actuelle non complète  :
+Comment faire pour éviter un commit superflus?
+
+R21: Pour éviter des commits superflus, on pourrais mettre à cotté notre modification à l'aide de la commande:
+
+1- git stash
+Ps: la version avec la dernière modification est enregistrée dans le stash, et le code retourne à son état du dernier commit
+
+2- Pour retourner à la version incomplete:
+
+git stash pop
+
+Q22: le stash pop supprime la versin intermédiaire, si on veut la garder on fait quoi?
+
+R22:
+Au lieu de fire un git tash pop, on fait:
+git stash apply
+
+Q23: Comment peut on contribuer à des projets open sources?
+exemple: le repo https://github.com/oc-courses/intro-git-github
+R23:
+1- Copier le projet sur notre compte: faire un fork:
+cliquez sur "fork" en haut à droite
+2- clonez votre copie depuis GitHub sur votre machine
+git clone https://github.com/votre-username/intro-git-github.git
+
+3- Créer une branche et faire des modéfications dedant + la commiter
+git checkout -b my-new-feature
+git commit -m "Added feature allowing users to comment on the blog articles"
+4- Envoyer les modéfication sur Github:
+git push origin my-new-feature
+5- Présenter notre modéfication à l'auteur du projet:
+cliquer sur compare & pull request
+6- ECrir un message à l'auteur
+7- L'auteur accepte ou reffuse la modéfication
+
+
+
+------------------------------------------------
+GitLab: outil d integration continue comme Jinklins:
+
+1/ Créer un compte sur: https://gitlab.com/users/sign_in
+
+
+2/ create a new project / IC/CD for external repository
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

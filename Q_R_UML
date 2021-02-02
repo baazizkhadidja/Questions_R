@@ -1,0 +1,318 @@
+Le 15/12/2020
+
+1- c est l objectif de shématiser les uml(unified modeling language)?
+- pour aider les membres de l équipe à comprendre les besoin du clients()décrire d une manière visuelle dans les différentes phases de progression du projet: phase d'analyse et phase de conception
+
+2- c est quoi l approche objet?
+- c est una approche qui permet de séparer un code en plusieurs classe afin de faciliter sa modification
+
+3- Quelles sont les différentes phases pour faire un projet + le type de D?
+- il y a deux grandes phases:
+1- phase d analyse:
+* analyse des besoins: D de contexte + D de cas d utilisation
+* analyse du domaine: D de Cas d utilisation + D d'activité
+* analyse applicative: D de séquence + D d état-transition + D de Collaboration
+2- phase de conception:
+*Conception de la solution: Affinage de tous les diagrammes + D de composants + D de déploiement
+
+4- Combien de Diagramme y a -t-il?
+- 13 diagrammes: on peut les classifier en 2 types:
+* les D qui décrivent le fonctionnement du projet
+* les D qui décrivent l'architecture du projet
+
+5- c est quoi 4+1 vues d un système?
+- c est une première représentation du logiciel selon:  des aspects d architecture et fonctionnels d un logiciel, chaque vues = diagramme
+
+- au milieu: v1: besoind des utilisateurs
+- à gauche: aspect fonctionnels: v2 : vue logique + v3: vues des processus
+-à droite: aspect architecture: v4 : vue des composants + v5: vue du deployement
+
+
+6-Vue 01: c est quoi les besoins d un client?
+- c est la description du : contexte + les acteurs(les utilisateurs) + les fonctionnalités du logiciel + l intéraction entre les acteurs et les fonctionnalités
+
+- dans ce cas on shématise
+*soit  le D de package: on desine plusieurs parties (packages): chaque partie se compose de: des acteurs + des fonctionnalités  + l interaction entre eux 
+
+* soit le D de cas d'utilisation: Pour indiquer de quelles façons les acteurs utiliseront le système
+
+7- donne moi un exemple de diagramme qui shématise les besoins d un client qui veut une application de commerce(supermarcher, grande surface ...)
+
+- j utilise un D de 3 packages: 
+* pack1: gestion de commande client - Act1: client + commercial
+* pack2: gestion des stocks - act2: receptionnist+ stockage..
+* pack3: gestion des achats - act3: les employées du service achat
+
+ 
+
+8- aspect fonctionnel: vue 02: c est quoi une vue logique?
+
+- representation des éléments du domaine + les interactions entre elles 
+- D: 2 diagrammes:
+* D de classes: chaque classe= une information(ds la phase d analyse), chaque classe = un objet de fonctionnalité (phase de conception) 
+* D d'objet: représente aussi les fonctionnalités
+
+
+9- aspect fonctionnel: vue 03: c est quoi une vue de processus?
+
+representation des processus + des actions  + les interactions + la communication entre elles
+
+
+- D: plusieurs D:
+* D de séquence : décrir les différents sénarios du système 
+* D d activité : représente  le déroulement des actions sans les objets
+* D de collaboration: (de communication) : il complète les diagramme de séquence, il représente les messages entres les objets
+* D d'état de transition: decrit le cycle de vie d un système
+* D de temps: decrit les interactions entre les objets sous les contraintes temporelles
+
+
+
+10- aspect lié à l'architecture du logiciel: vu 04: c est quoi une vue des composants?
+
+- Pour decrir les composants du futur système= bdd + fichiers sources
+- 2 diagrammes:
+* D de structure composite
+* D de composants: dans lequel sont shématisés le sfichiés
+
+11- aspect lié à l architecture: vue 05: c est quoi une vu de dépolyement?
+-  c est la description de l'environement de l'exécution du système(materiel + reseau + bdd + fichier)   
+- D: diagramme de deploiement
+
+12- Quelles sont les étapes principales pour développer un logiciel?
+
+1-    Définir les besoins et les exigences du client et des utilisateurs
+
+2-    Analyser le système 
+
+3-    Concevoir le système 
+
+4-    Programmer le logiciel
+
+5-    Tester le logiciel
+
+6-    Déployer 
+
+7-    Maintenir le système
+
+
+13- quelles les façon de l application des étapes de développement d un projet?
+
+-  on a :
+
+La cascade: une étape commence si la précédante se finie, pour les projets simples
+
+Le modèle en V: les premières étapes sont en paralèles avec les tests:
+
+- Analyse des besoin -                - recette fonctionnelle
+- spécifacation -                    - test de validaton
+- conception architecturale-        - test d integration
+- conception détaillée             - test unitaire
+                    - réalisation(dev)
+
+
+Inconvenients: manque de communication entre le client et le resulta du produit 
+Le modèle en W
+
+La spirale
+
+Le RAD
+
+Agile: exple: scrum: communication entre : le scrum master+ le product owner + l'équipe Scrum durant tout le sprint + le melé quotiqient
+
+14- Donne un étude de Cas pour bien expliquer les processus de l application des UMLs:
+
+- EXPL: créer une boutique en ligne:
+
+I/ Explication analyse des besoins:
+
+etape1: analyse du contexte: 
+* qui devra utiliser cette application?
+- expl: pour une boutique en ligne: des femmes simple
+etape2: la décomposition de la future application:
+* quelles sont les grandes partie de cette application?
+* pour chaque partie c qui parmi les utilisateurs (acteurs) l'utilisera?
+- expl: la boutique en ligne: 
+parties: l index + le panier + le payement+ la bare de navigation ..
+index= pour tout utilisateurs, payement= que pour les acheteurs,  
+
+etape3: détailler l'étape précédante: les utilisation de chaque partie
+- pour la partie index de la boutique en ligne il se trouve des images des vetements + le titre pour chaque image + la description
+
+- partie bare de navigation: accueuil: clic dessus permet d'afficher la page d accueuil + recherche: écrir un terme permet sa recherche + le logo brinde: juste un affichage ...
+- partie corbeille: permet de remplir le formulaire du paiement
+
+Ps: les diagrammes de ces 3 étpes: 
+- pour répondre à qui va utiliser cette application: diagramme de contexte
+- pour la simple décomposition : diagramme de package
+- pour illustrer ce que les parties permettent aux utilisateurs: diagramme de cas d utilisation
+
+
+II/ Etude de cas: Boutique en ligne de papeterie
+One: analyse du context:
+ 
+
+1/- qui est notre client?
+* Monsieur Morin , le chef de l entreprise
+2/- que vend il?
+* 
+Matériel de base : crayons, stylos, gommes, papier, cahiers, etc. 
+Matériel électronique : ordinateurs, imprimantes, téléphones, etc. 
+Mobilier : tables, bureaux, chaises, armoires, etc
+
+3/- pourquoi il nous contacte?
+* Il souhaite passer au e-commerce
+- Que souhaite-t-il faire sur le site de vente en ligne ?
+*1.Le client (ou client potentiel) doit pouvoir consulter les produits
+*2.Les commerciaux de la société doivent pouvoir consulter le catalogue des produits en ligne et enregistrer les achats des clients 
+*3.Le service des livraisons doit pouvoir consulter les commandes pour préparer les colis et les livrer au client
+*4. Le technicien doit pouvoir vérifier d’éventuelles remarques ou messages signalant un dysfonctionnement lors de l’achat en ligne
+*5. Le service administratif de la société doit pouvoir :
+- ajouter de nouveaux produits au catalogue en ligne ;
+- modifier les descriptions ou les prix des produits ;
+- retirer si besoin des produits que l’on ne souhaite plus proposer.
+   
+5/- Définir les acteurs:
+
+* les acteurs principaux: agissent direct avec le système: les acheteurs,  livreurs, commercial du stock, administrateur des bases de données
+* les acteurs secondaires: les autres qui réagissent indirectement avec l a: système bancaire
+
+Ps: l acteur pourrait etre humain ou non humain , la shématisation du deuxième pourrait etre un carré :
+
+    1.Le client (ou client potentiel) doit pouvoir consulter les produits et éventuellement procéder à un achat en ligne.
+
+    2.Les commerciaux de la société doivent pouvoir consulter le catalogue des produits en ligne et enregistrer les achats des clients. 
+
+    3.Le service des livraisons doit pouvoir consulter les commandes pour préparer les colis et les livrer au client.
+
+    4.Le technicien doit pouvoir vérifier d’éventuelles remarques ou messages signalant un dysfonctionnement lors de l’achat en ligne.
+
+    5.Le service administratif de la société doit pouvoir :
+    - ajouter de nouveaux produits au catalogue en ligne ;
+    - modifier les descriptions ou les prix des produits ;
+    - retirer si besoin des produits que l’on ne souhaite plus proposer.
+
+    6.Le directeur, quant à lui, souhaite avoir une vision globale des ventes. A travers le site, il souhaite pouvoir :
+    - faire un suivi du chiffre d’affaire par mois, sur une certaine durée ;
+    - voir quels produits sont les plus vendus sur une durée donnée. 
+
+    7. acteur secondaire: système bancaire
+
+- Diagrame de context: les acteurs + une boite noire
+
+two: Décomposer le système en packages:
+-----------------------------------------
+La partie 01: « Gestion de l’achat » 
+
+La partie 02: « Gestion administrative », 
+
+
+* Diagramme: de package: 2 boites + acteurs à chaque boite:
+- boite 1: gestion des achats + les acteurs(clients + livraison + système bancaire + livraison + commercial..) 
+- boite 02: gestion administrative + acteurs(directeur + administration)
+
+three
+----------
+Les cas d utilisation: dans la phase précédante de package: seulement 2 grandes boites, dans le cas d utilisation: chaque grande boite on doit la remplir par des petites boite(détailles des fonctionnalités)
++ relier chaque acteur avec une sous boite
+
+Ps: un seule acteur pourrait intervenir dans plus d une seule sous boite
+
+- diagramme de cas d'utilisation: 
+
+
+Le client souhaite... --->Consulter le catalogue de produits
+Enregistrer un achat
+
+Le commercial doit pouvoir...--->Consulter le catalogue de produits
+Enregistrer un achat
+
+La livraison (ou les membres du service) souhaite(nt)…--->Préparer une livraison
+
+Le technicien souhaite…--->Consulter une remarque ou problème
+
+-----------------------------------Le 16/12/2020
+6/ les cas d utilisation internes: ils ont 2 relations stéréotypés: include + extends
+
+
+
+Expl: le cas d utilisation enregistrer des achats englobe une cascade d action: l authentification + la consultation du panier + la saisie  des information de la livraison ..
+
+on appele ces sous actions: les cas d utilisation internes
+
+
+Ps1: 1* la spécialisation
+-deux acteurs ont les mêmes cas d’utilisation donc: nous créons un nouvel acteur générique appelé « Acheteur », dont « Client » et « Commercial » sont des spécialisations
+
+- 
+
+
+- On indique qu’un acteur est la spécialisation d’un autre en dessinant une flèche à pointe fermée vers l’acteur principal.
+
+Ps2:  2* les stéréotypes: include + extends
+- on entoure le cas d utilisation principal par les d utilisation interne et on les relier par des flèches pointiés + la mention include entre 2 chevrons 
+
+- tjrs avec les cas d utilisation interne, il a une relations extends : cas A extends cas B ==> cas 1 sa présence n est pas tjrs obligatoire , expl: le cas: cocher une remise pour valider le cas enregistrer un achat
+
+Ps3: cas d utilisation initial: générale qui englobe les C U internes, 
+alors que cas d utilisation principal: celui qui est en relation avec l acteur principale(acteur secondaire: s bancaire)
+
+7/ description textuelle d un cas d utilisation (chaque cas d utilisation a une fiche descriptive différente): c est une fiche descriptive d un cas d'utilisation selon 4 volets:
+
+  1  L’identification: Le numéro du cas d’utilisation, le nom, la date, l evenement à l origine de ce cas, conditions pour le deroulement 
+
+  2  La description des scénarios(dialogues)=  la chronologie des actions : normale(en cascade )/alternative(avec autres action)/d exeption(perturbé par autre actions)
+
+expl:
+- le system affiche la page
+- le syst rech des produit
+- sys ...
+
+  3  La fin et les post-conditions: La fin permet de récapituler toutes les situations d’arrêt du cas d’utilisation + le resultat
+
+expl: 
+
+Fin : Scénario nominal : aux étapes 2, 5 ou 7, sur décision de l’utilisateur                                                            
+
+Post-conditions : Aucun
+
+  4  Les compléments:
+l’ergonomie ;
+
+la performance attendue ;
+
+des contraintes (techniques ou non) à respecter ;
+
+des problèmes non résolus
+
+ 8/ Le diagramme d 'activité: c est la représentation graphique de la description textuelle du diagramme de cas d'utilisation, car il contient en plus les sénarions(nom, alt, exp)
+
+- les différences avec le diagramme précédant:
+
+* les acteurs sont mentionnés sur les flèches
+* pas de stéréoptype ...
+* si un cas donne un chois entre 2 autres cas , c shématisé par un losange=alternative
+
+* au debut il y a un point de démarage et à la fin il y a un point d arret
+
+* pas de flèches pointués
+* la synchronisation(2 action au mm temps) shématisé par un trait gras
+* les couloire: sépare les utilisateurs des systèmes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

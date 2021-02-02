@@ -1,0 +1,524 @@
+Le 30/09/2020
+
+
+Q1: C'est quoi une référence en c++?
+R1: c'est un deuxième nom pour une valeur dont sa variable est déjà déclarée
+(deux étiquettes collées sur un seule tiroire)
+
+
+Q2: Comment déclare-t-on une référence?
+R2: On a besoin du symbole & pour ça
+
+int ageUtilisateur(16);  
+int& maVariable(ageUtilisateur);
+
+
+Q3: C'est quoi un pointeur c++?
+R3: un pointeur c'est une variable dont la valeur est l'adresse d'une autre variable
+
+Q4: Comment peut on déclarer et initialiser un pointeur?
+R4: on met le type de la variable suivie d'un étoile()
+
+-Déclaration:
+int* p1(0), p2(0), p3(0); OOOORRR int *p1(0);
+double* pA(0);
+vector<int> *pD(0);
+
+-Initialisation:
+p1 = &a;
+
+
+PPPSSS: on peut initialiser et déclarer un pointeur à la fois:
+
+int* p1 = &a;
+
+- Affichage: cout << p1 <<endl;
+
+Q5: C'est quoi une adresse d'une variable?
+R5:N'importe quelle variable possède 3 choses: une valeur, un nom(l'étiquette), et une adresse(une séquence des lettres et des nombres et c'est le système qui la définie)
+
+Q6: Comment peut-on afficher l'adresse d une variable a?
+R6: avec la commande suivante: cout << &a <<endl;
+
+Q7: Comment peut on accéder à la valeur pointée (la valeur d une variable dont on a crée un pointeur)?
+R7: cout << *p1 <<endl;
+
+Q8: Vouvez vous me donner un exemple de pointeur, référence, v pointée?
+R8: 
+
+#include<iostream>;
+using namespace std;
+
+int main()
+    {
+    int a = 15;//la déclaration + l'initiation de la variable  a
+    int& b(a);// création de la référence de la variable a
+    int* p = &a;// création du pointeur de la variable a
+
+    cout << a <<endl;//la variable  a 
+    cout << b <<endl;// la référence de la variable a
+    cout << p <<endl;// le pointeur de la variable a
+    cout << *p <<endl;// la valeur de la variable a pointée
+    }
+
+
+
+donc: les expressions suivante sont les memes(pour changer la valeur de a):
+
+int a =5;
+int b = 5;
+int *p = 5;
+
+
+Q9: Quelle est la différence entre la déclaration d un pointeur constant et la la déclaration d un pointeur d une valeur constante?
+R9: 
+* la déclaration d un pointeur constant:
+ - int * const p1 = &a (on ne peut pas écraser le pointeur plus tard)
+*la la déclaration d un pointeur d une valeur constante: 
+ - const int * p2 = &a (on ne peut écraser la valeur de la variable plus tard)
+
+------------------------------------------------------------------------------
+Le 01/10/2020
+
+Q10: C'est quoi une fonction?
+R10: Une fonction est un morceau de code qui accomplit une tâche particulière. Elle reçoit des données à traiter, effectue des actions avec et enfin renvoie une valeur.
+Les données entrantes s'appellent des arguments et on utilise l'expression valeur retournée pour les éléments qui sortent de la fonction 
+
+Q11: C'est quoi la structure d'une fonction?
+R11: type name_function(a, b){cout<<"Hello"<<endl;}
+
+- Le type de la fonction: delon la valeur retournée par la fonction: int, strin, double
+
+- le nom de la fonction suivi le type
+- () dans lesquelles on trouve les types + les noms des arguments
+
+- {} délimitent le contenu de la fonction
+
+
+Q12: c'est quoi le surcharge d une fonction?
+R12: lorseque nous avons des fonctions dont le nom est le meme mais le type et le type des arguments est différent.
+
+Q13: C'est quoi l objectif de passer les paramètres dune fonction en référence et en référence constante et c est quoi la syntaxe pour se faire?
+R13: l'objectif de passer un paramètre en reference est: d economiser le stockagr du mémoire + ne pas modifier la valeur originale
+la syntaxe est: int main(int  const& age){}
+
+Q14: c'est quoi le fichier source et le fichier header?
+R14: le .h est le fichier dans lequel on met le prototype de la fonction(tous ce qui est derrière les {} de la fonction) et le fichier source.cpp dans lequel on définie la fonction
+
+Q15: comment mettre les fichier .h et .cpp en relation?
+R15: on import le .h dans le cpp. : #include "~.h"
++ lors de la création des fichiers il faut cocher les 2 cases: realese + l autre nsitha
+Q16: Est ce qu on peut définir le prototype et la fonction dans un seule fichier?
+R16: oui on peut les définir dans un seule fichier
+
+Q17: Pourquoi on définie des prototype d une fonction avec des paramètres par des valeur par défaut?
+R17: car des fois nous n avons pas tous les paramètres, donc pour qu il y aura pas une erreur, le système remplace les paramètres manquants par les valeurs définis dans le prototype par defaut
+
+
+Q18: c'est quoi un prototype?
+R18: c est la première ligne d une fonction qui précède les accolades
+
+Q19: c est quoi l objectif de créer un fichier header?
+R19: . Les fichiers .h permettent d'annoncer l'existence des fonctions à l'ensemble des autres fichiers du programme.
+
+Q20: ça sert à quoi <iostream> et <fstream>?
+20:  - iostream contient les outils nécessaires aux entrées/sorties vers la console.
+- iostream signifie en réalité input/output stream, ce qui veut dire « flux d'entrées/sorties » en français.
+- fstream correspond à file stream, « flux vers les fichiers » en bon français.
+
+
+Q21: c est quoi une allocation dynamique?
+R21: lors de la déclaration d une variable, il ya une allocation du mémoire(demander une case de la mémoire), après on initialise la variable(le stockage).
+, et à la fin de la fonction il y aura une libération de la mémoire. tout celà se fait automatiquement. 
+
+Q22:Comment allouez un espace mémoire manuellement?
+R22: on demande une case avec l'opérateur new, puis on stock l'adresse de cette case dans un pointeur
+
+Ps: on utilise & pour l adresse d une variable, par contre pour l adresse d une case vide d'un intéger on utilise new int
+
+Q23: c est quoi la différence entre la déclaration d'un pointeur d une allocation(case vide) et la déclaration d un pointeur d'une variable?
+
+R23: int *p = &a   VS  int* p = new int
+
+Q24: c est quoi la fuite de mémoire?
+R24: lorsequ on change la valeur du pointeur, la case vide existe toujours mais on ne pourrait plus y accéder, (car on a perdu son pointeur), et ça nous cause une fuite de mémoire= perte d espace
+
+Q25: comment peut on rempli la case vide manuellement?
+R25: *p = 2  // la valeur de la case pointé = 2;
+
+Q26: comment libérer la mémoire manuellement?
+R26: on la libère donc la case vide est libre n'es pas allouée: 
+delete p; pointeur =0/pointeur ne pointe vers rien
+
+Q27: Quand utiliser des pointeurs?
+R27: 3 cas d'application des pointeurs:
+
+    *gérer soi-même le moment de la création et de la destruction des cases mémoire(réponses 23) ;
+
+    *partager une variable dans plusieurs morceaux du code(réponse 28) ;
+
+    *sélectionner une valeur parmi plusieurs options(réponse 29).
+
+PSSSS: Si vous n'êtes dans aucun de ces trois cas, c'est très certainement que vous n'avez pas besoin des pointeurs
+ 
+
+Q28: comment le partage d une variable pourrais un cas d utilisation des pointeurs?
+
+R28: si un objet cible un autre objet(dans un jeu une balle qui cible un point mobile) on pointe la balle vers le point: 
+balle * point_mobile
+
+on peut dire que la variable est partagée
+
+Q29: Comment le choix parmi plusieurs éléments pourrait il un cas d utilisation des pointeurs?
+
+R29: le cas des QCMs, si on clique sur une case, elle pointe sur une autre variable. c est le cas le plus rare.
+
+
+Q30: Quels sont les types des tableaux en c++ et comment peut on les déclarer et les initialiser?
+R30: on a 5 types des tableaux on pourra les manipuler comme suit:
+
+1- tableaux statiques(taille fixe): type nom[taille]
+* declaration + initialisation : int tab[5];
+* affectation des valeur: tab[0] =24; tab[1] = 12 ...
+
+2- les tableaux dynamiques(taille pas fixe):
+* importer le module <vector>: #include<vector>
+* declaration d un tableau vide: vector<char> texte
+* declarationv + initialisation: vector<type> nom(taille);
+vector<int> tab(5);
+3- les tableaux string:
+* on les déclare comme string et on les accède comme des tableaux s/d
+4- les tableaux multi-dimentionnels (2D): (matrice/grille: lignes et colonnes): type tab[tailX][tailY]
+
+5- les tableaux multi-dimentionnels (+2D):(espace plein des vecteurs)
+type tab[tailX][tailY][tailZ][tailW]
+
+
+
+Q31: c'est quoi la table ASCII (prononcé aski)?
+R31: American standard code for information interchange:
+c est tableau qui sert à convertir  des nombres en lettres.
+
+les lettres accentuées ne sont pas figurées dans ce tableau.
+donc si on stock char 65; l ordinateur le stoque comme A et pas 65
+
+Q32: c est quoi la différence entre une variable et un attribut?
+R32: la variable à l interieur d un objet dite: un attribut
+
+Q33: Quelle est la différence entre une fonction et une méthode?
+R33: lorsequ on déclare une fonction à l intérieur d un objet elle serait dite: une méthode
+
+Q34: Comment peut on appeler un attribut ou une méthode?
+R34: on ne peut accéder qu aux méthodes: objet.methode()
+ 
+Q35: Quelles sont les méthodes connues de l objet string
+R35: 
+string texte("khadidja")
+- texte.size()  --> 8
+- texte.erase()  --> supprime le contenu le la chaine
+- texte.substr(3,2) --> di  (extraire une sous string à partie de l indexe 3, contient 2 caractères)
+
+
+Q36: c'est quoi le role de la fonction c_str() sur un fichier f.c_str() ?
+R36:  Renvoyer un pointeur vers le tableau de char que contient l'objet de type string, pour nous permettre de récupérer l'adresse du tableau de char qui se trouve à l'intérieur de l'objet string.
+
+------------------------------------------------------------
+Le 08/10/2020
+
+
+Q37: Comment créer une classe en c++
+R37: 
+classe Voiture
+{
+int price;
+void meth(type & param){}
+}
+
+Q38: Comment instacier un objet en c++?
+R38: 
+int main(){ Voiture v1, v2, v3 } 
+
+Q39: Est ce qu on peut mettre un objet comme paramètre dans la méthode d'un autre objet ?
+R39: oui comme suit, mais il faut indiquer lors de la la création de la méthode qu elle reçoit en paramètre l'expression suivante:(nom de la classe de l'objet &cible):
+objet1.méthode1(objet2)
+
+Q40: Qu'est ce que ça veut dire les droits d'accès en c++?
+R40: chaque attribut et chaque méthode d'une classe peut posséder son propre droit d'accès. il y a deux droits d'accès: 
+- Public: l'attribut ou la méthode pourrait etre appelé depuis l'extérieur de l'objet
+- Private: l'attribut ou la méthode ne peut pas etre appelé depuis l extérieur de l'objet. par défaut tous les éléments d une classe sont private.
+
+Ps: il existe d autres droits d'accès qui sont un peu plus complexes.
+
+Q41: comment donner un droit d accès public aux éléments d une classe?
+R41: on mentionne juste le mot clé public: au debut de la classe: 
+class Name{public: int att; void method(){}}
+
+Q42: c'est quoi le principe d'encapsulation?
+R42: c'est le fait de mettre les attributs en mode PRIVE dans le bute de sécuriser les données, c est à dire pour limiter leur droit d'accès, par contre on peut laisser les méthode en mode publique
+
+
+Q43: c est quoi la différence entre le mot clé struct et le mot clé class?
+R43: tous les deux serrent à créer des classes, mais: class donne une class dont le droit d accès private par défaut alors que struct donne une classe dont les droits d' accès public par defaut
+
+Q44: c est quoi un constructeur vide?
+R44: est une méthode prédéfinie,qu on l ajoute lors de la création d'une classe, elle est appelée automatiquement à chaque fois que l'on crée un objet basé sur cette classe
+
+Q45: c est quoi un destructeur vide?
+R45: c est une méthode appeler automatiquement (discrètement) pour detruir un objet, dans le cas de la location manuelle et la destruction manuelle, on utilise 'delete' comme destructeur.
+
+Q46: Comment peut on initialiser les attributs à l'aide d'un constructeur?
+R46: 
+- c est une méthode comme les autres méthodes de la classe
+- elle a le meme nom que la classe: Personne()
+- On met juste son prototype dans le header (rien ne le précède)
+- on définie le constructeur dans la source précédé par Personnage::
+- en initialisant nos attribut à l interieur du constructeur(ds la source) delon 02 méthodes
+- header: class Personnage{  Personnage();}
+- source: 
+
+Méthode 01:
+----------
+
+Personnage::Personnage()
+{
+m_vie = 100; 
+m_mana = 100; 
+m_nomArme = "Epée rouillée"; 
+m_degatsArme = 10;
+}
+
+
+Méthode 02:
+-----------
+
+Personnage::Personnage(): m_vie(100), m_mana(100), m_nomArme("Epée rouillée"), m_degatsArme(10){// rien ne mettre ici}
+
+
+Q47: c'est quoi la différence entre l utilisateur et le concepteur?
+R47:  l'utilisateur, c'est celui qui crée et utilise les objets(dans le main). Le concepteur, c'est celui qui crée les classes(dans le header).
+ 
+
+Q48: c'est quoi une méthode constantes?
+R48: ce sont des méthodes de lecture seule, elle possède le mot clé const:
+- header: void meth(int a)const;
+- source: void MaClasse::maMethode(int parametre)const{}
+
+Q49: ça sert à quoi de définir des méthodes constantes?
+R49: pour 3 raisons:
+* Interdir sa modéfication
+* pour indiquer que c est une methode constante
+* pour faciliter le traitement du compilateur
+
+
+Q50: comment afficher des attributs private dans une autre classe?
+R50: par des méthodes publiques, chaque méthode renvoie la valeur d un attribut
+
+
+Q51: pourquoi on associe les classes avec un pointeur?
+R51: si on intègre un objet d une classe1 comme attribut dans une autre classe2, les valeurs des attributs de l'objet seront toujours fixes, par contre si au lieu de mettre en paramètre un objet on mets un pointeur de type class1, la modification de l objet après serait souple 
+
+
+Q52: c'est quoi un pointeur 'this'?
+R52: dans un objet : this est un attribut pointeur vers l'objet meme
+
+Q52: c'est quoi le but d'utiliser 'this'?
+R52: pour avoir l adresse de l objet meme:  crée une méthode qui retourne le pointeur vers l'objet auquelle elle appartient:  
+Personnage* Personnage::getAdress(){return *this}
+
+Q53: c est quoi une ZIM?
+R53: zone d initialisation des membres: c est l'écriture faite entre le constructeur et les {} pour affecter des valeurs paramètres aux attributs (initialisations des membres), exemple: 
+
+Personne:: Personne(int age, string name): m_age(age), m_nom(nom){}
+
+Ou bien:
+
+Personne:: Personne(): m_age(1000), m_nom("Baaziz"){} 
+
+Q54: C'est quoi un constructeur de copie?
+R54: une fois on crée un constructeur dans une classe, on pourra ensuite créer un objet en copiant un ancient objet
+
+Q55: Pourquoi c 'est préférable de créer nous meme un constructeur de copie et de ne pas faire confiance au constructeur de copie généré automatiquement avec le constructeur par defaut?
+R55: car le constructeur de copie généré automatiquement, il va tout recopier ce qui pose un problème de debeug dans le cas de la présence des attributs pointeur(lors de la suppression de l objet original):
+- les 2 objets ont un seule pointeur: une seule adresse
+- lors de la destruction de l objet original, son pointeur aussi serait detruit
+- lors de la destruction de l objet copie: le système ne trouve plus l adresse --> beug.
+
+Q55: Comment créer nous meme un constructeur de copie?
+R55: on définie son prototype dans le header, puis on le définit dans la source:
+
+*header.h:
+
+Personnage();//constructeur par defaut
+Personnage(Personnage const& PersonnageACopier); //constructeur à copie
+Personnage(std::string color_car, int price_car);//constructeur surchargé
+~Personnage();// le destructeur
+
+*source.cpp:
+
+Personnage::Personnage(Personnage const& personnageACopier) 
+   : m_vie(personnageACopier.m_vie), m_mana(personnageACopier.m_mana), m_arme(0)
+{
+    m_arme = new Arme(*(personnageACopier.m_arme));
+}
+
+
+
+Q56: c'est quoi l'héritage ? 
+R56: C'est une technique qui permet de créer une classe à partir d'une autre classe. Elle lui sert de modèle, de base de départ. Cela permet d'éviter d'avoir à réécrire un même code source plusieurs fois
+
+
+
+- exemple de la classe fille Guerrier qui hérite de la classe Personnage:
+
+class Guerrier: public Personnage
+{
+	void Frapper()const;
+};
+
+
+Q57: c'est quoi une méthode statique?
+R57: Ce sont des méthodes qui appartiennent à la classe mais pas aux objets instanciers à partir de cette classe.
+
+class Maclasse 
+{
+public:
+MaClasse();
+static void maMethode();
+};
+
+Q59: C'est quoi l'interet d utiliser une méthode statique?
+R59: il y a des cas comme dans le librairie Qt :
+- classe QDate: --> méthode currentDate() qui renvoie la date actuelle
+- Qdir: --> méthode drives(): qui renvoie la liste des disques
+
+
+Q60: c'est quoi un attribut statique?
+R60: ce sont des attributs qui appartiennent à la classe et non aux objets créés à partir de la classe.
+un attribut static est global, accéssible depuis l extérieur, sans etre passé en argument pour une autre méthode.
+
+Q61: C'est quoi l'amitié?
+R61: Dans le langage orienté objet, l'amitié est le fait de donner un accès complet aux éléments d'une classe.
+
+si on déclare que la fonction A est amie avec la fonction F, donc: 
+la fonction A pourrait modifier les attributs privés de la fonction F (elle casse l encapsulation)
+
+Q62: Comment déclarer l amitié entre deux classes?
+R62: avec le mot clé friend.
+
+
+
+Q63: C'est quoi la dérivation de type?
+R63: c est la permission de mettre un objet2 à la place d un autre objet1, car la classe de l objet2 hérite la classe de l objet1
+- la classe mère a une méthode qui prend comme paramètre un objet de la classe mère: void methode(Personnage & cible);
+
+- on pourrait appliquer cette méthode en mettant en paramètres un objet d'une classe fille ou sous fille: 
+objet_mere.methode(objet_mere)
+objet_mere.methode(objet_fille)
+objet_fille.methode(objet_mere)
+objet_fille.methode(objet_fille)
+
+
+Q64: comment déclarer le constructeur d une classe fille?
+R64: meme si la classe mère possède un constructeur, la classe fille a le droit d avoir un constructeur aussi:
+
+Ps: dans l exemple suivant: la classe mère: Personnage, la classe fille: Magicien, et m_mana est un un attribut propre à la classe fille.
+- dans la source de la la classe fille:
+
+Magicien::Magicien: Personnage, m_mana(100)
+{}
+
+Q65: Comment peut on faire le passage de paramètres par un constructeur d'une classe fille? cvd : on initialise un attribut d une classe mère en instanciant une classe fillle: 
+R65: 
+- Le constructeur de la classe mère (source):
+
+Personnage::Personnage(string nom): m_vie(100), m_(nom)
+{}
+
+- Le constructeur de la classe fille (source): 
+Magicien::Magicien(string nom) : Personnage(nom), m_mana(100)
+{}
+
+
+- le main: Magicien firstMagicien("NADA")
+
+Q65: c'est quoi la portée protected?
+R56: les éléments qui suivent protected ne sont pas accessibles depuis l'extérieur de la classe, sauf si c'est une classe fille.
+- Le but de l'utilisation de la portée protected au lieu de private: pour éviter d'alourdir le code avec les méthodes accésseurs afin d accéder aux attributs encapsulés
+
+Q66: c'est quoi le masquage?
+R66: Quand on fait un héritage, la classe fille reçoit automatiquement toutes les méthodes de la classe mère. Si une de ces méthodes ne nous plaît pas, on la réécrit dans la classe fille et le compilateur saura quelle version appeler
+
+PS: une redefinition = une definition normale de la méthode avec le meme type et le meme nom(sans aucun mot clé spécial)
+
+Q67: c'est quoi un polymorphisme?
+R67: c'est le changement du fonctionnement d'un code de différentes manières selon le type qui l'utilise.
+- Les méthodes héritées peuvent avoir un comportement polymorphique si on veut
+- il permet de manipuler des objets d'une classe fille via des pointeurs ou des références sur une classe mère
+
+expl du polymorphisme: la résolution dynamique des liens
+
+Q68: Quelles sont les méthodes d'une classe qui ne seront jamais héritées ?
+R68: les constructeurs et les destructeurs, du coup c est compliqué pour qu elles auront un comportement polymorphique.
+
+Q69: c'est quoi la résolution statique des liens?
+R69: c'est lorsque le type de la variable qui détermine quelle fonction membre appeler et non sa vraie nature.
+(lors de l'héritage, une méthode qui prend en paramètre un objet mère, et si on met en paramètre un objet fille, la méthode applique le comportement de la class mère et non de la classe fille)
+
+Q70: c'est quoi la résolution dynamique des liens?
+R70: lors de l'héritage, à l'aide des méthode virtuelles et les réfférence/pointeurs, la méthode de la classe mère se comporter comme classe fille, alors que le paramètre de cette méthode est un objet de la classe mère.
+
+Q71: c'est quoi une méthode virtuelle?
+R71: c est une méthode normale précédé par le mot clé virtual, on utilise ce type des méthode pour la résolution dynamique des liens
+
+
+Q72: Est ce qu on peut créer un constructeur virtuel?
+R72: le but de créer un constructeur virtuel c est la résolution des liens pour que le constructeur aura un comportement polymorphique, par contre un constructeur pourrait construit n importe quel objet sans passer par la résolution , donc: la résolution dynamique ne se fait pas.
+
+Q73: Est ce qu'un  destructeur pourrait avoir un comportement polymorphique en passant par la résolution dynamique des liens?
+R73: en utilisant les pointeurs, et le destructeur virtuel (voir commande 23)
+
+Q74: c'est quoi une collection hétérogène?
+R74: c'est un tableau dynamique qui contient des types différents: le type class mères et les types classes filles en utilisant un pointeur:juste  on met * à cotté du type mère pour déclarer une collection hétérogène:
+vector<Vehicule*> ListV
+
+
+Q75: c est quoi une fonction virtuelle pure?
+R75: le contraire de la fonction statique qui existe dans la classe mère mais pas dans les classes filles, la fonction virtuelle pure: elle existe dans les classe filles mais non plus dans la classe mère, mais on est obligé de la déclarer pour qu elle soit héritée par les classes filles.
+
+Q76: comment déclarer le prototype d une fonction virtuelle pure?
+R76: virtual int meth_Name() const = 0;
+
+Q77: c est quoi une classe abstraite?
+R77: Une classe qui possède au moins une méthode virtuelle pure est une classe abstraite
+
+Q77: c est quoi une classe abstraite?
+R77: Une classe qui possède au moins une méthode virtuelle pure est une classe abstraite
+
+Q78: Est ce qu on pourrait instancier des objets à partir d une classe abstraite?
+R78: non, on peut créer des pointeurs oui
+
+Q79: c est quoi la différence entre une méthode virtuelle et une méthode virtuelle pure?
+R79: 
+- une méthode virtuelle peut être redéfinie dans une classe fille ;
+
+- une méthode virtuelle pure doit être redéfinie dans une classe fille.
+
+Q80: Donner des exemples des méthodes abstraites dans la bibliotheque Qt?
+R80:
+
+Dans la bibliothèque Qt, Il existe:
+
+-une classe par sorte de bouton: une classe pour les boutons normaux, une pour les cases à cocher, etc. 
+- Toutes ces classes héritent d'une classe nommée QAbstractButton, qui regroupe des propriétés communes à tous les boutons (taille, texte, etc.). Mais comme on ne veut pas autoriser les utilisateurs à mettre des QAbstractButtonsur leurs fenêtres, les créateurs de la bibliothèque ont rendu cette classe abstraite.
+
+
+
+
+
+
+
+
+
+
+
+

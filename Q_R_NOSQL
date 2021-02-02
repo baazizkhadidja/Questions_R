@@ -1,0 +1,120 @@
+1- l origine de l apparaition de nosql:
+- les contrainte de sql avec les 3V: volume, vélcité, variété
+
+2- quelles sonts les 4 familles de nosql:
+
+- F orientée clé-valeur: (json) associer la clé avec le rste des informations CRUD
+- F orientée lignes vers les colonnes:stoquer les informations dans des lignes, ou dans les colonnes:  BigTable, Hbase, Sparl SQL, Elasticsearch
+- F orientée documents: (json + imbriqué plus complexe) MongoDB, CoucheBase, DynamoDB, Cassandre
+- F orienté graphe: sous forme de graphe pour la corrhelation: Neo4j, OrientDB, FlockDB
+
+3- c est quoi une transaction sql?
+
+    Les transactions permettent de grouper plusieurs requêtes, lesquelles seront validées (COMMIT) ou annulées (ROLLBACK) toutes en même temps.
+
+    Tous les changements de données (insertion, suppression, modification) faits par les requêtes à l'intérieur d'une transaction sont invisibles pour les autres sessions tant que la transaction n'est pas validée.
+
+    Les transactions permettent d'exécuter un traitement nécessitant plusieurs requêtes en une seule fois, ou de l'annuler complètement si une des requêtes pose problème ou si la transaction est interrompue.
+
+    Certaines commandes SQL provoquent une validation implicite des transactions, notamment toutes les commandes DDL, c'est-à-dire les commandes qui créent, modifient ou suppriment des objets dans la base de données (tables, index…).
+
+    Les critères ACID sont les critères qu'un système appliquant les transactions doit respecter pour être fiable : Atomicité, Cohérence, Isolation, Durabilité.
+
+
+4 - c est la différence entre les propriéts du SQL et NOSQL? 
+- ACID vs BASE:
+
+* Atomicité(indivisible)-Cohérence-Isolation-Durabilité:ce sont incompatible avec Nosql(pas de réplication des bases de données= pas de partage des bdd entre les serveurs maitre et esclaves(système distribué)), c est pour ça on adopte les propriétés BASE:
+* BASE(basicaly-available, soft-state, Eventuallyconsistant)
+
+5- c est quoi le théorème de CAP?
+- c est un téorème qui caractérise le sql, nosql et d autres
+C(Consistency=coherence)-Availability(Disponibilité)-Partition Tolerance(Distribution)
+
+Ps: n importe quelle modele/famille de sql ou nosql doit respecter 2 critère de CAP
+
+
+6- quelles sont les modes d'organisation/rangement(sharding) des données?
+- BTree: les arbes(mode de recherche=mode de recherche indexation d un livre)
+- HASHING: le hachage //        // bibliothèque
+- HDFS: la distribution: sur plusieurs serveurs
+
+
+7- c est quoi le sharding?
+- est une technique qui permet de distribuer des chunks (morceau de fichier ) sur un ensemble de serveurs
+
+8- HDFS: Hadoop distribuet file system: distribuer chaque chunk dans 3 serveurs différents dans le but de: si un serveur tombe en panne , la donnée pourrait etre toujours récupérée
+
+9- les critères pour choisir une base de données:
+
+Coût
+Cohérence
+Disponibilité
+Langage
+Fonctionnalité : Symfony
+
+
+- puis donner des points par rapport au bdd suivant: MongoDB
+	
+Cassandra, ElasticSearch, MongoDB
+Ps: le site suivant : https://db-engines.com/en/ranking_trend
+
+donne une comparaison entre les bases dd
+
+10- Instalation MongoDB:
+
+- sudo apt install mongodb
+
+- le d ossier serait télécharger dans le repertoire suivant:  
+/usr/bin/mongod
+
+
+11-les collection (les tables) Nosql:
+ A mongodb il y a pas de base de données il y a que les tables, aussi il ya pas de jointures il y a des fusions
+- une table en relationnel dite: collection en nosql
+- une ligne en relationel dite: un documant en nosql
+- une colonne en relationnel dite: field en nosql
+- une bdd = documents
+- un document est imbriqué entre {} et se compose par une clé:valeur
+
+
+12- c est quoi une dénormalisation d un document?
+- c est le fait de minimiser le nombre des documents en les fusionne entre eux 
+
+13- comment imbriquer une collection dans un document?
+(comment imbriquer une table dans une ligne)
+- le document originale {clé1:valeur1, clé2:valeur2, clé3:valeur3}
+- le 2 em document {clé4:valeur4, clé5:valeur5, clé6:valeur6}
+- le document final après la fusion: 
+{clé1:valeur1, clé2:valeur2, clé3:valeur3,
+doc2:[clé4:valeur4, clé5:valeur5, clé6:valeur6]
+}
+
+14- la dénormalisation(fusion de 2 tables) du schéma = modélisation de document:
+
+avant d'utiliser un document csv plein des jointures en nosql, il faut le transformer tt d abord en json, en proscrivant les jointures(enlever les jointures et les remplacer par des fusions d une tables entre une autre) avec les étapes suivantes on maitrise mieux l art de cette fusion:
+
+1* Des données fréquemment interrogées conjointement:
+expl: Habitation devient un document imbriqué à l’intérieur de Personne
+2* Toutes les données d’une entité sont indépendantes:
+expl: la liste des domaines est importé dans Personne et représenté par : “[domaines]”
+3* Une association avec des relations 1-n des deux côtés:
+expl: seule l’association est imbriquée sous forme d’une liste de documents, intégrant les attributs (qualité et date), ainsi qu’une référence vers l’employeur. Ainsi : “[{emploie+ref}]”
+4* Même taux de mises à jour: 
+expl: le taux de mises à jour des emplois est équivalent à celui de la Personne
+
+15- comment faire une convertion des données de type relationnel vers un type Nosq(des documents)l?
+
+-  méthode1: créer un ETL (Extract-Transform-Load)
+- méthode2: ’utiliser l’outil OpenRefine (anciennement GoogleRefine
+
+
+
+
+
+
+
+
+
+
+
