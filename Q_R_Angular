@@ -72,7 +72,7 @@ R11: C'est la programmation dont le code qui s'exécute suite à un déclencheme
 
 
 Q12: Qu est ce qu un service?
-R12: c'est un fichier centrale qui contient une partie du code et des données les plus utilisées par les autres fichiers: pour éviter la répition   
+R12: c'est un fichier centrale qui contient une partie du code et des données les plus utilisées par les autres fichiers: pour éviter la répétion   
 
 Q13: comment injecter un service dans les autres fichier?
 R13: il y a 3 niveau d injection:

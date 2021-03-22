@@ -1,0 +1,208 @@
+lien:  https://docs.docker.com/get-started/
+
+
+1/ la problématique/ origine de la création de Docker :
+
+- Dependency Hell: l enfer de la dependance des librairie: s'il y a un problème dans un librairie ça influence sur les autre librairie
+- la différence entre la version des librairies du locale et du server sur lequel on va deployer
+- la différence des système d'exploitation 
+
+
+2/ les parties importantes sur Docker:
+
+1* c est quoi une image?
+- c est un fichier/template immutable (qu on ne peut pas modifier) qui contient : les librairies, les outils qu on va les utiliser dans notre projet, mais on ne peut pas activer/commencer le projet directement à partir des images donc on a besoin d'un conteneur
+
+2* c est quoi un conteneur?
+- c est une instance de l'image en phase de running
+- on peut trouver plusieurs instances(conteneurs) d'une seule images
+
+3* c est quoi la différence entre les machines virtuel/virtualisation  et Docker/containerization?
+- Docker s'appuie sur le kernel du system d exploitation local pour travailler meme avec plusieurs contenair --> n a pas besoin de 
+alors que:
+
+- la machine virtuelle exige son propre système d exploitation(espace exploité du os local) , donc plusieurs machine --> plusieurs os --> grand espace --> alourdir le système 
+
+3/ avantage de DOCKER:
+- flexible: marche avec les applications les plus complexes
+- léger: car il partage le 'host kernel' pas comme MV
+- portable: on l utilise dans le local, le cloud.. run evry where
+- ses contenaire son séparés : la modification d un contenair n influence pas sur le reste du programme
+- on peut faire des copies de chaque contenaire et ils marchent tous au meme temps
+- securisé: par defaut sans avoir besoin de configuration 
+
+
+
+4/ l'architecture de DOCKE: 3 parties + 3 ordres :
+
+- les 3 parties: CLENT, HOST, REGISTRY(PULL)
+
+
+- les 3 orders : BUILD, PULL, RUN
+
+on commence par 'BUILT' pour définir l'image, si elle existe dans le host(daemon), il y aura RUN pour l'activation du contenair, si non si elle n existe pas dans le host, il va l'importer du HUB(Registry) avec PULL, puis executer le contenair avec RUN 
+ 
+Ps: on fait le build sur Linux avec la ligne de commande, sur windows/mac avec LC + REMOTE API
+
+5/ vérifier si docker est bien installé et il est capable de run une image:
+
+sudo docker run hello-world
+
+- resultat: les étapes suivies pour runner le container
+
+
+6/ les options du docker: docker --help
+
+- les management Commands: sur les contenairs
+
+
+7/ Docker Hub:  contient des images prédéfinits 
+
+
+8/ supprimer image: 
+
+docker rmi [IMAGE ID]
+
+exemple:
+sudo docker rmi  a220d5ca33fd
+
+
+9/ importer une image à partir de Docker Hub: docker pull [image name]
+- pour savoir le nom de l image on visite le docker HUB: pour trouver le nom exacte de l image
+- exemple: docker pull Python
+
+10/ RUN un container: sudo docker run [image name]
+
+exemple : sudo docker run nginx
+
+- resultat: le contenair est actif, pour le laisser actif il faut ouvrir un nouvel onglet dans le terminale ,
+
+PS: pour désactiver un conteneur: tapper sur le clavier les 2 boutons: ctrl + C
+
+10/ vérifier si le contenair est actif ou passif:
+
+docker ps    (que les container actifs)
+docker ps -a  (tous les container actifs et passifs)
+
+11/ RESTART un contenair qui est désactivé:
+
+docker start [container Id]
+
+exemple: docker start 6314c8e40aab
+
+12/ Stoper un contenair:
+
+docker stop [id]
+docker stop 6314c8e40aab
+
+PS: pour vérifier : docker ps
+
+13/ supprimer un container:
+
+docker rm   (supprimer que le conteneur passif)
+docker rm -f  (supprimer le cont mm si il est actif)
+
+14/ renommer un conteneur:
+
+docker run --name my-server nginx
+
+
+PS: pour runner un container dans le background:
+
+docker run -d [image ID]
+
+
+15/PUBLISH PORT: Partager un seul port par des conteneurs différents :
+
+- on a notre serveur local : localhost
+- on a un autre serveur "nginx" qu on a crée dans un coteneur 
+- si on veut afficher le serveur "nginx" dans le serveur localhost--> on ne peut pas car le conteneur est isolé du host
+- la solution pour partager un port entre un conteneur avec un host:  
+
+sudo docker run --name my-server -d -p 5000:80 nginx
+
+- tapper sur le navigateur: http://127.0.0.1:5000/
+
+- resultat: welcome to nginx
+
+16/ EXPOSE PORT: 
+
+si on veut partager un seule port entre 2 conteneurs isolé:
+
+docker run -expose 80 ubuntu bash
+
+exemple: 2 conteneurs redis + nodes.js
+
+
+17/ c est quoi un Dockerfile?
+
+- si on veut créer notre propre shéma, on doit tout d abord créer un fichier dite 'dockerfile', et on met le nom des outils à installer, avec une syntaxe précise, puis on crée l image, puis on lance le conteneur
+
+18/ c est quoi la syntaxe necessaire pour structurer un 'Dockerfile'?
+
+* FROM qui vous permet de définir l'image source ;
+
+* RUN qui vous permet d’exécuter des commandes dans votre conteneur ;
+
+* ADD qui vous permet d'ajouter des fichiers dans votre conteneur ;
+
+* WORKDIR qui vous permet de définir votre répertoire de travail ;
+
+* EXPOSE qui permet de définir les ports d'écoute par défaut ;
+
+* VOLUME qui permet de définir les volumes utilisables ;
+
+* CMD qui permet de définir la commande par défaut lors de l’exécution de vos conteneurs Docker
+
+
+19/ Nettoyer le système:
+
+sudo docker system prune
+
+
+
+PS: lorsequ on a plusieurs conteneurs: on les appèles: un stack, on les gère avec docker-compose --> voir Q_R_docker-compose
+
+-----------------------------------------------------------
+Application:
+
+1- Créer un fichier dite: Dockerfile, et mettre dedant le script suivant:
+
+FROM debian:9
+
+RUN apt-get update -yq \
+   && apt-get install curl gnupg -yq \
+   && curl -sL https://deb.nodesource.com/setup_10.x | bash \
+   && apt-get install nodejs -yq \
+   && apt-get clean -y
+
+ADD . /app/
+WORKDIR /app
+RUN npm install
+
+EXPOSE 2368
+VOLUME /app/logs
+
+CMD npm run start
+
+2- créer un image + le nommer à partir de notre docker file:
+
+docker build -t ocr-docker-build .
+
+3- lancer le conteneur:
+
+docker run -d -p 2368:2368 ocr-docker-build
+
+4- ouvrir le navigateur dans l'adresse:
+127.0.0.1:2368
+
+
+
+
+
+
+
+
+
+
+

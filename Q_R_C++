@@ -228,7 +228,7 @@ Le 08/10/2020
 
 Q37: Comment créer une classe en c++
 R37: 
-classe Voiture
+class Voiture
 {
 int price;
 void meth(type & param){}

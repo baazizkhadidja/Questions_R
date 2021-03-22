@@ -1,0 +1,593 @@
+le 03/03/2021
+
+
+Plus d'instruction sur : github.com/khalednoh/instructions
+
+
+sommaire:
+1- installation
+2- premier job
+3- configuration générale
+4- gestion des utilisateurs et des droits
+5- triggers et remote url
+6- planification de build
+7- les variable de build
+8- premier: build/ run / test
+9- Plugin: Git
+10- trigger git
+11- git push automatique
+12- les vus
+13- plugin: delivery pipeline (cascade de jobs graphitiser en pipeline)
+14- Maven : packagr un projet avec jenkins(java c est le plus adapté)
+15- premier Pipeline
+16- Pipeline: générateur de syntax
+17- Pipeline : premier jenkinsfile (un fichier qui se met dans la racine de depot du code )
+18- Docker : run d un conteneur à travers jenkins
+19 - Docker: build d une image
+20- Docker: push vers une image
+21- Pipeline: build maven , build docker et push registry
+22- Ansible: premier utilisation
+23- Ansible: transmettre des variables d un jon à un ansible
+24- Pipeline: git, maven, docker et ansible
+25- API: liste déroulante auto_alimentée 
+26- API: leste déroulante en cascade
+27- API: utilisation des listes dans ansible
+28- Jmeter: installation et plugin
+29- Jmeter: création d un plan de test 
+30- Jmeter: deployement avec un plan de test final
+
+
+
+1/ installer Jenkins à l aide de la ligne de commande
+
+
+- sudo apt update
+- apt list --upgradable
+- sudo apt search jdk
+- sudo apt install openjdk-8-jre
+- sudo apt install openjdk-8-jre-headles
+- wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+- décoché la case https://pkg.jenkins.io ....  sur la fenetre issu du clic sur le fichier sources.list  qui se trouve dans la directory: /etc/apt
+- sudo apt update
+- sudo apt install jenkins
+
+2/ lancer jenkins:
+
+- sudo systemctl start jenkins
+- sudo systemctl enable jenkins
+- ip a  --> resultat: plusieurs APIs, parmis elle: 172.17.0.1
+
+- ouvrir sur le navigateur la page: 172.17.0.1:8080
+- pour rentrer le mot de passe on fait sur la ligne de commande:
+
+ sudo cat /var/snap/jenkins/1906/secrets/initialAdminPassword
+- copier coller le mot de passe resultant 
+- une page s'affiche , cliquer sur installer les plugin
+- créer un compte administrateur: identifiant, mot de passe
+- suivre les étape, à la fin cliquer sur commencer Jenkins
+- une belle interface s'affiche
+
+
+
+
+3/ créer un premier job(tache):
+
+- cliquer sur Utilisateurs
+- cliquer sur Nouveau Item
+- entrer un nom d item 
+- cliquer sur free-style/ok
+- configuration: description, choisir le build, /save
+- il s affiche le job avec plusieurs commandes: Etat, modification, repertoire de travail, lancer un build, configurer, supprimer le projet, rename, 
+
+
+4/ build un job:
+- cliquer sur la commande 'build now ' du job 
+- affichage des résultats:  dans Historique des build
+PS: le bleu: succes/rouge : fail/orange: ???
+- cliquer sur #1 pour afficher les details
+- cliquer sur console Output pour afficher les details de l'execution
+meme pour une erreur
+5/ affiché les projets crées:
+
+- cliquer sur 'Tableau de bord'
+
+6/ configurer un job:
+
+- cliquer sur 'configure'
+- modifier la description , le script shel ...
+
+7/ c est quoi un repertoire de travail(workspace)?
+
+- si le resultat du script shell serais affiché dans un fichier , dans le menu 'console' ne nous affiche pas les resultat, mais il se trouve dans le repertoire de travail 
+
+
+8/ traiter Jenkins avec la ligne de commande:
+
+- le repertoire dans lequel se trouve 'Jenkins': racine   /var/lib/jenkins/ls 
+
+9/ installer git /Github et Maven:
+
+- Administration jenkins --> gestion des plugins --> un tableau des plugins: disponible, installés, avancé ...
+
+- si on veut vérifier si un plugin installé ou pas: afficher la liste installés + ecrir le nom du plugin dans le champ de la recherche
+
+- Pour confirmer: administrer jenkins/ configuration global des outils/ 
+
+10/ Installer Maven:
+
+- administrer jenkins/ administrer plugins/ disponible/ chercher maven/ cocher maven integration/ download now and install after restart/cocher sur redemarer
+
+- ajouter le plugin dans la liste des outils:
+
+administrer jenkins/configuration des outils/ajouter/ entrer lenom-version/Enregistrer
+
+PS: pour confirmer que le maven est installé: lorsequ on essaie de créer un job: parmis les plugin on trouve le "maven"  
+
+
+11/ comment faire une integration entre le job + le git + le maven?
+
+
+1* new item + nom + choisir maven
+2* gestion de code source: clique sur git + repository url : mettre le lien de la repository du code
+PS: si la repository est privé: on doit mettre l identifiant + le mot de passe du github sur Credentials
+
+3* Build: pom.xml + goals et options: -Dmaven.test.skip=TRUE install
+
+Ps1: le script maven: l'ensemble des commandes pour executer le programme JAVA on les trouve dans un document sur git: :
+mvn clean, mvn clean test, mvn clean pakage install, mvn-Dmaven.test.skip=TRUE install
+
+4* apply/sauver
+
+5* lancer un build
+
+6* resultat: cliquer sur Console Output pour voir le resultat et l historique du build
+
+
+7*Configurer/Post Steps:Pour run le jar file created: 
+
+-  Ajouter une étape post-build: Execute shell:
+echo ">> start running JAR file"
+java -jar 
+
+
+12/Trigger automatique(tir automatique) comment automatiser l integration entre git/githlub/jenkins: on veut que 'Jenkins' fait un built tout de suite après le push du code sur github:
+
+A/ les étapes sur Jenkins:
+
+1* installer le plugin : GitHub Installation  (administrer Jenkins/gestion des plugins/disponible ...) 
+
+2* coisir le job en maven / configuration/Ce qui déclenche le build/cocher 'GitHub hook trigger for GITScm polling'
+
+B/ les étapes sur Github: 
+
+1* entrer dans repository/ Settings/ Webhooks/ add webhook/ 
+2* entrer le lien du Jenkins dans le champs: Payload URL: 
+http://172.17.0.1:8080/github-webhook/
+
+PS: n oublie pas le dernier slash 
+
+3* Content type: choisir : application/json
+
+4* cocher:
+ 'Just the push event'
+5* cocher sur Active
+Ps: il ne faut pas que l'url soit localhost
+
+- resultat: Okay, that hook was successfully created
+
+C/ Execution:4* resultat: si on fait commit + push --> jenkins commence directement : le built , 
+
+13/ the email notification: pour envoyer n importe quel action: build, update ... par mail
+
+1* installer le plugin : Mailer Plugin
+
+2* configurer ma boite mail personnelle pour qu elle permettre à un autre serveur de l utiliser pour l utiliser afin d'envoyer (display captcha: Allow less secure apps: ON)
+
+Ps: le lien pour gmail: 
+
+https://www.google.com/settings/security/lesssecureapps    and turn of 
+
+
+3* ajouter l adresse vers laquelle on envoie les notifications: 
+
+Administrer Jenkins/ System configuration/ Email notification: 
+
+SMTP server:  smtp.gmail.com
+
+user Name: mon adresse mail personnelle
+Password: ****
+SMTP
+
+4* resultat: si on fait commit + push --> jenkins commence directement : le built   + envoyer les notifications 
+
+
+14/ Instalation de Docker dans Jenkins:
+
+1* Jenkin UI portal:
+
+tableau de bord/ jenkins administrateur/configuration des plugins/ installer:
+Docker
+
+* resultat: "docker plugin" est installé
+
+* vérivier docker: 
+sur la ligne de commande on tappe: docker images
+
+----------------------------------------------------------------------------------------------------------------------------
+on peut demander maintenant de Jenkins de RUN jobs et on peut faire build à Docker images et RUN container de docker images
+----------------------------------------------------------------------------------------------------------------------------
+
+
+15/ Lancer un conteneur PAR JENKINS: download(boll) à docker images sur notre server puis demander de Jenkins de RUN container de cette image à notre server depuis Jenkins JOB:
+
+1- Connecter sur Docker Hub, chercher l image tomcat
+2- sur la ligne de commande:  sudo docker pull tomcat
+3- confirmer que l image tomcat est téléchargée: sudo docker images
+4- sur jenkins: run un conteneur sur le server:
+
+- new item/freestyle/
+- build/ execute script shell
+- dans le script shel on écrit: docker run -d -p 9090:8080 --name=tomcat1 tomcat
+- cliquer sur apply/sauver
+- cliquer sur lancer un build 
+- resultat: #1 
+- accéder au projet en cliquant sur le lien #1
+- afficher les details en cliquant sur "Console Output"
+
+5- pour vérifier si le conteneur est lancer ou pas: sur la ligne de commande: sudo docker ps
+
+6- ouvrir le server tomcat sur le navigateur:  127.0.0.1:9090
+PS:  la page par defaut 404 erreur
+
+
+16/ Créer une repository sur Docker Hub:
+- se connecter sur le compte docker Hub
+- repositories/ create repository/name:  /create
+- on peut faire push des images dans notre repository:
+docker push doody1987/demo1:tagname
+
+
+17/ Prend le code de github puis le build avec jenkins puis mettre l'image sur docker Hub:
+
+1-créer un job 'demo1' maven sur jenkins
+
+2- job/gestion de code source: Git + mettre l url : https://github.com/khalednoh/demo1.git  + branche: master
+
+3- Build: Goals et options: clean install
+
+4- Post Steps: Add post-build step: Docker Build and Publish 
+
+* Directory for Dockerfile: doody1987/demo1
+* Registry Credentials(l identifiant de notre docker hub ):si y en a pas on ajoute:  mot de passe + identifiant / ajouter
+
+5- Apply, sauver
+
+6- Jenkins/build
+
+7- Observer l'execution dans 'Console Output' jusqu'à succes
+
+8- vérifier si l image est ajouté sur Docker: sudo docker images
+
+9- vérifier le push de l image sur Docker Hub: dans la repository on trouve une nouvelle image 
+
+ 
+
+
+CONCLUSION: on dit à Jenkins : clone le code du github (dont j ai mentionné la repository) puis faire: clean install, puis push son image sur docker hub(dont j ai mentionné la repository)
+
+
+
+18/ RUN un container dont l image est crée dans 17/, 
+
+PS: il faut confirmer que l image existe
+
+- job/ configuration/ Post build/ajouter une post build étape: execute shell
+
+- déplacer la fenetre 'Execute shell' avant 'Execute shell' 
+
+
+A/job/configure/ Post step /ajouter une étape post build/Execute shell:
+
+
+Script to clean old containers:
+----------------------------------
+echo ">>>>>>>>> Start Clearing old containers "
+if docker ps -a | grep "demo1*" | awk '{print $1}' | xargs docker rm -f; then
+    printf 'Clearing old containers done succeeded\n'
+else
+    printf 'Clearing old containers failed\n'
+fi
+
+
+
+
+
+B- job/configure/ Post step /ajouter une étape post build/Execute shell:
+
+
+ Script to clean old images:
+------------------------------
+echo ">>>>>>>>> Start Clearing old docker images"
+if docker images -a | grep "khalednoh*" | awk '{print $1":"$2}' | xargs docker rmi -f; then
+    printf 'Clearing old images succeeded\n'
+else
+    printf 'Clearing old images failed\n'
+fi
+
+
+C- job/configure/ Post step/ajouter une étape post build/push docker
+
+ 
+
+
+
+D-le deployement: le partage d un seule port entre le conteneur + un serveur(localhost) pour observer l'application:
+
+  job/configure/ Post step (après le champ Docker build)/ajouter une étape post build/Execute shell:
+
+
+Script to run container of last created build:
+-------------------------------------------------
+echo ">>> start running container of last created Image"
+docker run -d -p 9090:9090 --name=demo1-0.0.1-SNAPSHOT$BUILD_NUMBER khalednoh/demo1:demo1-0.0.1-SNAPSHOT$BUILD_NUMBER
+echo ">>> start running container of last created Image"
+
+
+D- Apply/sauver/Build
+
+
+RESUMEEEEEEEEEEEE: dans la configuration d un job on met par ordre :
+
+- Gestion de code source: Git + la repository
+- Ce qui déclenche le build:  à chaque ...SNAPSHOT ...
+- Build: Goals et options: clean install
+- Post Steps: Ajouter une étape post Steps:
+	* Execute un script shell: clean old container
+	* Execute un script shell: clean old image
+	* Build/publish Docker image: repository name, tag, credentials ...
+	* Execute un script shell: run container
+- apply/save
+- lancer un build
+	
+
+
+
+19/ l'importation automatique du code du github à chaque fois il y a un nouveau push:
+
+- job/configuration/ ce qui déclenche build(Build Triggers): Github hook trigger for GITs polling
+-apply/save
+
+
+20/ Jenkins Pipeline(points d'entrées)/workflow: 
+
+- c est un ensemble de stage, à l interieur de chaque stage un ensemble de steps, dont l'input est un source code issu du github, et l'output est la valeur qu on doit l'envoyer à nos business users
+
+- un pipeline = l'ensemble des processus: après developpement(push sur github) jusqu'à la production, passant par: build, test, deployment
+tous ça d'une manière contunue
+
+
+- les 3 options d'enchainement des jobs: 
+
+1* un seule job (freestyle job)= SCM checkout + build + test +deploy
+2* dans plusieurs job (freestyle jobs chain)= job1(SCM checkout) + job2(build) + job3(test) + job4(deploy): dans la configuration de chaque job on met comme 'Post-Build Actions' --> "build other project" : le nom du job suivant 
+- resultat: après l execution d un job , le job suivant s'executera automatiquement(on peut trouver ça dans l historique de la console)
+PS: il y a un incovégnant: couteux dans le temps + manuelement, c est pour ça on utilise pipeline
+
+3* Pipeline: c est la meme option précédante mais au lieu de l executer manuellement on l'execute grace à un script= jenkins file Pipeline qu on peut le mettre dans le "Virtual control system" pour garder l historique des changement 
+
+
+
+21/ quels sont les différents stages et leurs steps?
+
+- l'ensemble des stages commencent par un "workflow start" et finissent par un "workflow end"
+- les différents stages sont:
+
+* developpement
+* workflow Start
+*stage		SCM Checkout
+
+* stage 	build/launch (docker)	
+
+* stage 	Test
+
+* stage		Deploy
+* workflow End
+* Production
+
+
+
+22/ comment créer une option Pipeline sur Jenkins?
+
+- new item --> on choisi Pipeline + donner le nom du job
+
+23/ comment apprendre la syntaxe pipeline?
+
+- il y a l option "Syntaxe Pipeline" dans chaque Pipeline
+- on rempli manuellement le 'steps': repository, git 
+- cliquer sur : generate script pipeline
+
+
+24/ ou est ce qu on écrit le script 'Pipeline'?
+
+- configuration du Pipeline
+- dernière option 'pipeline'
+
+
+25/ c est quoi la syntaxe principale d un pipeline?
+
+- un exemple 'Hello world':
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+26/ quelles sont les 2 méthodes de définition d'un script Pipeline?
+
+1* on peut l ecrir directement dans le champ Pipeline
+
+2* on peut l'importer d'une repository SCM(jenkins file)
+
+
+
+
+27/ c est quoi le node?
+- c est la machine sur laquelle on fait le RUN 
+
+28/ c est quoi un stage?
+- c est un block dans lequel on met les steps, exemples des stages: build, test, deploy  
+
+
+29/ c est quoi un pat/step?
+- c est une ou plusieurs taches qui se trouvent dans le stage
+
+30/ c est quoi la syntaxe d une declarative Pipeline?
+
+- la root = pipeline
+- l'agent= la machine sur laquelle s'execute notre programme (on peut executer chaque stage dans une machine différente)
+- le stage('stage_name'){}
+- exemple:
+
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM scheckout') {
+            steps {
+                echo 'Checkout completed'
+            }}
+            
+        stage('Build') {
+            steps {
+                echo 'Build completed'
+            } }
+            
+         stage('Test') {
+            steps {
+                echo 'Test completed'
+            }}
+        }
+    }
+
+
+31/ c est quoi la syntaxe de la Scripted Pipeline?
+
+
+- la root = node
+- stage('Build')
+- exemple:
+
+
+node {
+ stage('Build'){
+     echo 'Build completed ... '
+ } 
+ stage('Test'){
+     echo 'Test completed ... '
+     
+ } 
+ stage('Deploy'){
+     echo 'Deploy completed ... '
+     
+ } 
+    
+}
+
+
+
+32/ la différence entre déclaratives et scripted Pipelines:
+
+declarative + facile et + utilisée, l autre est ancienne
+
+
+
+33/ Importer le script 'Pipeline' from SCM:
+
+
+1*- sur github on crée une repository--> create a new file --> mettre le script :
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM scheckout') {
+            steps {
+                echo 'Checkout completed'
+            }}
+            
+        stage('Build') {
+            steps {
+                echo 'Build completed'
+            } }
+            
+         stage('Test') {
+            steps {
+                echo 'Test completed'
+            }}
+        }
+    }
+
+- commit pout le nouveau fichier
+
+
+
+- on peut choisir le SCM repository comme 'git'
+
+
+
+
+2*-Créer un pipeline  'SCM':
+
+
+
+
+/ Blue ocean Plugin: facilite le developpement dans les pipeline
+
+
+/ Pipeline as a code: mettre le code dans 'version control system' puis voire l historique , la révision, les versions
+
+/ Jenkins-file walkthrough: Jenkins file qui contient une syntaxe spéciale: retry/time out/ environnement variable/ parallel processus/ stages/ inputs/ users/ post actions sur les build conditions / build parameters/ integration avec les different Plugins
+
+
+
+/ CD Pipeline Demo: comment créer tout un pipeline en utilisant Jenkins file et plusieurs Plugins (Kluk channel)
+
+
+/ Intégration entre Jenkins et coopernates:
+
+/ deployement dans Kupernates Clusters:
+
+/ Integration avec Docker compose:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

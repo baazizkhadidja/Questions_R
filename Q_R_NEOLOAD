@@ -1,0 +1,411 @@
+1- les types de tests de performances:
+- component testing: le comportement de l application
+- load testing: time
+- stress testing: pour le nombre des utilisateurs/transaction
+- volume testing : pour le data
+
+
+2 pourquoi on fait un test de charge?
+
+- tester si votre site peut crasher sous la charge,
+- vérifier les temps de réponse sous la charge prévue,
+- trouver combien d'utilisateurs votre site peut supporter,
+- déterminer vos prérequis en terme de ressources matérielles et de bande passante.
+
+
+3- les étapes pour un load testing: menté en charge:
+
+- l enregistrement du http trafic entre le navigateur et le serveur
+- définition des paramètres du test et le sénario
+- execution du test
+- l analyse des résultats
+
+4- Quels sont les composant de NEOLOAD?
+- le controleur
+- l'Agent d'injection de charge
+- émulation réseau
+- agent de monitoring
+
+5- Les étapes d'execution de NEOLOAD:
+- démarer le controleur
+- Gérer l agent d'injecteur de charge
+- gérer l agent de monitoring
+
+6- c est quoi un controleur?
+- c est la console de pilotage de Neoload, son role est : 
+* concevoir, execution, gestion des tests
+- gestion des agents d injecteur de charge
+- gestion des agents de moonitoring distant
+
+7- comment le controleur peut gérer les agents de moonitoring et l agent d injecteur de charge?
+
+- le controleur intègre les 2 agents (mon+inj) , une fois on démare le controleur les agents seront démarer
+PS: on peut démarer les agents sans avoir besoin du controleur
+
+8-les différentes manière de démarer le controleur:
+- par interface graphique
+- en ligne de commande
+PS: on peut executer neoload en ligne de commande en utilisant avec Apache ANT (il faut integrer un script taskdef qui déclare la definition des taches) 
+
+
+9- quels sont les paramètres qu on doit définir dans taskdef?
+
+- projectFile:indiq le fichier du projet
+- scenarioname: nommer le scenarion
+- testdescription: decrir le test
+- showgui: affiche l interface fraphique
+- report: genere les rapport
+- comparisonReport: genere les rapport de comparaison
+- basetest: indique le nom du test de reference lors de la generation du rapport de comparaison
+- currentLabel: indique le label du test courant lors la generation des rapport
+- ControllerExecutable: definit le chemin executable NEOLOAD
+- monitoredHosts: active les machines à monitorer durant les test
+
+
+10- c est quoi un agent injecteur de charge?
+L’Agent d'Injecteur de charge permet de gérer les sessions des Injecteurs de charge pour mettre le serveur sous stress. Démarrer un Agent d'Injecteur de charge seul permet d'optimiser la capacité d'une machine dédiée au tir d'Utilisateurs Virtuels
+
+11- comment gérer l agent d injecteur:
+
+Les Agents d'Injecteur de charge sont pilotés dans le Contrôleur NeoLoad. Lorsqu'ils sont sur le même réseau, le Contrôleur détecte automatiquement les Agents d'Injecteur de charge disponibles. Dans les situations où l'identification automatique est difficile (pare-feux, routeurs, etc.)
+
+12- comment démarer l agent d injecteur de charge?
+
+
+13- comment démarer des agents d injecteur de charge supplémentaire?
+
+
+
+14- comment démarer l agent injecteur de charge en mode terminal services?
+
+15- comment arreter l agent injecteur de charge?
+
+
+16- c est quoi un agent de monitoring?
+
+17- comment gérer(démarer un agent de Monitoring)?
+
+
+18- comment arreter l agent de monitoring
+
+
+19- Comment faire un démarage rapide?
+
+- ouvrir le projet d exemple
+- concevoir un sénario de test
+- pour exécuter un test
+- analyser le resultat d un test
+- partager avec NEOLOAD Web
+
+***********BARE DES TACHES(fichier/Edition/)***************
+
+
+20- c est quoi une variable en neoload?
+- Les variables sont utilisées pour ajouter du contenu dynamique à un scénario. Ils peuvent être combinés avec d'autres variables ou avec un contenu statique (par exemple ${product_${productID}}) et utilisés dans un certain nombre d'endroits, comme dans les valeurs des paramètres de forme.
+
+21- quels sont les librairies JS existants  ?
+
+- __randomNumber(x, y):Returns a random number
+- __urlEncode(url): Encodes an URL.
+- __urlDecode(url): Decodes an URL
+- __escapeHTML(s): Escapes the characters in a String using HTML entities.
+- Unescapes a string containing HTML entity escapes to a string containing the actual Unicode characters corresponding to the escapes.
+- __unescapeHTML(s): Returns a random String
+
+- __char(): Returns the result of evaluating a list of numbers as Unicode characters.
+
+- __changeCase(s, mode): Returns a string value which case has been changed following a specific mode
+
+- __intSum() :Returns the sum of two or more integer values
+-__longSum(): Returns the sum of two or more long values.
+
+- __getVirtualUserID(): Returns the id of the VU which is being executed
+-__getUserPathName() : Returns the name of the virtual user path
+- Returns the local IP address.
+- __getHostName(): Returns the local hostname.
+- __UUID(): Returns a pseudo random type 4 Universally Unique Identifier (UUID).
+
+- __digest(algorithm, strToEncode, salt, upperCase): Returns an encrypted value in the specific hash algorithm 
+
+-  __toHexString(byteArray) : Converts a byte array into a string of hex chars.
+
+-__toUTF8Array(str): Converts a string in a UTF-8 chars array.
+
+
+22- c est quoi SLA?
+- c est le niveau de qualité de service/
+- permettent de définir des objectifs de qualité de service. Ils permettent par exemple de s'assurer que le temps de réponse moyen d'une requête ne dépasse pas une valeur donnée.
+
+23/ c est quoi un profil de niveau de qualité de service: 
+- un profil SLA: 
+Un profil SLA est un ensemble de SLA. Les profils SLA peuvent être liés aux éléments suivants :
+
+- Parcours Utilisateur
+- Transactions
+- Pages
+- Requêtes
+- Scénarios
+
+24/ donnez des exemples de SLA:
+*par test:
+- temps de réponse moyenne en s, de(requete, de page, la transcription, )
+- requete par seconde
+- débit par seconde
+- nombre d erreur au total
+- taux d erreur
+
+* par interval de temps:
+- temps de réponse moyenne en s, de(requete, de page, la transcription, )
+
+25/ c est quoi proxy?
+ 
+- c est un serveur/programme intermédiaire entre 2 autres serveurs pour surveiller leurs échanges, il se situe au niveau de la couche applicatif(http/ftp/ssh/), expl: internet est un proxy
+
+26/ c est quoi les préférences générales?
+- enregistreur http
+- proxy(ajouter/utiliser), browsers, interface graphique
+- graphique(framework, neotys team server, neolod web, licence)
+- collaboratif: svn et git
+- oracle forms: General settings/Sessions
+- adobe Flex/AMF: statistiques, avancé
+
+
+27/ c est quoi les préférences du projet?
+
+- nom des pages
+- gestionnaire de certificat
+- securité service web
+- paramètre d execution
+- oracle forms
+- gestion des modules
+- CA APM
+- Dynatrace
+- AppDynamics
+- Nudge APM
+- REST API
+- Avancé
+
+
+********** les onglets (conception/Exécution/Résultat)
+
+28/ c est quoi la Conception?
+- c est le premier onglet et le plus important par le quel on commence nos test, il se compose par 3 parties:
+1*parcours utilisateur: pour créer les utilisateurs virtuels avec plein de paramiètres
+
+2*populations: c est l ensemble des parcours utilisateurs
+3* moniteurs: 
+
+29/ quels sont les types d enregistrement d un sénario?
+- enregistrer une application HTTP en mode proxy
+- enregistrer une application HTTP en mode tunel
+- enregistrer une application HTTPS: il faut installer le certificat pour mozila(préférence/vie privé/affiché certificat/importer/choisir le fichier qui se trouve dans le repertoire: home,user,neolod7, conf/cocher les 2 case/pk/redemarer le navigateur)
+- enregistrer une application Adobe RTMP
+- enregistrer une application SAP GUI
+- enregistrer une application mobile
+
+
+30/ c est quoi la différence entre l enregistrement en mode proxy et en mode tunnel?
+
+-proxy: neoload est un intermédiaire entre le navigateur et le serveur/ tunnel: neoload simule le serveur
+
+- proxy plus facile que tunnel
+- certainne application ne permet pas le proxy
+
+
+31/ c est quoi un serveur SSL?
+
+- le protocole Le SSL créé un canal sécurisé entre deux machines ou appareils communiquant sur Internet ou un réseau interne. Son usage le plus courant est la sécurisation de la communication entre un navigateur web et un serveur web. L’adresse URL passe alors de HTTP a HTTPS, le ‘S’ signifiant ‘sécurisé’.
+
+
+32/ c est quoi un parcours utilisateur?
+
+c est un utilisateur qui se compose par 3 conteneurs: 
+- init
+- action: se compose par plusieurs transactions
+- end
+
+
+
+33/ comment lancer un enregistrement d un sénario?
+
+Ps: il faut fermer toutes les applications clients si non on va tt enregistrer et biensur on doit tout d'abord créer un projet ou ouvrir un encien 
+
+
+- cliquer sur le bouton enregistrer des actions ou bien recording API 
+
+- dans la fenetre "commencer l enregistrement qui apparait" on doit créer "un parcours utilisateur" et remplir les informations (nom du pu, mozila, )puis OK
+
+- une peutite fenetre/bare s ouvre : 
+- la page firefox s ouvre et on écrit l url de l application à tester
+
+- à chaque action(cliq/login/post ...) on doit tout d abord donner un nom à l action et à chaque fois on change le nom de l action pour la suivante suivante
+
+- terminer l enregistrement: cliquer sur le symbole carrée noire de la barre, puis sur la fenetre on coche que le domaine précis, puis suivant/suivant/terminer
+
+34/ comment voir les sénarios enregistré?
+- dans l onglet parcours utilisateur, dans le conteneur actions, on on trouve les transactions(login/clic pour home/cloc pour afficher un element/post un commentaire/ajouter un element/valider ..) qu on a enregistré, avec des requetes pour chaque transaction, et des fichiers pour chaque requete
+
+
+35/ c est quoi un navigateur supporté?
+- c est le navigateur dont la gestion du proxy , l effacement du cache et des cookies sont supportés(sur wind: int exp/mozila/chr   unix: mozila/konkeror)
+
+
+36/  comment mettre à jour un parcours utilisateur?
+
+- ça nous permet de fusionner les utilisateurs: avancé/mise à jour pu (fin de l enregistrement ou menu contex sur pu)
+
+
+37/ c est quoi un point de rendez vous qu on trouve dans la bare d enregistrement des sénarions?
+
+- Les points de rendez-vous permettent de synchroniser de multiples Utilisateurs Virtuels pour qu'ils exécutent des tâches au même moment. Le but est de créer une charge intense sur le serveur en un point précis de l'application testée
+
+38/ c est quoi le temps d attente?
+- Le temps d'attente (ou « think time ») permet de simuler le temps passé par l'utilisateur sur la page précédente avant d'accéder à la page courante
+
+39/ il y a quoi dans le panneau serveur qui se trouve avant les parcours utilisateurs?
+
+- Le panneau des serveurs permet de déclarer et modifier les serveurs web utilisés par le scénario. Les serveurs sont automatiquement créés à l'enregistrement du scénario
+
+40/ c est quoi SAP?
+- c est un progiciel pour les bases de données
+
+41/ comment créer un parcours utilisateurs?
+- soit lors de l enregistrement 
+- soit : Parcours utilisateurs/menu context/créer un pu
+
+
+42/ comment trouver les paramètres d un parcours utilisateurs?
+
+- un simple clic sur PU --> à droite de la fenetre ils s'affichent les paramètres suivants:
+
+- gestions des erreurs(aller à l itération suivante/ ou redemarer un nouvel pu)
+- temps d attente(entre page prec et page act)
+- les actions(valid pu, param dynam(framwork))
+- SLA(lier pu avec profil SLA)
+- validation globales(valider les requete pour pu)
+
+43/ comment personnaliser un PU?
+
+- les éléments de bases pour une transaction(symbol dossier jaune): des pages: fichier avec symbole glob ter(constitués des requetes: fichier blanc)
+
+- pour faire un comportement plus complexe: on ajoute des actions logiques: des boucles/conditions/transactions/
+
+
+44/ quels sont les paramètres d une page?
+
+- une fois on clique sur une page: à droite s'affiche: nom, url, description, délai, copie de l ecran, SLA, avancé(les ressources dynamique à recupérer de la page: image, css ...)
+
+45/ quels sont les types des requetes qu on peut trouver dans une page d une transaction d un parcours utilisateurs?
+
+1- R http
+2- R soap
+3- R webSocket
+4- R oracle forms
+5- R adobe flex/AMF
+6- Radobe RTMP
+7- Data format extention requete
+8- R google web toolkit
+9- R Hessian
+10- R de serialisation java
+11- R Siebel
+12- R Silverlight
+13- R media
+14- R poling
+15- R streaming
+ 
+
+46/ c est quoi une requete?
+
+- dans une page d une transaction d une action d un pu on trouve une requete(fichier blanc), elle est suivie d une réponse: css, js, photo ....
+
+
+47/ comment peut on définir un type d une requete?
+- on a 3 méthodes: 
+*manuellement
+*suivre un lien de la requete précédante, *soumettre un formulaire de la requete précédante
+
+48/ comment définir manuellement une requete?
+
+une fois on crée une requete, puis on clique dessu, s affiche une fenetre dans laquelle les paramètres suivants à régler:
+- la méthode (GET, POST, HEAD, PUT, DELETE, OPTIONS, TRACE, CUSTOM)
+- le serveur (Pour plus d'informations, voir Serveurs)
+- le chemin (il peut contenir des variables)
+- les paramètres (chaque paramètre peut contenir des variables dans le nom ou la valeur)
+
+49/ comment éditer un paramètre?
+- le paramètre d une requete a un nom + une valeure, on clique sur modifier pour editer sa valeur:
+* utiliser une expression:texte statique
+* utiliser une valeur extraite:valeur dynamique
+
+- Le bouton Configuration automatique déclenche la recherche de ce paramètre dans les requêtes précédentes
+
+- Le bouton Ajouter au framework permet de migrer l'extracteur de variable en tant que paramètre de framework
+
+50/ c est quoi la différence entre le type d une requete défini manuelement et celle d un type : suivi un lien de la requete précédante?
+
+- l identifiant qui se met automatiquement
+
+PS: le type .. "formulaire précédant" pour suivre les mm parametre du formulaire précédant
+(donnée dynamique), mais dans ce cas on doit quand meme regler les parametres 'formulaire à extraire'
+
+
+51/ on fait quoi durant la validation?
+
+- la validation c est l ajout des assertations sur les réponses envoyées par le serveur testé
+
+- il ne faut pas qu il y aura une erreur de : duré, taille de page ou de contenu, 
+
+
+52/ comment insérer une action logique (boucle, tant que ...)?
+
+- menu context/insérer dans ou après
+- glisserr l action du menu vers le haut
+
+
+53/ tu peux définir chaque action logique?
+
+- Delay:(temps d attente par inséré par defaut) suspend l'exécution de l'Utilisateur Virtuel pendant un certain temps.
+
+- Boucle:  permet d'itérer plusieurs éléments, les pages par exemple, le nombre d’itérations étant défini par l’utilisateur/ une variable.
+
+
+- Tant que:  permet d'itérer sur plusieurs éléments comme les pages tant qu'une condition est remplie, si non l execution s arrete, cet option a un tableau de paramètre paramètres: 2 opérande + opérateur (inférieur à, contient, ...)
+
+- si ... alors sinon: si l action rempli une condition il y aura un resultat sinon y aura un autre resultat
+
+PS: les parametres sont les meme de tant que
+
+
+- Switch: instruction de condition mais avec cases et pas des opérateur comme ds le cas de si, sinon 
+
+- modification variable: permet de changer la valeur d'une variable en dehors de sa politique de changement de valeur
+
+- une Transaction:  est considérée de la même manière que les autres actions (pages, requêtes) dans les résultats, et permet ainsi d'obtenir les mêmes statistiques comme : la durée moyenne, requêtes/s, etc.
+
+- Try...Catch peut capturer les erreurs, les assertions (erreur de validation) ou les deux
+
+- Aller à l'itération suivante
+L'action Aller à l'itération suivante permet d'interrompre l'exécution de l'Utilisateur Virtuel pour aller à l'itération suivante.(dans ou dehors une boucle)
+
+- Stop
+L’action Stop interrompt l'exécution de l'Utilisateur Virtuel
+
+- Fork: permet de jouer des actions dans un fil d'exécution différent du fil courant.
+
+-  Attendre jusqu'à permet de mettre en pause le fil d'exécution courant, jusqu'à ce qu'un ensemble de conditions soit vérifié
+
+
+
+- l action javascript: 
+Son code peut faire appel à des fonctions Javascript communes déclarées dans les librairies Javascript de NeoLoad.
+- 
+
+
+
+
+
+
+
+
+
+

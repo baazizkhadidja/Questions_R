@@ -1,0 +1,103 @@
+
+
+1/ Docker compose: c est un autre outil qui nous permet de coordonnées plusieurs conteneurs en faisant la configuration dans un fichier YAML:
+
+PS: 1 ou plusieurs conteneurs = service/stack
+
+2/ installer Docker compose:
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose && sudo chmod +x /usr/bin/docker-compose
+
+
+3/ Créer un fichier docker-compose.yml : dans notre cas il se compose de 2 services : mysql + wordpress:
+
+
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  db_data: {}
+-----------------------------------------------------------
+PS: Explication de la syntaxe du fichier yaml:
+
+*image: qui permet de spécifier l'image source pour le conteneur ;
+
+*build: qui permet de spécifier le Dockerfile source pour créer l'image du conteneur ;
+
+*volume: qui permet de spécifier les points de montage entre le système hôte et les conteneurs ;
+
+*restart: qui permet de définir le comportement du conteneur en cas d'arrêt du processus ;
+
+*environment: qui permet de définir les variables d’environnement ;
+
+*depends_on: qui permet de dire que le conteneur dépend d'un autre conteneur ;
+
+*ports: qui permet de définir les ports disponibles entre la machine host et le conteneur
+
+-----------------------------------------------------------
+Ps: les noms :db, wordpress, c est nous qu'on les nomme 
+
+
+4/ lancer le stack Docker compose:
+
+- docker-compose up -d            // build + run en ARRIÈRE PLAN
+
+5/ ouvrir le service wordpress sur le navigateur: après le run on écrit sur le navigateur:
+
+127.0.0.1:8000
+
+
+6/ afficher les services:
+- sudo docker-compose ps --services       : afficher les services
+
+
+7/ afficher les logs de notre conteneur: 
+
+docker-compose logs -f
+
+8/ afficher le status des conteneurs orchestrés:
+
+docker-compose ps
+
+9/ arreter les conteneurs docker qui tournent:
+
+docker-compose stop 
+
+10/ supprimer les conteneurs:
+
+docker-compose down
+
+11/ pour voir la configuration
+
+docker-compose config
+
+
+
+
+
+
+
+

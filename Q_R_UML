@@ -1,5 +1,10 @@
 Le 15/12/2020
 
+
+lien : https://openclassrooms.com/fr/courses/2035826-debutez-lanalyse-logicielle-avec-uml/2049091-quelle-demarche-suivre
+
+
+
 1- c est l objectif de shématiser les uml(unified modeling language)?
 - pour aider les membres de l équipe à comprendre les besoin du clients()décrire d une manière visuelle dans les différentes phases de progression du projet: phase d'analyse et phase de conception
 
@@ -128,6 +133,7 @@ I/ Explication analyse des besoins:
 etape1: analyse du contexte: 
 * qui devra utiliser cette application?
 - expl: pour une boutique en ligne: des femmes simple
+
 etape2: la décomposition de la future application:
 * quelles sont les grandes partie de cette application?
 * pour chaque partie c qui parmi les utilisateurs (acteurs) l'utilisera?

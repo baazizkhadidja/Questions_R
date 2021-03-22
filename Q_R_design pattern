@@ -1,0 +1,54 @@
+le 03/03/2021
+
+
+Introduction: les types des design pattern:
+
+- de construction: pour créer un objet:
+
+
+* la fabrique
+* le moteur
+* le prototype:
+
+- le cas: si je veux copier exactement un objet: dans le cas normale on instancier une classe
+- la problématique: il y a des disaines d'attributs parmis lesquels des attributs privés qu on ne peut pas les connaitre et des fois meme la classe on la connait pas
+- la solution: dans chaque classe on implémente une méthode qui permet un clonnage des objets
+
+- donc: l'objet à clonner dite: prototype, et l objet resultant dite: une interface
+
+* singleton
+----------------------------------------------------------------------
+- structurel: pour assembler plusieurs objets
+
+* adaptateur: permet de faire collaborer des objets ayant des interfaces normalement incompatibles
+- exemple: les serialisers qui transforme les données en format JSON pour qu une autre appliction peut utiliser les données
+
+
+* pont: sert à lier plusieurs classes qui ont une seule interface , exemple: les classe api qui lient la base de données avec une seule interface
+
+* composite: assemblé plusieurs classes: expl: le component de Angular
+* décorateur: plaver un objet dans un autre, exemple: le decorateur @api_view : on l utilise pour créer les apis rest en python
+- à angular aussi y a plein des décorateur
+
+* poid mouche: pour minimiser l utilisation du mémoire: expl : les référence et les ponteurs en c++
+---------------------------------------------------------------------
+
+- comportementaux: partager les responsabilités entre les objets
+* itérateur: permet de parcourir des éléments d une structure extene sans exposer aux détails, expl: les methodes next, previous ..
+
+
+* médiateur: permet une communication directe entre les classes, expl: le modèle MVC
+
+* mémento: mémoriser les données: exp : les serilizers il transforme les données en json et les stoquer aussi
+
+* observateur: permet aux objets d envoyer les notification, exp à angular les observer permet aux observables d envoyer des 3 notification: complet, succes, en cours
+
+* etat: permet à un objet de changer son etat, exemple: le polymorphisme en c++
+
+-----------------------------------------------------------------
+
+1/ le prototype:
+
+
+
+- un exemple de code: 
