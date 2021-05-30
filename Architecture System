@@ -1,0 +1,74 @@
+
+
+En suivant ce cours, vous serez capable de : 
+
+    Adopter une posture d'architecte système, 
+
+    Identifier les éléments d'une architecture,
+
+    Représenter visuellement une architecture, 
+
+    Concevoir une architecture efficace et adaptée,
+
+    Élaborer un Document d'Architecture Technique. 
+
+1/ c est quoi le métier architecte système?
+
+
+c'est faire un pont entre le fontionnel et le technique 
+
+2/ c est quoi les caractéristique d'une bonne architecture?
+
+- sécurité de l'infrastructure: disponibilité + intégrité + confidentialité + traçabilité + taux de perte de données 
+- elasticité 
+- couplage lache :  la nature de l’adhérence qu’ont deux systèmes entre eux
+- simplicité
+
+
+3/ Déssiner l'architecture pour bien la représenter
+
+
+
+
+
+
+4/ quelle sont les 4 couches d'une architecture?
+R:
+- la couche fonctionnelle
+- la couche applicative
+- la couche infrastructure
+- la couche opérationnelle
+
+5/ Comment représenter la première architecture
+
+
+6/ Comment préparer un Document d'Architecture Technique?
+
+
+7/ c est quoi la révolution du cloud et l'architecture continue 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

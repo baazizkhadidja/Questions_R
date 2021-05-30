@@ -79,7 +79,7 @@ rechercher des éléments par nom de balise, par classe et par identifiant
 rechercher des éléments en utilisant un sélecteur CSS. La première méthode renvoie tous les éléments correspondants, la seconde renvoie uniquement le premier.
 
 * innerHTML: renvoie le contenu HTML d'un élément
-* textContentrenvoie son contenu textuel, sans le balisage HTML.
+* textContent renvoie son contenu textuel, sans le balisage HTML.
 
 * getAttribute , hasAttribute: accéder aux attributs d'un élément.
 

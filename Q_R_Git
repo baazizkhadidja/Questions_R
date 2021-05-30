@@ -77,7 +77,7 @@ GitHub est un service en ligne qui permet d'héberger ses repositories de code. 
 
     2/Partager des morceaux de code en ligne à l'aide de "gists" ;
 
-    3/Proposer des modifications de code à d'autres repos en faisant des "pull requests" ;
+    3/Proposer des modifications de code à d'autres repos en faisant des "Pull req(extraction )uests" ;
 
     4/récupérer du code depuis un autre repository.
 
@@ -209,6 +209,9 @@ git stash apply
 Q23: Comment peut on contribuer à des projets open sources?
 exemple: le repo https://github.com/oc-courses/intro-git-github
 R23:
+
+METHODE 01: faire les changement dans le locale
+
 1- Copier le projet sur notre compte: faire un fork:
 cliquez sur "fork" en haut à droite
 2- clonez votre copie depuis GitHub sur votre machine
@@ -220,27 +223,195 @@ git commit -m "Added feature allowing users to comment on the blog articles"
 4- Envoyer les modéfication sur Github:
 git push origin my-new-feature
 5- Présenter notre modéfication à l'auteur du projet:
-cliquer sur compare & pull request
+cliquer sur compare & Pull req(extraction )uest
 6- ECrir un message à l'auteur
 7- L'auteur accepte ou reffuse la modéfication
 
+METHODE 02: faire le changement sur github: 
 
+1- Copier le projet sur notre compte: faire un fork:
+cliquez sur "fork" en haut à droite
 
-------------------------------------------------
-GitLab: outil d integration continue comme Jinklins:
+2- entrer dans le fichier à modifier + cliquer sur le symbole 'stylo' pour qu on puisse modifier + modifier/ajouter --> cliquer sur commit changes
 
-1/ Créer un compte sur: https://gitlab.com/users/sign_in
-
-
-2/ create a new project / IC/CD for external repository
-
-
+3- cliquer sur 'Pull req(extraction )uest' puis à droite sur 'New Pull req(extraction )uest' qui est à coté du bouton master: 'create a Pull req(extraction )uest' + description --> la Pull req(extraction )uest sera envoyé et on attend s'il l'accepte ou pas
 
 
 
+Ps: fork c est pour partager le code d une autre personne sur notre profile, mais pour l'importer sur notre locale, on ne peut pas faire le pull mais avec clone
+
+Q24: si le Pull req(extraction )uest est fait pour chager notre code ?
+R24: pour voir les changements on clique sur: file changed, 
+- pour accépter le Pull req(extraction )uest on clique sur 'merge request'
+
+Q25: c est quoi une release?
+R25: c est l historiques des version des Pull req(extraction )uest
+
+Q26: c est quoi un tag en git?
+R26: lorsequ on veut mentionner la version de notre projet on fat:
+git tag v0.1.0
+
+Ps: pour afficher les tags: git tag
+
+Q27: comment pousser un code dans une release?
+git push origin v0.1.0
+
+
+Q28: ça sert à quoi l'onglet 'ISSUES' en github?
+R28: on a vu que l'onglet 'Pull req(extraction )uest' pour aider les autres, maintenant : l'onget 'issues' est pour demander l'aide en tagant le type du problème
+
+l'orsequ'on est bloqué sur un problème, on:
+- clique sur l onglet issues
+- cliquer sur le bouton 'New issue'
+- on écrit le titre + la description
+
+- cliquer sur Assignees pour mentioner les personnes auxeles on signe le problème (meme à nous meme)
+- cliquer sur Labels pour faire des tags du type de l'erreur: on choisi les tags correspondant à notre problème
+
+- Relier le projet en question avec cette erreur: cliquer sur Projects
+- Relier avec milestone: cliquer sur milestone
+- cliquer sur 'submit issu'
+- resultat: 'issu' crée  avec la description
+- vérification: si on clique sur l'onglet 'issu' on trouve l'issue crée
+
+PS1: une fois le bug est fini: on clique sur: issu close
+PS2: pour créer des case à cocher dans une description d'une tache/issu: on écrit : -[ ]
+
+Q29: c est quoi un milestone?
+R29: c'est un USER SRORY, leurs taches = des issus
+on les trouve soit dans les 'Pull req(extraction )uest' soit dans les 'issues' comme les tags, pour créer un milestone d'un issue:
+- cliquer sur l'onglet 'issue'
+- cliquer sur l'onglet 'Milestone' 
+- cliquer sur: new milestone ou create milestone
+- remplir les champs:
+* titre: 0.1.0  (c est une version sémantique)
+* date: 
+* description : c est pas la peine de la créer vu qu on va faire une release complète 
+- cliquer sur create milestone
+- aller sur l'onglet 'issu' choisir un 'issu' et lui ajouter un mile stone
+
+Q30: comment créer une 'Todo list'/USER STORY sur git à l'aide des issus?
+R30: c est la meme procédure qu'avec issu bug, sauf que dans la description on met: [] pour que ça soit comme une case à cocher
+- resultat: à chaque fois on coche une case --> progression du USER S 
 
 
 
+Q31: c est quoi l'onglet 'marketplace' sur gitHub?
+R31: 
+
+Q32: c est quoi la sémantique versionning sur GtHub?
+R32: c est l ensemble de 3 règles/chiffre: 
+*Majeur: changement incompatible avec l'API
+*Mineur: ajout de fonctionnalités
+*Patch: correction de bugs
+exemple: 0.1.0-le nom_de_la_branche
+
+Q33: Quelle stratégie de branche doit on utilisé?
+
+- on ajoute une nouvelle branche pour chaque fonctionnalité = le GitFlow, puis on merge le tout sur la branche principale 
+
+
+Q34: c est quoi une release?
+R34: c est l ensemble des milestone
+
+Q45: Comment configurer git pour que le push ne demande les coordoné du compte github qu'une seule fois?
+R45: 
+
+$ git config --global user.name "doody1987"
+$ git config --global user.email baazize-khadija@hotmail.com
+
+PS: pour vérifier :
+
+git config --list
+
+Q46: c'est quoi un workflow?
+R46: c est l'onglet action, une astuce pour travailler en équipe + l'intégration continue
+
+
+
+Q47: ça sert à quoi l'onglet 'Marketplace' ?
+R47: on trouve dedant des applications
+
+
+Q48: ça sert à quoi l'onglet explore?
+R48: on peut trouver et filtrer les projets fait
+pissou
+
+
+Q49: est ce qu on pourrait faire le docker + l'intégration continue sur GITHUB?
+
+Q49: oui bien sur!! sur les actions/workflow, on crée un fichier YAML qui contient des conteneurs, et parmis ces conteneurs: celui 
+
+
+
+Q50: comment utiliser l'onglet 'Workflow' pour travailler en équipe 
+
+
+Q51: c'est quoi 'Gitflow' ?
+R51: c est un outil (sous outil de git) sert à manipuler les branches
+*c 'est le work flow le plus utilisé,
+*son principe de base: une branche pour chaque fonctionnalité, et plusieurs développeurs peuvent travailler sur une meme fonctionnalité.
+
+Q52: quelles sont les branches principales pour un GitFlow?
+R52: on a  branches: 
+
+*Master: code prés pour la production
+*HotFix: pour la correction du bug en production
+*Develop: correspond en général à notre environnement de recette
+*Feature: destiné au fonctionnement supplémentaire
+*Feature: destiné au fonctionnement supplémentaire
+*Release: on recupère le code de la branche Feature pour faire le test, et puis on le merge dans la branche developpemnt , puis dans le Master 
+ 
+Q43: comment installer git-flow?
+R43: 
+sudo apt update
+sudo apt install git-flow
+
+Q54: comment fonctionner un 'gitflow' ?
+
+- créer un dossier dans le local + positionner dedan
+- git init
+- git flow init
+- resultat: git nous demande comment appler les branches --> cliquer entrer pour laisser les noms par defaut
+- git branch : pour afficher les branche   (master + developp sont affichés)
+- git flow feature start main   (créer une branche dite main) 
+
+Q55: quels sont les outils pour améliorer git qu'on importe de marketplace?
+
+R55: on a :
+
+- WhiteSource Bolt: pour la sécurité
+- ZenHub: gestion agile: sprint + documentation
+- Travis CI: pour l'intégration continue
+
+Q56: En cas de conflit, comment Comparez deux fichiers avec une interface graphique?
+R56: avec les outils: WinMerge et Meld
+
+
+Q57: ça sert à quoi l'onglet actions sur Github?
+R57: sert à automatiser(test, deployement/ CI/CD) les différents codes faits dans les branches dans un fichier pipeline (yaml)
+
+
+
+Q57: comment faire une intégration continue/deployement continue à l'aide de l'onglet 'actions' sur github?
+
+R57: en suivant les étapes suivantes:
+- cliquer sur actions
+- on a 03 méthodes de créer un fichier pipeline: 
+* set up your self workflow
+* set up a simple work flow
+* utiliser : Continuous integration workflows
+
+- Choisir la 3 eme méthode: "Continuous integration workflows" 
+- Cliquer sur l'icone correpondante à notre projet, expl: django
+- resultat: un fichier .yml avec la syntaxe pipeline apparait
+
+
+R58: cooment ajouter des branches sur le depos distant et local ?
+- sur github/gitlab ajouter la branche dev
+- sur le local: ajouter la remote dev :
+git remote add dev 'le lien de la remote sur la branche dev'
+- git pull dev master 
 
 
 

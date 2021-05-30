@@ -1,0 +1,46 @@
+le 28/04/2021
+
+RESUMé:
+- afficher les pods: kubectl get pods
+
+
+
+
+
+
+1/ c est quoi kubernetes?
+- c est un outil qui gère l'orchestration entre les conteneurs(crées par Docker)
+
+2/ l'architecture de l'outil kubernetes:
+* le cluster: contient plusieurs noeud(serveur surlequel on met l'ensemble des conteneurs)
+PS: chaque conteneur est présent dans un noeud , si un noeud tombe en panne, le conteneur existe dans un autre noeud
+
+* le noeud: 2 type: 
+-worker: qui contient les conteneurs (plusieurs)
+-master/manager: controler les conteneurs  (1 seule)(il pourrait etre workker au meme temps)
+
+3/ la commande principale:
+ kubectl
+
+4/ les concepts principaux: PODs + ReplicaSets + Deployements + Namespaces + Services:
+
+- PODs: c est l'enveloppe/encapsulation qui contient le  conteneur, c 'est le + petit objet dans kubernetes
+PS: un POD doit avoir des conteneurs différents(ps de 2 cont mysql), mais de préférence en met 1 conteneurs par POD
+
+5/ les différents environnement de kubernetes:
+
+1) Minikube: kubeadm: crer les cluster dans la machine virtuelle locale
+2)Kubectl: créer les cluster 
+3)kops: créer les cluster dans le Cloud environnement: plus facile mais paiante
+
+
+6/création d'un POD: 2 façon(declaratif et impératif):
+
+
+
+
+
+
+
+
+

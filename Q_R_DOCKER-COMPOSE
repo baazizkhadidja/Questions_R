@@ -38,7 +38,7 @@ services:
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
 
-volumes:
+ volumes:
   db_data: {}
 -----------------------------------------------------------
 PS: Explication de la syntaxe du fichier yaml:

@@ -1,4 +1,12 @@
-lien:  https://docs.docker.com/get-started/
+PPPSSSSSSS: explication d'un dockerfile:
+- from [image sur laquelle on se base]
+- WORKDIRE [création d un répertoire + se déplacer dedant]
+- COPY . .  [copier tous ce qui est dans le concret dans le conteneurs absrait]
+- RUN [pour installer l'application]
+- EXPOSE [le port qui nous mène à afficher le contenue du conteneur]
+- CMD ["commande1", "commande2"]
+
+	lien:  https://docs.docker.com/get-started/
 
 
 1/ la problématique/ origine de la création de Docker :
@@ -38,7 +46,7 @@ alors que:
 - les 3 parties: CLENT, HOST, REGISTRY(PULL)
 
 
-- les 3 orders : BUILD, PULL, RUN
+- les 3 orders :  RUN, BUILD, PULL,
 
 on commence par 'BUILT' pour définir l'image, si elle existe dans le host(daemon), il y aura RUN pour l'activation du contenair, si non si elle n existe pas dans le host, il va l'importer du HUB(Registry) avec PULL, puis executer le contenair avec RUN 
  
@@ -92,7 +100,7 @@ exemple: docker start 6314c8e40aab
 
 12/ Stoper un contenair:
 
-docker stop [id]
+docker stop id
 docker stop 6314c8e40aab
 
 PS: pour vérifier : docker ps
@@ -140,19 +148,35 @@ exemple: 2 conteneurs redis + nodes.js
 
 18/ c est quoi la syntaxe necessaire pour structurer un 'Dockerfile'?
 
-* FROM qui vous permet de définir l'image source ;
+* FROM : définir l'image source sur laquel on crée l image, expl: ubuntu ;
 
-* RUN qui vous permet d’exécuter des commandes dans votre conteneur ;
+* RUN: exécuter des commandes dans votre conteneur ;
 
-* ADD qui vous permet d'ajouter des fichiers dans votre conteneur ;
+* ADD/copy: ajouter des fichiers dans votre conteneur ;
 
-* WORKDIR qui vous permet de définir votre répertoire de travail ;
+* WORKDIR: définir le répertoire de travail ;
 
-* EXPOSE qui permet de définir les ports d'écoute par défaut ;
+* EXPOSE: définir les ports d'écoute par défaut ;(on remettre le numéro de port une fois on fait run)
 
-* VOLUME qui permet de définir les volumes utilisables ;
+* VOLUME: définir les volumes utilisables ;
 
-* CMD qui permet de définir la commande par défaut lors de l’exécution de vos conteneurs Docker
+* CMD: définir la commande par défaut lors de l’exécution de vos conteneurs Docker
+
+PS: un exemple d un dockerfile python:
+
+
+
+FROM python:alpine
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY /app /app
+
+WORKDIR /app
+
+CMD ["python", "deploy.py"]
 
 
 19/ Nettoyer le système:
@@ -197,10 +221,16 @@ docker run -d -p 2368:2368 ocr-docker-build
 127.0.0.1:2368
 
 
+-------------------------------------------------
+résumé: les commandes principales:
 
+* docker build     (pour transformer dockerfile en image)
+* docker run       (pour transformer l'image en conteneur)
+* docker images   (pour afficher les images)
+* docker ps -a (afficher les conteneurs actif et passif)
 
-
-
+* docker-compose ps --services  (pour afficher les services)
+* docker-compose up -d            // build + run en ARRIÈRE PLAN
 
 
 

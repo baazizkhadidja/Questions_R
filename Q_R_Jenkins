@@ -536,11 +536,7 @@ pipeline {
         }
     }
 
-- commit pout le nouveau fichier
-
-
-
-- on peut choisir le SCM repository comme 'git'
+- commit pour le nouveau fichier
 
 
 
@@ -548,12 +544,88 @@ pipeline {
 2*-Créer un pipeline  'SCM':
 
 
+- new item/ nom/ type: Pipeline
+- ajouter/clonner l'URL de la repository en 'http' et pas en SSH
+- apply/sauver
 
 
-/ Blue ocean Plugin: facilite le developpement dans les pipeline
+3* build now
+
+
+
+34/ Blue ocean Plugin: facilite le developpement dans les pipeline:
+
+- installer le Plugin 'blueocean'
+- resultat: apparaition d'une nouvelle option: open Blue Ocean
+
+1* créer une repository sur github: 'test_blue_ocean'
+
+2* sur Jenkins: accéder à l option blue ocean --> une nouvelle vesion du tableau de bord 'Jenkins' plus Sophistiqué 
+
+3* importer le script 'Pipeline' depuis git :
+
+- Nouveau Pipeline/ Github/ ouvrir le lien 'Create an acces token here' dans une nouvelle fenetre/ cliquer sur 'Generate token'/ copier le token: 31997bf2dafd41b647505cf7285be86cca2245ed/ 
+
+- sur Jenkins: coller le teken sur Jenkins/ cliquer sur 'Connect'/ cliquer sur le profile github/ choisir la repository 'test_blue_ocean' que nous avons créer dans 34/1*/ cliquer sur 'create Pipeline'
+
+- resultat: une nouvelle page apparait: 
+
+4* Créer le script Pipeline graphiquement:
+
+- créer un stage1: cliquer sur le symbole +  / donner un nom: Build
+- ajouter step: cliquer sur 'add step' / choisir une option: Print Message: Build completed/ cliquer sur back
+
+- créer un stage2: (soit en parallèle ou après) Test stages
+
+- créer un stage3: deploy
+
+5* cliquer sur save : choisir commit to the master /save ans run 
+
+6* resultat sur ma repo github: génération d un script pipeline automatiquement:
+
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Build completed'
+      }
+    }
+
+    stage('Test stages') {
+      parallel {
+        stage('Test stages') {
+          steps {
+            echo 'Running test2'
+          }
+        }
+
+        stage('Test1') {
+          steps {
+            echo 'Running Test1'
+          }
+        }
+
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        echo 'Deploy Completed'
+      }
+    }
+
+  }
+}
+
+7* modifier le Pipeline: cliquer sur branche/cliquer sur le symbole 'crayon' pour éditer le Pipeline/cliquer sur le graphe stage|step pour le modifier
 
 
 / Pipeline as a code: mettre le code dans 'version control system' puis voire l historique , la révision, les versions
+
+
+
+
 
 / Jenkins-file walkthrough: Jenkins file qui contient une syntaxe spéciale: retry/time out/ environnement variable/ parallel processus/ stages/ inputs/ users/ post actions sur les build conditions / build parameters/ integration avec les different Plugins
 

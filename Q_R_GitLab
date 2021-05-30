@@ -1,0 +1,185 @@
+
+A- les grandes étapes de l'intégration continue :
+
+    La planification du développement avec la méthode Scrum.
+
+    La compilation et l'intégration du code grâce à Maven et Git.
+
+    Le lancement automatique des tests unitaires, pour vérifier que le code fonctionne comme prévu.
+
+    La mesure de la qualité du code produit, pour vérifier qu'il sera facilement maintenable sur la durée.
+
+    La gestion des livrables pour obtenir les artefacts prêts à être déployés en production ou sur l'environnement de test. 
+
+B- Planifiez votre développement avec 'GITLAB':
+
+1/ Créer le projet Gitlab + les labels + les listes:
+
+- cliquer sur le symbole + / new project/ create blank project/ donner le nom + public / 
+
+- resultat: à gauche une liste des commandes
+- créer des labels: to do , doing, bug, in Reviw, Epic, Hight, In Review, Low, Medium, Rejected, User Story ..
+
+- choisir: Issues/ Boards/ add list/ coisir les colonne: Todo, doing, in review
+
+- créer un nouveau board: menu deroulant Developpement: create new board/ donner le nom: PRODUCT / 
+- add list/ low, medium, hight, rejected
+
+2/ Créer un issu de type EPIC: il contient les user stories
+
+- créer une issue: list/new issu / Title: [EPIC] Gestion des vétérinaires/ ajouter à la description suivante:
+
+		Dans le projet *PetClinic*, il faut ajouter la gestion 			des vétérinaires.
+		Implémentation de :
+		- Création des vétérinaires
+		- Recherche des vétérinaires
+		- Mise à jour des vétérinaires
+		- Suppression des vétérinaires
+
+		Tâches à faire :
+		- [x] Création des vétérinaires
+		- [x] Recherche des vétérinaires
+		- [x] Mise à jour des vétérinaires
+		- [ ] Suppression des vétérinaires
+		- [ ] Supprimer les vétérinaires
+		- [x] Suppression de la base de données
+
+
+
+
+- Labels: Epic
+- Submit issue
+
+3/ Créer un issue de type USER STORY:
+
+- Issue/ new issue/ Title: [User story] Suppression du vétérinaire
+
+- description de l issue:   En tant qu'administrateur, je dois pouvoir supprimer un vétérinaire afin que celui-ci ne s'affiche plus dans l'application
+
+- label: user story
+- submit issu
+
+4/ Ajouter le userstory au niveau de l'Epic:
+
+- Issues/ ouvrir Epic /cliquer sur le symbole +/ ecrire sur le champs # (les noms des users story s'affichent)/ choisir l' ID de US qu on veut ajouter/ add
+
+5/ Ajouter un filtre par board:
+
+?????????????????????????????????????????
+
+6/ Déplacer l'épic | userstory,  manuellement dans les colonnes
+
+
+
+
+C/ Intégration entre le local + GitLab: la meme procédure que Git:
+
+- sur gitlab: new project: name
+- le dossier local:
+* git init + git add + git commit + git add remote origine 'lien du projet gitlab' + git push origin master 
+
+
+D/ Activez l'intégration continue sur votre projet avec GitLab:
+
+1* Créer le fichier YAML (gitlab-ci.yml): dans la page d'accueil du projet on clique sur le bouton 'Set up CI/CD'
+
+2* copier coller le script des exemple : 
+
+
+image: python:latest
+services:
+  - mysql:latest
+  - postgres:latest
+
+variables:
+  POSTGRES_DB: database_name
+
+cache:
+  paths:
+    - ~/.cache/pip/
+
+
+
+test:
+  variables:
+    DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
+  script:
+    - python manage.py test
+
+
+
+E/ Faire un pull request : l'objectif est: présenter notre modéfication à nos co-équipier:
+
+PS: le contenu d'un Merge request:
+- titre / commentaire
+- numéro de commit
+- commentaire
+- titre
+- assignation
+- branche source vers branche cible
+- différents signalement à l'assigné (issu, milestone)
+- approuveurs: les personnes qui ont l'autorité d'approuver le pull request (validation, nombre d'approbations)
+
+
+
+
+
+
+
+
+
+
+
+PS/ Intégration du GitLab à Pycharme :
+
+- ajouter le plugin gitLab à pycharm: File/setting/ Plugin/ search in marketPlace: Gitlab project --> install/restart pycharm
+
+- configurer Gitlab plugin:
+* setting/ version Control / GitLab/ add new GitLab server/ GitLab UI Server: https://gitlab.com/, URL thst ..: gitlab.com/ ok
+
+* VCS: git
+* setting/ version control/GitLab/ cliquer sur le bouton 'token Page' --> ouvrir notre compte GitLab:  add a personal access token/ name : doody + cocher sur api + cliquer sur create personal access token 
+* resultat: l ajout du token dans le tableau
+
+* copier le token resultante + coller sur le champs 'access token' de la fenetre 'GitLab server' de pycharm/ ok
+
+- create new project sur gitLab: Projects/ your projects/ new project/ create blank project/ donner le nom: test_pycharm + cliquer sur : create project
+
+- ajouter le projet gitlab(repository) comme remote sur le git local: 
+git remote add origin https://gitlab.com/doody1987/test_pycharm.git
+
+- configurer le fichier : gitignore sur Pycharm: 
+* installer le plugin 'ignorefile'
+* chercher sur google un exemple du fichier : gitignore pycharm
+* créer un fichier dans la racine du projet: .gitignire + coller le script trouvé sur internet
+* pusher le code sur gitLab: git push origine master 
+
+
+
+D/ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
